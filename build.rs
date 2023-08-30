@@ -37,8 +37,6 @@ fn main() {
             "src/stm32f3/stm32f373/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F3X4").is_some() {
             "src/stm32f3/stm32f3x4/device.x"
-        } else if env::var_os("CARGO_FEATURE_STM32F3X8").is_some() {
-            "src/stm32f3/stm32f3x8/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F401").is_some() {
             "src/stm32f4/stm32f401/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32F405").is_some() {
@@ -95,8 +93,6 @@ fn main() {
             "src/stm32g0/stm32g070/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G071").is_some() {
             "src/stm32g0/stm32g071/device.x"
-        } else if env::var_os("CARGO_FEATURE_STM32G07X").is_some() {
-            "src/stm32g0/stm32g07x/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G081").is_some() {
             "src/stm32g0/stm32g081/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G0B0").is_some() {
@@ -123,6 +119,14 @@ fn main() {
             "src/stm32g4/stm32g491/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32G4A1").is_some() {
             "src/stm32g4/stm32g4a1/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H503").is_some() {
+            "src/stm32h5/stm32h503/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H562").is_some() {
+            "src/stm32h5/stm32h562/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H563").is_some() {
+            "src/stm32h5/stm32h563/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32H573").is_some() {
+            "src/stm32h5/stm32h573/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H735").is_some() {
             "src/stm32h7/stm32h735/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32H743").is_some() {
@@ -155,6 +159,8 @@ fn main() {
             "src/stm32l1/stm32l162/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L412").is_some() {
             "src/stm32l4/stm32l412/device.x"
+        } else if env::var_os("CARGO_FEATURE_STM32L4P5").is_some() {
+            "src/stm32l4/stm32l4p5/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L4R5").is_some() {
             "src/stm32l4/stm32l4r5/device.x"
         } else if env::var_os("CARGO_FEATURE_STM32L4R9").is_some() {

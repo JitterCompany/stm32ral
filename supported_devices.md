@@ -1,5 +1,13 @@
 # Supported Devices
 
+## STM32C0
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32c0x1` | STM32C011, STM32C031 | [RM0490](https://www.st.com/resource/en/reference_manual/rm0490-stm32c0x1-advanced-armbased-32bit-mcus-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32c0x1.html) |
+
+
+
 ## STM32F0
 
 | Feature | Devices | Links |
@@ -75,6 +83,17 @@
 | `stm32f7x6` | STM32F746, STM32F756 | [RM0385](https://www.st.com/resource/en/reference_manual/dm00124865.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x6.html) |
 | `stm32f7x7` | STM32F767, STM32F777 | [RM0410](https://www.st.com/resource/en/reference_manual/dm00224583.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x7.html) |
 | `stm32f7x9` | STM32F769, STM32F778, STM32F779 | [RM0410](https://www.st.com/resource/en/reference_manual/dm00224583.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32f7x9.html) |
+
+
+
+## STM32H5
+
+| Feature | Devices | Links |
+|:-------:|:-------:|:-----:|
+| `stm32h503` | STM32H503 | [RM0492](https://www.st.com/resource/en/reference_manual/rm0492-stm32h503-line-armbased-32bit-mcus-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h503.html) |
+| `stm32h562` | STM32H562 | [RM0481](https://www.st.com/resource/en/reference_manual/rm0481-stm32h563h573-and-stm32h562-armbased-32bit-mcus-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h562.html) |
+| `stm32h563` | STM32H563 | [RM0481](https://www.st.com/resource/en/reference_manual/rm0481-stm32h563h573-and-stm32h562-armbased-32bit-mcus-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h563-573.html) |
+| `stm32h573` | STM32H573 | [RM0481](https://www.st.com/resource/en/reference_manual/rm0481-stm32h563h573-and-stm32h562-armbased-32bit-mcus-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32h563-573.html) |
 
 
 
@@ -191,6 +210,5 @@
 | Feature | Devices | Links |
 |:-------:|:-------:|:-----:|
 | `stm32wb55` | STM32WB55 | [RM0434](https://www.st.com/resource/en/reference_manual/dm00318631-multiprotocol-wireless-32bit-mcu-armbased-cortexm4-with-fpu-bluetooth-lowenergy-and-802154-radio-solution-stmicroelectronics.pdf), [st.com](https://www.st.com/en/microcontrollers-microprocessors/stm32wbx5.html) |
-
 
 

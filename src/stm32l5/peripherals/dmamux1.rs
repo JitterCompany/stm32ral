@@ -344,6 +344,28 @@ pub mod C13CR {
     pub use super::C0CR::SYNC_ID;
 }
 
+/// DMA Multiplexer Channel 10 Control register
+pub mod C14CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
+}
+
+/// DMA Multiplexer Channel 10 Control register
+pub mod C15CR {
+    pub use super::C0CR::DMAREQ_ID;
+    pub use super::C0CR::EGE;
+    pub use super::C0CR::NBREQ;
+    pub use super::C0CR::SE;
+    pub use super::C0CR::SOIE;
+    pub use super::C0CR::SPOL;
+    pub use super::C0CR::SYNC_ID;
+}
+
 /// DMA Multiplexer Channel Status register
 pub mod CSR {
 
@@ -1020,28 +1042,6 @@ pub mod RGCFR {
         pub mod RW {}
     }
 }
-
-/// DMA Multiplexer Channel 10 Control register
-pub mod C14CR {
-    pub use super::C0CR::DMAREQ_ID;
-    pub use super::C0CR::EGE;
-    pub use super::C0CR::NBREQ;
-    pub use super::C0CR::SE;
-    pub use super::C0CR::SOIE;
-    pub use super::C0CR::SPOL;
-    pub use super::C0CR::SYNC_ID;
-}
-
-/// DMA Multiplexer Channel 10 Control register
-pub mod C15CR {
-    pub use super::C0CR::DMAREQ_ID;
-    pub use super::C0CR::EGE;
-    pub use super::C0CR::NBREQ;
-    pub use super::C0CR::SE;
-    pub use super::C0CR::SOIE;
-    pub use super::C0CR::SPOL;
-    pub use super::C0CR::SYNC_ID;
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// DMA Multiplexer Channel 0 Control register
@@ -1086,7 +1086,13 @@ pub struct RegisterBlock {
     /// DMA Multiplexer Channel 13 Control register
     pub C13CR: RWRegister<u32>,
 
-    _reserved1: [u8; 72],
+    /// DMA Multiplexer Channel 10 Control register
+    pub C14CR: RWRegister<u32>,
+
+    /// DMA Multiplexer Channel 10 Control register
+    pub C15CR: RWRegister<u32>,
+
+    _reserved1: [u8; 64],
 
     /// DMA Multiplexer Channel Status register
     pub CSR: RWRegister<u32>,
@@ -1108,13 +1114,7 @@ pub struct RegisterBlock {
     /// DMA Request Generator 3 Control Register
     pub RG3CR: RWRegister<u32>,
 
-    _reserved3: [u8; 40],
-
-    /// DMA Multiplexer Channel 10 Control register
-    pub C14CR: RWRegister<u32>,
-
-    /// DMA Multiplexer Channel 10 Control register
-    pub C15CR: RWRegister<u32>,
+    _reserved3: [u8; 48],
 
     /// DMA Request Generator Status Register
     pub RGSR: RORegister<u32>,
@@ -1137,14 +1137,14 @@ pub struct ResetValues {
     pub C11CR: u32,
     pub C12CR: u32,
     pub C13CR: u32,
+    pub C14CR: u32,
+    pub C15CR: u32,
     pub CSR: u32,
     pub CCFR: u32,
     pub RG0CR: u32,
     pub RG1CR: u32,
     pub RG2CR: u32,
     pub RG3CR: u32,
-    pub C14CR: u32,
-    pub C15CR: u32,
     pub RGSR: u32,
     pub RGCFR: u32,
 }

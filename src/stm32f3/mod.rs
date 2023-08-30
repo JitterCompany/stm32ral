@@ -21,6 +21,3 @@ pub mod stm32f373;
 #[cfg(any(feature="stm32f3x4", feature="doc"))]
 pub mod stm32f3x4;
 
-#[cfg(any(feature="stm32f3x8", feature="doc"))]
-pub mod stm32f3x8;
-

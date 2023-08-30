@@ -4266,10 +4266,10 @@ pub mod DCKCFGR {
         pub mod RW {
 
             /// 0b0: If the APB prescaler is configured 1, TIMxCLK = PCLKx. Otherwise, TIMxCLK = 2xPCLKx
-            pub const Mul2: u32 = 0b0;
+            pub const Mul1Or2: u32 = 0b0;
 
             /// 0b1: If the APB prescaler is configured 1, 2 or 4, TIMxCLK = HCLK. Otherwise, TIMxCLK = 4xPCLKx
-            pub const Mul4: u32 = 0b1;
+            pub const Mul1Or4: u32 = 0b1;
         }
     }
 

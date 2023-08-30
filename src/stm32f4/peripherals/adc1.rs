@@ -21,15 +21,8 @@ pub mod SR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values
-        pub mod RW {
-
-            /// 0b0: No overrun occurred
-            pub const NoOverrun: u32 = 0b0;
-
-            /// 0b1: Overrun occurred
-            pub const Overrun: u32 = 0b1;
-        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular channel start flag
@@ -38,12 +31,8 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No regular channel conversion started
             pub const NotStarted: u32 = 0b0;
@@ -51,6 +40,14 @@ pub mod SR {
             /// 0b1: Regular channel conversion has started
             pub const Started: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected channel start flag
@@ -59,12 +56,8 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No injected channel conversion started
             pub const NotStarted: u32 = 0b0;
@@ -72,6 +65,9 @@ pub mod SR {
             /// 0b1: Injected channel conversion has started
             pub const Started: u32 = 0b1;
         }
+        pub use super::STRT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Injected channel end of conversion
@@ -80,12 +76,8 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: Conversion is not complete
             pub const NotComplete: u32 = 0b0;
@@ -93,6 +85,9 @@ pub mod SR {
             /// 0b1: Conversion complete
             pub const Complete: u32 = 0b1;
         }
+        pub use super::STRT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Regular channel end of conversion
@@ -101,11 +96,18 @@ pub mod SR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        pub use super::JEOC::RW;
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Conversion is not complete
+            pub const NotComplete: u32 = 0b0;
+
+            /// 0b1: Conversion complete
+            pub const Complete: u32 = 0b1;
+        }
+        pub use super::STRT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Analog watchdog flag
@@ -114,12 +116,8 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No analog watchdog event occurred
             pub const NoEvent: u32 = 0b0;
@@ -127,6 +125,9 @@ pub mod SR {
             /// 0b1: Analog watchdog event occurred
             pub const Event: u32 = 0b1;
         }
+        pub use super::STRT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 
@@ -789,8 +790,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 16 sampling time selection
@@ -803,8 +803,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 15 sampling time selection
@@ -817,8 +816,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 14 sampling time selection
@@ -831,8 +829,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 13 sampling time selection
@@ -845,8 +842,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 12 sampling time selection
@@ -859,8 +855,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 11 sampling time selection
@@ -873,8 +868,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 
     /// Channel 10 sampling time selection
@@ -887,8 +881,7 @@ pub mod SMPR1 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP18::RW;
     }
 }
 
@@ -944,8 +937,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 7 sampling time selection
@@ -958,8 +950,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 6 sampling time selection
@@ -972,8 +963,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 5 sampling time selection
@@ -986,8 +976,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 4 sampling time selection
@@ -1000,8 +989,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 3 sampling time selection
@@ -1014,8 +1002,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 2 sampling time selection
@@ -1028,8 +1015,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 1 sampling time selection
@@ -1042,8 +1028,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 
     /// Channel 0 sampling time selection
@@ -1056,8 +1041,7 @@ pub mod SMPR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::SMP9::RW;
     }
 }
 

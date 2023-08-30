@@ -39,7 +39,7 @@ pub use super::instances::can1_l4x3_l4x5 as can1;
 pub use super::instances::crs;
 pub use super::instances::exti;
 pub use super::instances::lpuart1_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as lpuart1;
-pub use super::instances::nvic;
+pub use super::instances::nvic_l412_l4r9_l4x1_l4x2_l4x3_l4x5_l4x6 as nvic;
 pub use super::instances::opamp_l4x1_l4x2_l4x3_l4x5_l4x6 as opamp;
 pub use super::instances::rtc;
 pub use super::instances::sdmmc;

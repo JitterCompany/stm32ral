@@ -164,6 +164,118 @@ pub mod GOTGCTL {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// V_BUS valid override enable
+    pub mod VBVALOEN {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (1 bit: 1 << 2)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// V_BUS valid override value
+    pub mod VBVALOVAL {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// A-peripheral session valid override enable
+    pub mod AVALOEN {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// A-peripheral session valid override value
+    pub mod AVALOVAL {
+        /// Offset (5 bits)
+        pub const offset: u32 = 5;
+        /// Mask (1 bit: 1 << 5)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// B-peripheral session valid override enable
+    pub mod BVALOEN {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// B-peripheral session valid override value
+    pub mod BVALOVAL {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// OTG version
+    pub mod OTGVER {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (1 bit: 1 << 20)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Current mode of operation
+    pub mod CURMOD {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// OTG_HS interrupt register
@@ -1570,10 +1682,10 @@ pub mod GRXFSIZ {
     }
 }
 
-/// HNPTXFSIZ_Host and DIEPTXF0_Device
-/// HNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
-/// DIEPTXF0_Device: Endpoint 0 transmit FIFO size (peripheral mode)
-pub mod HNPTXFSIZ_Host {
+/// HNPTXFSIZ and DIEPTXF0
+/// HNPTXFSIZ: OTG_HS nonperiodic transmit FIFO size register (host mode)
+/// DIEPTXF0: Endpoint 0 transmit FIFO size (peripheral mode)
+pub mod HNPTXFSIZ {
 
     /// Nonperiodic transmit RAM start address
     pub mod NPTXFSA {
@@ -1633,7 +1745,7 @@ pub mod HNPTXFSIZ_Host {
 }
 
 /// OTG_HS nonperiodic transmit FIFO/queue status register
-pub mod GNPTXSTS {
+pub mod HNPTXSTS {
 
     /// Nonperiodic TxFIFO space available
     pub mod NPTXFSAV {
@@ -2153,6 +2265,12 @@ pub mod GLPMCFG {
         pub mod RW {}
     }
 }
+
+/// OTG_HS device IN endpoint transmit FIFO size register
+pub mod DIEPTXF8 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// OTG_HS control and status register
@@ -2189,13 +2307,13 @@ pub struct RegisterBlock {
     /// OTG_HS Receive FIFO size register
     pub GRXFSIZ: RWRegister<u32>,
 
-    /// HNPTXFSIZ_Host and DIEPTXF0_Device
-    /// HNPTXFSIZ_Host: OTG_HS nonperiodic transmit FIFO size register (host mode)
-    /// DIEPTXF0_Device: Endpoint 0 transmit FIFO size (peripheral mode)
-    pub HNPTXFSIZ_Host: RWRegister<u32>,
+    /// HNPTXFSIZ and DIEPTXF0
+    /// HNPTXFSIZ: OTG_HS nonperiodic transmit FIFO size register (host mode)
+    /// DIEPTXF0: Endpoint 0 transmit FIFO size (peripheral mode)
+    pub HNPTXFSIZ: RWRegister<u32>,
 
     /// OTG_HS nonperiodic transmit FIFO/queue status register
-    pub GNPTXSTS: RORegister<u32>,
+    pub HNPTXSTS: RORegister<u32>,
 
     _reserved1: [u8; 8],
 
@@ -2221,8 +2339,6 @@ pub struct RegisterBlock {
     /// OTG_HS device IN endpoint transmit FIFO size register
     pub DIEPTXF2: RWRegister<u32>,
 
-    _reserved4: [u8; 16],
-
     /// OTG_HS device IN endpoint transmit FIFO size register
     pub DIEPTXF3: RWRegister<u32>,
 
@@ -2237,6 +2353,9 @@ pub struct RegisterBlock {
 
     /// OTG_HS device IN endpoint transmit FIFO size register
     pub DIEPTXF7: RWRegister<u32>,
+
+    /// OTG_HS device IN endpoint transmit FIFO size register
+    pub DIEPTXF8: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub GOTGCTL: u32,
@@ -2249,8 +2368,8 @@ pub struct ResetValues {
     pub GRXSTSR: u32,
     pub GRXSTSP: u32,
     pub GRXFSIZ: u32,
-    pub HNPTXFSIZ_Host: u32,
-    pub GNPTXSTS: u32,
+    pub HNPTXFSIZ: u32,
+    pub HNPTXSTS: u32,
     pub GCCFG: u32,
     pub CID: u32,
     pub GLPMCFG: u32,
@@ -2262,6 +2381,7 @@ pub struct ResetValues {
     pub DIEPTXF5: u32,
     pub DIEPTXF6: u32,
     pub DIEPTXF7: u32,
+    pub DIEPTXF8: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

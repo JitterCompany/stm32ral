@@ -26,7 +26,7 @@ pub use super::instances::cec;
 pub use super::instances::i2c;
 pub use super::instances::iwdg;
 pub use super::instances::pwr;
-pub use super::instances::rtc_f301_f373_f3x8 as rtc;
+pub use super::instances::rtc_f301_f373 as rtc;
 pub use super::instances::sdadc;
 pub use super::instances::usb;
 pub use super::instances::wwdg;

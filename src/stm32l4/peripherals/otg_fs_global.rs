@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32l4r5, stm32l4r9
+//! Used by: stm32l4r9, stm32l4x6
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -1596,6 +1596,18 @@ pub mod DIEPTXF3 {
     pub use super::DIEPTXF1::INEPTXSA;
 }
 
+/// OTF_FS device IN endpoint transmit FIFO size register
+pub mod DIEPTXF4 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
+}
+
+/// OTF_FS device IN endpoint transmit FIFO size register
+pub mod DIEPTXF5 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
+}
+
 /// GRXSTSP_Device and GRXSTSP_Host
 /// GRXSTSP_Device: OTG status read and pop (device mode)
 /// GRXSTSP_Host: OTG status read and pop (host mode)
@@ -1750,6 +1762,12 @@ pub struct RegisterBlock {
 
     /// OTF_FS device IN endpoint transmit FIFO size register
     pub DIEPTXF3: RWRegister<u32>,
+
+    /// OTF_FS device IN endpoint transmit FIFO size register
+    pub DIEPTXF4: RWRegister<u32>,
+
+    /// OTF_FS device IN endpoint transmit FIFO size register
+    pub DIEPTXF5: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub GOTGCTL: u32,
@@ -1770,6 +1788,8 @@ pub struct ResetValues {
     pub DIEPTXF1: u32,
     pub DIEPTXF2: u32,
     pub DIEPTXF3: u32,
+    pub DIEPTXF4: u32,
+    pub DIEPTXF5: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

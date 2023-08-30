@@ -8,7 +8,6 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::dcb;
 pub use super::instances::dfsdm1;
 pub use super::instances::dmamux1;
 pub use super::instances::exti;
@@ -20,11 +19,6 @@ pub use super::instances::iwdg;
 pub use super::instances::lptim;
 pub use super::instances::tamp;
 pub mod gtzc_mpcbb;
-pub use super::instances::pwr;
-pub use super::instances::rcc;
-pub use super::instances::rtc;
-pub use super::instances::s;
-pub mod dma;
 pub use super::instances::adc;
 pub use super::instances::adc_common;
 pub use super::instances::comp;
@@ -32,16 +26,23 @@ pub use super::instances::crc;
 pub use super::instances::crs;
 pub use super::instances::dac;
 pub use super::instances::dbgmcu;
+pub use super::instances::dcb;
+pub use super::instances::dma;
 pub use super::instances::fdcan1;
 pub use super::instances::fmc;
 pub use super::instances::gtzc_tzic;
 pub use super::instances::gtzc_tzsc;
+pub use super::instances::hash;
 pub use super::instances::lpuart1;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::octospi1;
 pub use super::instances::opamp;
+pub use super::instances::pwr;
+pub use super::instances::rcc;
 pub use super::instances::rng;
+pub use super::instances::rtc;
+pub use super::instances::s;
 pub use super::instances::sdmmc1;
 pub use super::instances::sec_gtzc_mpcbb1;
 pub use super::instances::sec_gtzc_mpcbb2;
@@ -79,7 +80,6 @@ pub use super::instances::wwdg;
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
 pub struct Peripherals {
-    pub DCB: dcb::Instance,
     pub DFSDM1: dfsdm1::Instance,
     pub SEC_DFSDM1: dfsdm1::Instance,
     pub DMAMUX1: dmamux1::Instance,
@@ -114,7 +114,7 @@ pub struct Peripherals {
     pub SEC_I2C2: i2c::Instance,
     pub SEC_I2C3: i2c::Instance,
     pub SEC_I2C4: i2c::Instance,
-    pub ICache: icache::Instance,
+    pub ICACHE: icache::Instance,
     pub SEC_ICache: icache::Instance,
     pub IWDG: iwdg::Instance,
     pub SEC_IWDG: iwdg::Instance,
@@ -215,8 +215,10 @@ pub struct Peripherals {
     pub SEC_UART5: usart::Instance,
     pub ADC_Common: adc_common::Instance,
     pub SEC_ADC_Common: adc_common::Instance,
-    pub ADC: adc::Instance,
-    pub SEC_ADC: adc::Instance,
+    pub ADC1: adc::Instance,
+    pub SEC_ADC1: adc::Instance,
+    pub ADC2: adc::Instance,
+    pub SEC_ADC2: adc::Instance,
     pub NVIC: nvic::Instance,
     pub NVIC_STIR: nvic_stir::Instance,
     pub FMC: fmc::Instance,
@@ -225,6 +227,9 @@ pub struct Peripherals {
     pub SEC_RNG: rng::Instance,
     pub SDMMC1: sdmmc1::Instance,
     pub SEC_SDMMC1: sdmmc1::Instance,
+    pub DCB: dcb::Instance,
+    pub HASH: hash::Instance,
+    pub SEC_HASH: hash::Instance,
 }
 
 #[cfg(all(feature = "rtic", feature = "nosync"))]
@@ -235,7 +240,6 @@ pub struct Peripherals {}
 impl Peripherals {
     pub unsafe fn steal() -> Self {
         Peripherals {
-            DCB: dcb::DCB::steal(),
             DFSDM1: dfsdm1::DFSDM1::steal(),
             SEC_DFSDM1: dfsdm1::SEC_DFSDM1::steal(),
             DMAMUX1: dmamux1::DMAMUX1::steal(),
@@ -270,7 +274,7 @@ impl Peripherals {
             SEC_I2C2: i2c::SEC_I2C2::steal(),
             SEC_I2C3: i2c::SEC_I2C3::steal(),
             SEC_I2C4: i2c::SEC_I2C4::steal(),
-            ICache: icache::ICache::steal(),
+            ICACHE: icache::ICACHE::steal(),
             SEC_ICache: icache::SEC_ICache::steal(),
             IWDG: iwdg::IWDG::steal(),
             SEC_IWDG: iwdg::SEC_IWDG::steal(),
@@ -371,8 +375,10 @@ impl Peripherals {
             SEC_UART5: usart::SEC_UART5::steal(),
             ADC_Common: adc_common::ADC_Common::steal(),
             SEC_ADC_Common: adc_common::SEC_ADC_Common::steal(),
-            ADC: adc::ADC::steal(),
-            SEC_ADC: adc::SEC_ADC::steal(),
+            ADC1: adc::ADC1::steal(),
+            SEC_ADC1: adc::SEC_ADC1::steal(),
+            ADC2: adc::ADC2::steal(),
+            SEC_ADC2: adc::SEC_ADC2::steal(),
             NVIC: nvic::NVIC::steal(),
             NVIC_STIR: nvic_stir::NVIC_STIR::steal(),
             FMC: fmc::FMC::steal(),
@@ -381,6 +387,9 @@ impl Peripherals {
             SEC_RNG: rng::SEC_RNG::steal(),
             SDMMC1: sdmmc1::SDMMC1::steal(),
             SEC_SDMMC1: sdmmc1::SEC_SDMMC1::steal(),
+            DCB: dcb::DCB::steal(),
+            HASH: hash::HASH::steal(),
+            SEC_HASH: hash::SEC_HASH::steal(),
         }
     }
 }

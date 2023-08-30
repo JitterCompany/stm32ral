@@ -60,8 +60,6 @@ extern "C" {
     fn DMA2_Stream2();
     fn DMA2_Stream3();
     fn DMA2_Stream4();
-    fn ETH();
-    fn ETH_WKUP();
     fn CAN2_TX();
     fn CAN2_RX0();
     fn CAN2_RX1();
@@ -203,8 +201,8 @@ pub static __INTERRUPTS: [Vector; 90] = [
     Vector {
         _handler: DMA2_Stream4,
     },
-    Vector { _handler: ETH },
-    Vector { _handler: ETH_WKUP },
+    Vector { _reserved: 0 },
+    Vector { _reserved: 0 },
     Vector { _handler: CAN2_TX },
     Vector { _handler: CAN2_RX0 },
     Vector { _handler: CAN2_RX1 },
@@ -371,10 +369,6 @@ pub enum Interrupt {
     DMA2_Stream3 = 59,
     /// 60: DMA2 Stream4 global interrupt
     DMA2_Stream4 = 60,
-    /// 61: Ethernet global interrupt
-    ETH = 61,
-    /// 62: Ethernet Wakeup through EXTI line interrupt
-    ETH_WKUP = 62,
     /// 63: CAN2 TX interrupts
     CAN2_TX = 63,
     /// 64: CAN2 RX0 interrupts

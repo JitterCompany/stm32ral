@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Real-time clock
 //!
-//! Used by: stm32l4r5, stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
+//! Used by: stm32l4r9, stm32l4x1, stm32l4x2, stm32l4x3, stm32l4x5, stm32l4x6
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -802,10 +802,10 @@ pub mod WUTR {
     }
 }
 
-/// alarm A register
+/// Alarm register
 pub mod ALRMAR {
 
-    /// Alarm A date mask
+    /// Alarm date mask
     pub mod MSK4 {
         /// Offset (31 bits)
         pub const offset: u32 = 31;
@@ -861,7 +861,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A hours mask
+    /// Alarm hours mask
     pub mod MSK3 {
         /// Offset (23 bits)
         pub const offset: u32 = 23;
@@ -917,7 +917,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A minutes mask
+    /// Alarm minutes mask
     pub mod MSK2 {
         /// Offset (15 bits)
         pub const offset: u32 = 15;
@@ -959,7 +959,7 @@ pub mod ALRMAR {
         pub mod RW {}
     }
 
-    /// Alarm A seconds mask
+    /// Alarm seconds mask
     pub mod MSK1 {
         /// Offset (7 bits)
         pub const offset: u32 = 7;
@@ -1002,7 +1002,7 @@ pub mod ALRMAR {
     }
 }
 
-/// alarm B register
+/// Alarm register
 pub mod ALRMBR {
     pub use super::ALRMAR::DT;
     pub use super::ALRMAR::DU;
@@ -1089,185 +1089,13 @@ pub mod SHIFTR {
 }
 
 /// time stamp time register
-pub mod TSTR {
-
-    /// Second units in BCD format
-    pub mod SU {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Second tens in BCD format
-    pub mod ST {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (3 bits: 0b111 << 4)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Minute units in BCD format
-    pub mod MNU {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (4 bits: 0b1111 << 8)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Minute tens in BCD format
-    pub mod MNT {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (3 bits: 0b111 << 12)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Hour units in BCD format
-    pub mod HU {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (4 bits: 0b1111 << 16)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Hour tens in BCD format
-    pub mod HT {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (2 bits: 0b11 << 20)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// AM/PM notation
-    pub mod PM {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+pub mod TSTR {}
 
 /// time stamp date register
-pub mod TSDR {
-
-    /// Week day units
-    pub mod WDU {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (3 bits: 0b111 << 13)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Month tens in BCD format
-    pub mod MT {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Month units in BCD format
-    pub mod MU {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (4 bits: 0b1111 << 8)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Date tens in BCD format
-    pub mod DT {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Date units in BCD format
-    pub mod DU {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+pub mod TSDR {}
 
 /// timestamp sub second register
-pub mod TSSSR {
-    pub use super::SSR::SS;
-}
+pub mod TSSSR {}
 
 /// calibration register
 pub mod CALR {
@@ -1627,7 +1455,7 @@ pub mod TAMPCR {
     }
 }
 
-/// alarm A sub second register
+/// Alarm sub-second register
 pub mod ALRMASSR {
 
     /// Mask the most-significant bits starting at this bit
@@ -1659,7 +1487,7 @@ pub mod ALRMASSR {
     }
 }
 
-/// alarm B sub second register
+/// Alarm sub-second register
 pub mod ALRMBSSR {
     pub use super::ALRMASSR::MASKSS;
     pub use super::ALRMASSR::SS;
@@ -1891,10 +1719,10 @@ pub struct RegisterBlock {
 
     _reserved1: [u8; 4],
 
-    /// alarm A register
+    /// Alarm register
     pub ALRMAR: RWRegister<u32>,
 
-    /// alarm B register
+    /// Alarm register
     pub ALRMBR: RWRegister<u32>,
 
     /// write protection register
@@ -1921,10 +1749,10 @@ pub struct RegisterBlock {
     /// tamper configuration register
     pub TAMPCR: RWRegister<u32>,
 
-    /// alarm A sub second register
+    /// Alarm sub-second register
     pub ALRMASSR: RWRegister<u32>,
 
-    /// alarm B sub second register
+    /// Alarm sub-second register
     pub ALRMBSSR: RWRegister<u32>,
 
     /// option register

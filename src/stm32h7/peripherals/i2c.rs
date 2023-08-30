@@ -546,12 +546,8 @@ pub mod CR2 {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Start generation
             pub const NoStart: u32 = 0b0;
@@ -559,6 +555,14 @@ pub mod CR2 {
             /// 0b1: Restart/Start generation
             pub const Start: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Restart/Start generation
+            pub const Start: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stop generation (master mode) The bit is set by software, cleared by hardware when a Stop condition is detected, or when PE = 0. In Master Mode: Note: Writing 0 to this bit has no effect.
@@ -567,12 +571,8 @@ pub mod CR2 {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Stop generation
             pub const NoStop: u32 = 0b0;
@@ -580,6 +580,14 @@ pub mod CR2 {
             /// 0b1: Stop generation after current byte transfer
             pub const Stop: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Stop generation after current byte transfer
+            pub const Stop: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// NACK generation (slave mode) The bit is set by software, cleared by hardware when the NACK is sent, or when a STOP condition or an Address matched is received, or when PE=0. Note: Writing 0 to this bit has no effect. This bit is used in slave mode only: in master receiver mode, NACK is automatically generated after last byte preceding STOP or RESTART condition, whatever the NACK bit value. When an overrun occurs in slave receiver NOSTRETCH mode, a NACK is automatically generated whatever the NACK bit value. When hardware PEC checking is enabled (PECBYTE=1), the PEC acknowledge value does not depend on the NACK value.
@@ -588,12 +596,8 @@ pub mod CR2 {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: an ACK is sent after current received byte
             pub const Ack: u32 = 0b0;
@@ -601,6 +605,14 @@ pub mod CR2 {
             /// 0b1: a NACK is sent after current received byte
             pub const Nack: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: a NACK is sent after current received byte
+            pub const Nack: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Number of bytes The number of bytes to be transmitted/received is programmed there. This field is dont care in slave mode with SBC=0. Note: Changing these bits when the START bit is set is not allowed.
@@ -665,12 +677,8 @@ pub mod CR2 {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No PEC transfer
             pub const NoPec: u32 = 0b0;
@@ -678,6 +686,14 @@ pub mod CR2 {
             /// 0b1: PEC transmission/reception is requested
             pub const Pec: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: PEC transmission/reception is requested
+            pub const Pec: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Slave address bit 0 (master mode) In 7-bit addressing mode (ADD10 = 0): This bit is dont care In 10-bit addressing mode (ADD10 = 1): This bit should be written with bit 0 of the slave address to be sent Note: Changing these bits when the START bit is set is not allowed.
@@ -1011,12 +1027,8 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: TXDR register not empty
             pub const NotEmpty: u32 = 0b0;
@@ -1024,6 +1036,14 @@ pub mod ISR {
             /// 0b1: TXDR register empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Flush the transmit data register
+            pub const Flush: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Transmit interrupt status (transmitters) This bit is set by hardware when the I2C_TXDR register is empty and the data to be transmitted must be written in the I2C_TXDR register. It is cleared when the next data to be sent is written in the I2C_TXDR register. This bit can be written to 1 by software when NOSTRETCH=1 only, in order to generate a TXIS event (interrupt if TXIE=1 or DMA request if TXDMAEN=1). Note: This bit is cleared by hardware when PE=0.
@@ -1032,12 +1052,8 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The TXDR register is not empty
             pub const NotEmpty: u32 = 0b0;
@@ -1045,6 +1061,14 @@ pub mod ISR {
             /// 0b1: The TXDR register is empty and the data to be transmitted must be written in the TXDR register
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Generate a TXIS event
+            pub const Trigger: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Receive data register not empty (receivers) This bit is set by hardware when the received data is copied into the I2C_RXDR register, and is ready to be read. It is cleared when I2C_RXDR is read. Note: This bit is cleared by hardware when PE=0.

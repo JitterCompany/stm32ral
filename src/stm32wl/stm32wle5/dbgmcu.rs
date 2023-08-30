@@ -208,7 +208,7 @@ pub mod APB1FZR1 {
             /// 0b0: Same behavior as in normal mode
             pub const NormalMode: u32 = 0b0;
 
-            /// 0b1: I2C3 SMBUS timeout is frozen
+            /// 0b1: I2Cx SMBUS timeout is frozen
             pub const SMBusTimeoutFrozen: u32 = 0b1;
         }
     }
@@ -252,10 +252,10 @@ pub mod APB1FZR1 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: LPTIM1 counter clock is fed even if the core is halted
+            /// 0b0: LPTIMx counter clock is fed even if the core is halted
             pub const Continue: u32 = 0b0;
 
-            /// 0b1: LPTIM1 counter clock is stopped when the core is halted
+            /// 0b1: LPTIMx counter clock is stopped when the core is halted
             pub const Stop: u32 = 0b1;
         }
     }
@@ -277,10 +277,10 @@ pub mod APB1FZR2 {
         /// Read-write values
         pub mod RW {
 
-            /// 0b0: LPTIM1 counter clock is fed even if the core is halted
+            /// 0b0: LPTIMx counter clock is fed even if the core is halted
             pub const Continue: u32 = 0b0;
 
-            /// 0b1: LPTIM1 counter clock is stopped when the core is halted
+            /// 0b1: LPTIMx counter clock is stopped when the core is halted
             pub const Stop: u32 = 0b1;
         }
     }

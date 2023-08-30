@@ -227,8 +227,12 @@ pub mod SR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Clear error flag
+            pub const Clear: u32 = 0b1;
+        }
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -241,8 +245,7 @@ pub mod SR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -255,8 +258,7 @@ pub mod SR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -269,8 +271,7 @@ pub mod SR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -283,8 +284,7 @@ pub mod SR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -297,8 +297,7 @@ pub mod SR {
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
+        pub use super::EOP::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -309,8 +308,15 @@ pub mod SR {
         pub const offset: u32 = 16;
         /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: no Flash memory operation ongoing
+            pub const NotBusy: u32 = 0b0;
+
+            /// 0b1: Flash memory operation ongoing
+            pub const Busy: u32 = 0b1;
+        }
         /// Write-only values (empty)
         pub mod W {}
         /// Read-write values (empty)

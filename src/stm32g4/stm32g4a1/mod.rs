@@ -9,11 +9,11 @@ pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
 pub use super::instances::crc;
-pub use super::instances::dbgmcu;
-pub use super::instances::flash;
 pub use super::instances::i2c_g431_g441_g491_g4a1 as i2c;
 pub use super::instances::iwdg;
 pub use super::instances::wwdg;
+pub mod flash;
+pub use super::instances::dbgmcu;
 pub mod rcc;
 pub use super::instances::adc12_common;
 pub use super::instances::adc_g471_g491_g4a1 as adc;

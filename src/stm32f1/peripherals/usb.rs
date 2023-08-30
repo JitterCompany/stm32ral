@@ -31,12 +31,8 @@ pub mod EP0R {
         pub const offset: u32 = 4;
         /// Mask (2 bits: 0b11 << 4)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b00: all transmission requests addressed to this endpoint are ignored
             pub const Disabled: u32 = 0b00;
@@ -50,6 +46,10 @@ pub mod EP0R {
             /// 0b11: this endpoint is enabled for transmission
             pub const Valid: u32 = 0b11;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data Toggle, for transmission transfers
@@ -141,12 +141,8 @@ pub mod EP0R {
         pub const offset: u32 = 12;
         /// Mask (2 bits: 0b11 << 12)
         pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b00: all reception requests addressed to this endpoint are ignored
             pub const Disabled: u32 = 0b00;
@@ -160,6 +156,10 @@ pub mod EP0R {
             /// 0b11: this endpoint is enabled for reception
             pub const Valid: u32 = 0b11;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data Toggle, for reception transfers
@@ -607,16 +607,23 @@ pub mod ISTR {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: NotExpectedStartOfFrame
+            pub const NotExpectedStartOfFrame: u32 = 0b0;
 
             /// 0b1: an SOF packet is expected but not received
             pub const ExpectedStartOfFrame: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// start of frame
@@ -625,16 +632,18 @@ pub mod ISTR {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: NotStartOfFrame
+            pub const NotStartOfFrame: u32 = 0b0;
 
             /// 0b1: beginning of a new USB frame and it is set when a SOF packet arrives through the USB bus
             pub const StartOfFrame: u32 = 0b1;
         }
+        pub use super::ESOF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// reset request
@@ -643,16 +652,18 @@ pub mod ISTR {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: NotReset
+            pub const NotReset: u32 = 0b0;
 
             /// 0b1: peripheral detects an active USB RESET signal at its inputs
             pub const Reset: u32 = 0b1;
         }
+        pub use super::ESOF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Suspend mode request
@@ -661,16 +672,18 @@ pub mod ISTR {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: NotSuspend
+            pub const NotSuspend: u32 = 0b0;
 
             /// 0b1: no traffic has been received for 3 ms, indicating a suspend mode request from the USB bus
             pub const Suspend: u32 = 0b1;
         }
+        pub use super::ESOF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Wakeup
@@ -679,16 +692,18 @@ pub mod ISTR {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: NotWakeup
+            pub const NotWakeup: u32 = 0b0;
 
             /// 0b1: activity is detected that wakes up the USB peripheral
             pub const Wakeup: u32 = 0b1;
         }
+        pub use super::ESOF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Error
@@ -697,16 +712,18 @@ pub mod ISTR {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Errors are not occurred
+            pub const NotOverrun: u32 = 0b0;
 
             /// 0b1: One of No ANSwer, Cyclic Redundancy Check, Bit Stuffing or Framing format Violation error occurred
             pub const Error: u32 = 0b1;
         }
+        pub use super::ESOF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Packet memory area over / underrun
@@ -715,16 +732,18 @@ pub mod ISTR {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
+
+            /// 0b0: Overrun is not occurred
+            pub const NotOverrun: u32 = 0b0;
 
             /// 0b1: microcontroller has not been able to respond in time to an USB memory request
             pub const Overrun: u32 = 0b1;
         }
+        pub use super::ESOF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Correct transfer

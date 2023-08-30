@@ -47,7 +47,7 @@ pub use super::instances::spi_l4x3_l4x5_l4x6 as spi;
 pub use super::instances::vrefbuf;
 pub mod swpmi1;
 pub use super::instances::crs;
-pub use super::instances::nvic;
+pub use super::instances::nvic_l412_l4r9_l4x1_l4x2_l4x3_l4x5_l4x6 as nvic;
 pub use super::instances::opamp_l4x1_l4x2_l4x3_l4x5_l4x6 as opamp;
 pub mod usb;
 pub use super::instances::quadspi;

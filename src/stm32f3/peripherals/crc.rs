@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! cyclic redundancy check calculation unit
 //!
-//! Used by: stm32f301, stm32f302, stm32f303, stm32f373, stm32f3x8
+//! Used by: stm32f301, stm32f302, stm32f303, stm32f373
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]

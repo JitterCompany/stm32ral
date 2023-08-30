@@ -5,9 +5,9 @@
 //! Used by: stm32f429, stm32f469
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::syscfg_v4::Instance;
-pub use crate::stm32f4::peripherals::syscfg_v4::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::syscfg_v4::{
+pub use crate::stm32f4::peripherals::syscfg_v3::Instance;
+pub use crate::stm32f4::peripherals::syscfg_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::syscfg_v3::{
     CMPCR, EXTICR1, EXTICR2, EXTICR3, EXTICR4, MEMRM, PMC,
 };
 

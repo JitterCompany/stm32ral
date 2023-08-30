@@ -9,7 +9,7 @@ use crate::RWRegister;
 use core::marker::PhantomData;
 
 /// Power and clock gating control register
-pub mod OTG_HS_PCGCR {
+pub mod PCGCR {
 
     /// Stop PHY clock
     pub mod STPPCLK {
@@ -56,10 +56,10 @@ pub mod OTG_HS_PCGCR {
 #[repr(C)]
 pub struct RegisterBlock {
     /// Power and clock gating control register
-    pub OTG_HS_PCGCR: RWRegister<u32>,
+    pub PCGCR: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_HS_PCGCR: u32,
+    pub PCGCR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

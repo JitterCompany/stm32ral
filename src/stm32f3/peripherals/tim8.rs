@@ -325,8 +325,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OCx=0 (after a dead-time if OCx(N) is implemented) when MOE=0
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: OCx=1 (after a dead-time if OCx(N) is implemented) when MOE=0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// Output Idle state 1
@@ -339,8 +346,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OCxN=0 after a dead-time when MOE=0
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: OCxN=1 after a dead-time when MOE=0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// Output Idle state 2
@@ -353,8 +367,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OC1=0 (after a dead-time if OC1N is implemented) when MOE=0
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: OC1=1 (after a dead-time if OC1N is implemented) when MOE=0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// Output Idle state 2
@@ -367,8 +388,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OC1N=0 after a dead-time when MOE=0
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: OC1N=1 after a dead-time when MOE=0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// Output Idle state 3
@@ -381,8 +409,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS2::RW;
     }
 
     /// Output Idle state 3
@@ -395,8 +422,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS2N::RW;
     }
 
     /// Output Idle state 4
@@ -409,8 +435,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS2::RW;
     }
 
     /// Output Idle state 5
@@ -423,8 +448,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS2::RW;
     }
 
     /// Output Idle state 6
@@ -437,8 +461,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS2::RW;
     }
 
     /// Master mode selection 2
@@ -975,19 +998,23 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No update occurred
-            pub const Clear: u32 = 0b0;
+            pub const NoUpdateOccurred: u32 = 0b0;
 
-            /// 0b1: Update interrupt pending.
+            /// 0b1: Update interrupt pending
             pub const UpdatePending: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture/compare 1 interrupt flag
@@ -1002,12 +1029,7 @@ pub mod SR {
             /// 0b1: If CC1 is an output: The content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. If CC1 is an input: The counter value has been captured in TIMx_CCR1 register.
             pub const Match: u32 = 0b1;
         }
-        /// Write-only values
-        pub mod W {
-
-            /// 0b0: Clear flag
-            pub const Clear: u32 = 0b0;
-        }
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1018,8 +1040,13 @@ pub mod SR {
         pub const offset: u32 = 2;
         /// Mask (1 bit: 1 << 2)
         pub const mask: u32 = 1 << offset;
-        pub use super::CC1IF::R;
-        pub use super::CC1IF::W;
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: If CC1 is an output: The content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. If CC1 is an input: The counter value has been captured in TIMx_CCR1 register.
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1030,8 +1057,13 @@ pub mod SR {
         pub const offset: u32 = 3;
         /// Mask (1 bit: 1 << 3)
         pub const mask: u32 = 1 << offset;
-        pub use super::CC1IF::R;
-        pub use super::CC1IF::W;
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: If CC1 is an output: The content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. If CC1 is an input: The counter value has been captured in TIMx_CCR1 register.
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1042,8 +1074,13 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        pub use super::CC1IF::R;
-        pub use super::CC1IF::W;
+        /// Read-only values
+        pub mod R {
+
+            /// 0b1: If CC1 is an output: The content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. If CC1 is an input: The counter value has been captured in TIMx_CCR1 register.
+            pub const Match: u32 = 0b1;
+        }
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1077,7 +1114,7 @@ pub mod SR {
             /// 0b1: Trigger interrupt pending
             pub const Trigger: u32 = 0b1;
         }
-        pub use super::CC1IF::W;
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1122,7 +1159,7 @@ pub mod SR {
             /// 0b1: The counter value has been captured in TIMx_CCRx register while CCxIF flag was already set
             pub const Overcapture: u32 = 0b1;
         }
-        pub use super::CC1IF::W;
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1139,7 +1176,7 @@ pub mod SR {
             /// 0b1: The counter value has been captured in TIMx_CCRx register while CCxIF flag was already set
             pub const Overcapture: u32 = 0b1;
         }
-        pub use super::CC1IF::W;
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1156,7 +1193,7 @@ pub mod SR {
             /// 0b1: The counter value has been captured in TIMx_CCRx register while CCxIF flag was already set
             pub const Overcapture: u32 = 0b1;
         }
-        pub use super::CC1IF::W;
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -1173,7 +1210,7 @@ pub mod SR {
             /// 0b1: The counter value has been captured in TIMx_CCRx register while CCxIF flag was already set
             pub const Overcapture: u32 = 0b1;
         }
-        pub use super::CC1IF::W;
+        pub use super::UIF::W;
         /// Read-write values (empty)
         pub mod RW {}
     }
@@ -2375,8 +2412,21 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No bit is write protected
+            pub const Off: u32 = 0b00;
+
+            /// 0b01: Any bits except MOE, OSSR, OSSI and LOCK in TIMx_BDTR register, OISx and OISxN bits in TIMx_CR2 register can no longer be written
+            pub const Level1: u32 = 0b01;
+
+            /// 0b10: LOCK Level 1 + CC Polarity bits (CCxP/CCxNP bits in TIMx_CCER register, as long as the related channel is configured in output through the CCxS bits) as well as OSSR and OSSI bits can no longer be written
+            pub const Level2: u32 = 0b10;
+
+            /// 0b11: LOCK Level 2 + CC Control bits (OCxM and OCxPE bits in TIMx_CCMRx registers, as long as the related channel is configured in output through the CCxS bits) can no longer be written
+            pub const Level3: u32 = 0b11;
+        }
     }
 
     /// Off-state selection for Idle mode
@@ -2431,8 +2481,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Break function x disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Break function x disabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Break polarity
@@ -2445,8 +2502,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Break input BRKx is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Break input BRKx is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// Automatic output enable
@@ -2459,8 +2523,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: MOE can be set only by software
+            pub const Manual: u32 = 0b0;
+
+            /// 0b1: MOE can be set by software or automatically at the next update event (if none of the break inputs BRK and BRK2 is active)
+            pub const Automatic: u32 = 0b1;
+        }
     }
 
     /// Main output enable
@@ -2522,8 +2593,7 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::BKE::RW;
     }
 
     /// Break 2 polarity
@@ -2536,8 +2606,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Daylight Saving Time change has not been performed
+            pub const DST_Not_Changed: u32 = 0b0;
+
+            /// 0b1: Daylight Saving Time change has been performed
+            pub const DST_Changed: u32 = 0b1;
+        }
     }
 }
 

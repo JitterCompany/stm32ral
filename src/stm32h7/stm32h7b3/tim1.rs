@@ -3,12 +3,12 @@
 //! Advanced-timers
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32h7::peripherals::tim1_v4::Instance;
-pub use crate::stm32h7::peripherals::tim1_v4::{
+pub use crate::stm32h7::peripherals::tim1_v5::Instance;
+pub use crate::stm32h7::peripherals::tim1_v5::{
     CCMR3_Output, AF1, AF2, ARR, BDTR, CCER, CCMR1, CCMR2, CCR1, CCR2, CCR3, CCR4, CCR5, CNT, CR1,
     CR2, CRR6, DCR, DIER, DMAR, EGR, PSC, RCR, SMCR, SR, TISEL,
 };
-pub use crate::stm32h7::peripherals::tim1_v4::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::tim1_v5::{RegisterBlock, ResetValues};
 
 /// Access functions for the TIM1 peripheral instance
 pub mod TIM1 {

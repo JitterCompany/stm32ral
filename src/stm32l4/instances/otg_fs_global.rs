@@ -2,14 +2,14 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32l4r5, stm32l4r9
+//! Used by: stm32l4r9, stm32l4x6
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32l4::peripherals::otg_fs_global::Instance;
 pub use crate::stm32l4::peripherals::otg_fs_global::{RegisterBlock, ResetValues};
 pub use crate::stm32l4::peripherals::otg_fs_global::{
-    CID, DIEPTXF0, DIEPTXF1, DIEPTXF2, DIEPTXF3, GAHBCFG, GCCFG, GINTMSK, GINTSTS, GNPTXSTS,
-    GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSP, GRXSTSR, GUSBCFG, HPTXFSIZ,
+    CID, DIEPTXF0, DIEPTXF1, DIEPTXF2, DIEPTXF3, DIEPTXF4, DIEPTXF5, GAHBCFG, GCCFG, GINTMSK,
+    GINTSTS, GNPTXSTS, GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSP, GRXSTSR, GUSBCFG, HPTXFSIZ,
 };
 
 /// Access functions for the OTG_FS_GLOBAL peripheral instance
@@ -44,6 +44,8 @@ pub mod OTG_FS_GLOBAL {
         DIEPTXF1: 0x02000400,
         DIEPTXF2: 0x02000400,
         DIEPTXF3: 0x02000400,
+        DIEPTXF4: 0x02000400,
+        DIEPTXF5: 0x02000400,
         GRXSTSP: 0x00000000,
     };
 

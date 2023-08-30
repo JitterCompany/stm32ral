@@ -662,12 +662,8 @@ pub mod SR {
         pub const offset: u32 = 4;
         /// Mask (1 bit: 1 << 4)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: CRC value received matches the SPIx_RXCRCR value
             pub const Match: u32 = 0b0;
@@ -675,6 +671,14 @@ pub mod SR {
             /// 0b1: CRC value received does not match the SPIx_RXCRCR value
             pub const NoMatch: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Mode fault

@@ -517,19 +517,23 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No update occurred
-            pub const Clear: u32 = 0b0;
+            pub const NoUpdateOccurred: u32 = 0b0;
 
-            /// 0b1: Update interrupt pending.
+            /// 0b1: Update interrupt pending
             pub const UpdatePending: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture/Compare 1 interrupt flag This flag is set by hardware. It is cleared by software (input capture or output compare mode) or by reading the TIMx_CCR1 register (input capture mode only). If channel CC1 is configured as output: this flag is set when the content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. When the content of TIMx_CCR1 is greater than the content of TIMx_ARR, the CC1IF bit goes high on the counter overflow (in up-counting and up/down-counting modes) or underflow (in down-counting mode). There are 3 possible options for flag setting in center-aligned mode, refer to the CMS bits in the TIMx_CR1 register for the full description. If channel CC1 is configured as input: this bit is set when counter value has been captured in TIMx_CCR1 register (an edge has been detected on IC1, as per the edge sensitivity defined with the CC1P and CC1NP bits setting, in TIMx_CCER).

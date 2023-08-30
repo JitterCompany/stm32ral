@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! General-purpose I/Os
 //!
-//! Used by: stm32l4r5, stm32l4r9, stm32l4x6
+//! Used by: stm32l4p5, stm32l4r5, stm32l4r9, stm32l4x6
 
 use crate::{RORegister, RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]

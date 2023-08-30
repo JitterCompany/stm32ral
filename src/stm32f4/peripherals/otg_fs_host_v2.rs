@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f412, stm32f413, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f412, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -359,7 +359,7 @@ pub mod HPRT {
 }
 
 /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
-pub mod HCCHAR0 {
+pub mod CHAR0 {
 
     /// Maximum packet size
     pub mod MPSIZ {
@@ -502,106 +502,8 @@ pub mod HCCHAR0 {
     }
 }
 
-/// OTG_FS host channel-1 characteristics register (OTG_FS_HCCHAR1)
-pub mod HCCHAR1 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
-/// OTG_FS host channel-2 characteristics register (OTG_FS_HCCHAR2)
-pub mod HCCHAR2 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
-/// OTG_FS host channel-3 characteristics register (OTG_FS_HCCHAR3)
-pub mod HCCHAR3 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
-/// OTG_FS host channel-4 characteristics register (OTG_FS_HCCHAR4)
-pub mod HCCHAR4 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
-/// OTG_FS host channel-5 characteristics register (OTG_FS_HCCHAR5)
-pub mod HCCHAR5 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
-/// OTG_FS host channel-6 characteristics register (OTG_FS_HCCHAR6)
-pub mod HCCHAR6 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
-/// OTG_FS host channel-7 characteristics register (OTG_FS_HCCHAR7)
-pub mod HCCHAR7 {
-    pub use super::HCCHAR0::CHDIS;
-    pub use super::HCCHAR0::CHENA;
-    pub use super::HCCHAR0::DAD;
-    pub use super::HCCHAR0::EPDIR;
-    pub use super::HCCHAR0::EPNUM;
-    pub use super::HCCHAR0::EPTYP;
-    pub use super::HCCHAR0::LSDEV;
-    pub use super::HCCHAR0::MCNT;
-    pub use super::HCCHAR0::MPSIZ;
-    pub use super::HCCHAR0::ODDFRM;
-}
-
 /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
-pub mod HCINT0 {
+pub mod INT0 {
 
     /// Transfer completed
     pub mod XFRC {
@@ -730,99 +632,8 @@ pub mod HCINT0 {
     }
 }
 
-/// OTG_FS host channel-1 interrupt register (OTG_FS_HCINT1)
-pub mod HCINT1 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
-/// OTG_FS host channel-2 interrupt register (OTG_FS_HCINT2)
-pub mod HCINT2 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
-/// OTG_FS host channel-3 interrupt register (OTG_FS_HCINT3)
-pub mod HCINT3 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
-/// OTG_FS host channel-4 interrupt register (OTG_FS_HCINT4)
-pub mod HCINT4 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
-/// OTG_FS host channel-5 interrupt register (OTG_FS_HCINT5)
-pub mod HCINT5 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
-/// OTG_FS host channel-6 interrupt register (OTG_FS_HCINT6)
-pub mod HCINT6 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
-/// OTG_FS host channel-7 interrupt register (OTG_FS_HCINT7)
-pub mod HCINT7 {
-    pub use super::HCINT0::ACK;
-    pub use super::HCINT0::BBERR;
-    pub use super::HCINT0::CHH;
-    pub use super::HCINT0::DTERR;
-    pub use super::HCINT0::FRMOR;
-    pub use super::HCINT0::NAK;
-    pub use super::HCINT0::STALL;
-    pub use super::HCINT0::TXERR;
-    pub use super::HCINT0::XFRC;
-}
-
 /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
-pub mod HCINTMSK0 {
+pub mod INTMSK0 {
 
     /// Transfer completed mask
     pub mod XFRCM {
@@ -965,106 +776,8 @@ pub mod HCINTMSK0 {
     }
 }
 
-/// OTG_FS host channel-1 mask register (OTG_FS_HCINTMSK1)
-pub mod HCINTMSK1 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
-/// OTG_FS host channel-2 mask register (OTG_FS_HCINTMSK2)
-pub mod HCINTMSK2 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
-/// OTG_FS host channel-3 mask register (OTG_FS_HCINTMSK3)
-pub mod HCINTMSK3 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
-/// OTG_FS host channel-4 mask register (OTG_FS_HCINTMSK4)
-pub mod HCINTMSK4 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
-/// OTG_FS host channel-5 mask register (OTG_FS_HCINTMSK5)
-pub mod HCINTMSK5 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
-/// OTG_FS host channel-6 mask register (OTG_FS_HCINTMSK6)
-pub mod HCINTMSK6 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
-/// OTG_FS host channel-7 mask register (OTG_FS_HCINTMSK7)
-pub mod HCINTMSK7 {
-    pub use super::HCINTMSK0::ACKM;
-    pub use super::HCINTMSK0::BBERRM;
-    pub use super::HCINTMSK0::CHHM;
-    pub use super::HCINTMSK0::DTERRM;
-    pub use super::HCINTMSK0::FRMORM;
-    pub use super::HCINTMSK0::NAKM;
-    pub use super::HCINTMSK0::NYET;
-    pub use super::HCINTMSK0::STALLM;
-    pub use super::HCINTMSK0::TXERRM;
-    pub use super::HCINTMSK0::XFRCM;
-}
-
 /// OTG_FS host channel-0 transfer size register
-pub mod HCTSIZ0 {
+pub mod TSIZ0 {
 
     /// Transfer size
     pub mod XFRSIZ {
@@ -1109,53 +822,532 @@ pub mod HCTSIZ0 {
     }
 }
 
-/// OTG_FS host channel-1 transfer size register
-pub mod HCTSIZ1 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR1 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
 }
 
-/// OTG_FS host channel-2 transfer size register
-pub mod HCTSIZ2 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT1 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
 }
 
-/// OTG_FS host channel-3 transfer size register
-pub mod HCTSIZ3 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK1 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
 }
 
-/// OTG_FS host channel-x transfer size register
-pub mod HCTSIZ4 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ1 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
 }
 
-/// OTG_FS host channel-5 transfer size register
-pub mod HCTSIZ5 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR2 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
 }
 
-/// OTG_FS host channel-6 transfer size register
-pub mod HCTSIZ6 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT2 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
 }
 
-/// OTG_FS host channel-7 transfer size register
-pub mod HCTSIZ7 {
-    pub use super::HCTSIZ0::DPID;
-    pub use super::HCTSIZ0::PKTCNT;
-    pub use super::HCTSIZ0::XFRSIZ;
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK2 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ2 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR3 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT3 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK3 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ3 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR4 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT4 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK4 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ4 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR5 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT5 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK5 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ5 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR6 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT6 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK6 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ6 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR7 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT7 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK7 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ7 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR8 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT8 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK8 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ8 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR9 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT9 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK9 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ9 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR10 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT10 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK10 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ10 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
+}
+
+/// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+pub mod CHAR11 {
+    pub use super::CHAR0::CHDIS;
+    pub use super::CHAR0::CHENA;
+    pub use super::CHAR0::DAD;
+    pub use super::CHAR0::EPDIR;
+    pub use super::CHAR0::EPNUM;
+    pub use super::CHAR0::EPTYP;
+    pub use super::CHAR0::LSDEV;
+    pub use super::CHAR0::MCNT;
+    pub use super::CHAR0::MPSIZ;
+    pub use super::CHAR0::ODDFRM;
+}
+
+/// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+pub mod INT11 {
+    pub use super::INT0::ACK;
+    pub use super::INT0::BBERR;
+    pub use super::INT0::CHH;
+    pub use super::INT0::DTERR;
+    pub use super::INT0::FRMOR;
+    pub use super::INT0::NAK;
+    pub use super::INT0::STALL;
+    pub use super::INT0::TXERR;
+    pub use super::INT0::XFRC;
+}
+
+/// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+pub mod INTMSK11 {
+    pub use super::INTMSK0::ACKM;
+    pub use super::INTMSK0::BBERRM;
+    pub use super::INTMSK0::CHHM;
+    pub use super::INTMSK0::DTERRM;
+    pub use super::INTMSK0::FRMORM;
+    pub use super::INTMSK0::NAKM;
+    pub use super::INTMSK0::NYET;
+    pub use super::INTMSK0::STALLM;
+    pub use super::INTMSK0::TXERRM;
+    pub use super::INTMSK0::XFRCM;
+}
+
+/// OTG_FS host channel-0 transfer size register
+pub mod TSIZ11 {
+    pub use super::TSIZ0::DPID;
+    pub use super::TSIZ0::PKTCNT;
+    pub use super::TSIZ0::XFRSIZ;
 }
 #[repr(C)]
 pub struct RegisterBlock {
@@ -1187,130 +1379,194 @@ pub struct RegisterBlock {
     _reserved3: [u8; 188],
 
     /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
-    pub HCCHAR0: RWRegister<u32>,
+    pub CHAR0: RWRegister<u32>,
 
     _reserved4: [u8; 4],
 
     /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
-    pub HCINT0: RWRegister<u32>,
+    pub INT0: RWRegister<u32>,
 
     /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
-    pub HCINTMSK0: RWRegister<u32>,
+    pub INTMSK0: RWRegister<u32>,
 
     /// OTG_FS host channel-0 transfer size register
-    pub HCTSIZ0: RWRegister<u32>,
+    pub TSIZ0: RWRegister<u32>,
 
     _reserved5: [u8; 12],
 
-    /// OTG_FS host channel-1 characteristics register (OTG_FS_HCCHAR1)
-    pub HCCHAR1: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR1: RWRegister<u32>,
 
     _reserved6: [u8; 4],
 
-    /// OTG_FS host channel-1 interrupt register (OTG_FS_HCINT1)
-    pub HCINT1: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT1: RWRegister<u32>,
 
-    /// OTG_FS host channel-1 mask register (OTG_FS_HCINTMSK1)
-    pub HCINTMSK1: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK1: RWRegister<u32>,
 
-    /// OTG_FS host channel-1 transfer size register
-    pub HCTSIZ1: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ1: RWRegister<u32>,
 
     _reserved7: [u8; 12],
 
-    /// OTG_FS host channel-2 characteristics register (OTG_FS_HCCHAR2)
-    pub HCCHAR2: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR2: RWRegister<u32>,
 
     _reserved8: [u8; 4],
 
-    /// OTG_FS host channel-2 interrupt register (OTG_FS_HCINT2)
-    pub HCINT2: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT2: RWRegister<u32>,
 
-    /// OTG_FS host channel-2 mask register (OTG_FS_HCINTMSK2)
-    pub HCINTMSK2: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK2: RWRegister<u32>,
 
-    /// OTG_FS host channel-2 transfer size register
-    pub HCTSIZ2: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ2: RWRegister<u32>,
 
     _reserved9: [u8; 12],
 
-    /// OTG_FS host channel-3 characteristics register (OTG_FS_HCCHAR3)
-    pub HCCHAR3: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR3: RWRegister<u32>,
 
     _reserved10: [u8; 4],
 
-    /// OTG_FS host channel-3 interrupt register (OTG_FS_HCINT3)
-    pub HCINT3: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT3: RWRegister<u32>,
 
-    /// OTG_FS host channel-3 mask register (OTG_FS_HCINTMSK3)
-    pub HCINTMSK3: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK3: RWRegister<u32>,
 
-    /// OTG_FS host channel-3 transfer size register
-    pub HCTSIZ3: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ3: RWRegister<u32>,
 
     _reserved11: [u8; 12],
 
-    /// OTG_FS host channel-4 characteristics register (OTG_FS_HCCHAR4)
-    pub HCCHAR4: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR4: RWRegister<u32>,
 
     _reserved12: [u8; 4],
 
-    /// OTG_FS host channel-4 interrupt register (OTG_FS_HCINT4)
-    pub HCINT4: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT4: RWRegister<u32>,
 
-    /// OTG_FS host channel-4 mask register (OTG_FS_HCINTMSK4)
-    pub HCINTMSK4: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK4: RWRegister<u32>,
 
-    /// OTG_FS host channel-x transfer size register
-    pub HCTSIZ4: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ4: RWRegister<u32>,
 
     _reserved13: [u8; 12],
 
-    /// OTG_FS host channel-5 characteristics register (OTG_FS_HCCHAR5)
-    pub HCCHAR5: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR5: RWRegister<u32>,
 
     _reserved14: [u8; 4],
 
-    /// OTG_FS host channel-5 interrupt register (OTG_FS_HCINT5)
-    pub HCINT5: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT5: RWRegister<u32>,
 
-    /// OTG_FS host channel-5 mask register (OTG_FS_HCINTMSK5)
-    pub HCINTMSK5: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK5: RWRegister<u32>,
 
-    /// OTG_FS host channel-5 transfer size register
-    pub HCTSIZ5: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ5: RWRegister<u32>,
 
     _reserved15: [u8; 12],
 
-    /// OTG_FS host channel-6 characteristics register (OTG_FS_HCCHAR6)
-    pub HCCHAR6: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR6: RWRegister<u32>,
 
     _reserved16: [u8; 4],
 
-    /// OTG_FS host channel-6 interrupt register (OTG_FS_HCINT6)
-    pub HCINT6: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT6: RWRegister<u32>,
 
-    /// OTG_FS host channel-6 mask register (OTG_FS_HCINTMSK6)
-    pub HCINTMSK6: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK6: RWRegister<u32>,
 
-    /// OTG_FS host channel-6 transfer size register
-    pub HCTSIZ6: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ6: RWRegister<u32>,
 
     _reserved17: [u8; 12],
 
-    /// OTG_FS host channel-7 characteristics register (OTG_FS_HCCHAR7)
-    pub HCCHAR7: RWRegister<u32>,
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR7: RWRegister<u32>,
 
     _reserved18: [u8; 4],
 
-    /// OTG_FS host channel-7 interrupt register (OTG_FS_HCINT7)
-    pub HCINT7: RWRegister<u32>,
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT7: RWRegister<u32>,
 
-    /// OTG_FS host channel-7 mask register (OTG_FS_HCINTMSK7)
-    pub HCINTMSK7: RWRegister<u32>,
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK7: RWRegister<u32>,
 
-    /// OTG_FS host channel-7 transfer size register
-    pub HCTSIZ7: RWRegister<u32>,
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ7: RWRegister<u32>,
+
+    _reserved19: [u8; 12],
+
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR8: RWRegister<u32>,
+
+    _reserved20: [u8; 4],
+
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT8: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK8: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ8: RWRegister<u32>,
+
+    _reserved21: [u8; 12],
+
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR9: RWRegister<u32>,
+
+    _reserved22: [u8; 4],
+
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT9: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK9: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ9: RWRegister<u32>,
+
+    _reserved23: [u8; 12],
+
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR10: RWRegister<u32>,
+
+    _reserved24: [u8; 4],
+
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT10: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK10: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ10: RWRegister<u32>,
+
+    _reserved25: [u8; 12],
+
+    /// OTG_FS host channel-0 characteristics register (OTG_FS_HCCHAR0)
+    pub CHAR11: RWRegister<u32>,
+
+    _reserved26: [u8; 4],
+
+    /// OTG_FS host channel-0 interrupt register (OTG_FS_HCINT0)
+    pub INT11: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 mask register (OTG_FS_HCINTMSK0)
+    pub INTMSK11: RWRegister<u32>,
+
+    /// OTG_FS host channel-0 transfer size register
+    pub TSIZ11: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub HCFG: u32,
@@ -1320,38 +1576,54 @@ pub struct ResetValues {
     pub HAINT: u32,
     pub HAINTMSK: u32,
     pub HPRT: u32,
-    pub HCCHAR0: u32,
-    pub HCINT0: u32,
-    pub HCINTMSK0: u32,
-    pub HCTSIZ0: u32,
-    pub HCCHAR1: u32,
-    pub HCINT1: u32,
-    pub HCINTMSK1: u32,
-    pub HCTSIZ1: u32,
-    pub HCCHAR2: u32,
-    pub HCINT2: u32,
-    pub HCINTMSK2: u32,
-    pub HCTSIZ2: u32,
-    pub HCCHAR3: u32,
-    pub HCINT3: u32,
-    pub HCINTMSK3: u32,
-    pub HCTSIZ3: u32,
-    pub HCCHAR4: u32,
-    pub HCINT4: u32,
-    pub HCINTMSK4: u32,
-    pub HCTSIZ4: u32,
-    pub HCCHAR5: u32,
-    pub HCINT5: u32,
-    pub HCINTMSK5: u32,
-    pub HCTSIZ5: u32,
-    pub HCCHAR6: u32,
-    pub HCINT6: u32,
-    pub HCINTMSK6: u32,
-    pub HCTSIZ6: u32,
-    pub HCCHAR7: u32,
-    pub HCINT7: u32,
-    pub HCINTMSK7: u32,
-    pub HCTSIZ7: u32,
+    pub CHAR0: u32,
+    pub INT0: u32,
+    pub INTMSK0: u32,
+    pub TSIZ0: u32,
+    pub CHAR1: u32,
+    pub INT1: u32,
+    pub INTMSK1: u32,
+    pub TSIZ1: u32,
+    pub CHAR2: u32,
+    pub INT2: u32,
+    pub INTMSK2: u32,
+    pub TSIZ2: u32,
+    pub CHAR3: u32,
+    pub INT3: u32,
+    pub INTMSK3: u32,
+    pub TSIZ3: u32,
+    pub CHAR4: u32,
+    pub INT4: u32,
+    pub INTMSK4: u32,
+    pub TSIZ4: u32,
+    pub CHAR5: u32,
+    pub INT5: u32,
+    pub INTMSK5: u32,
+    pub TSIZ5: u32,
+    pub CHAR6: u32,
+    pub INT6: u32,
+    pub INTMSK6: u32,
+    pub TSIZ6: u32,
+    pub CHAR7: u32,
+    pub INT7: u32,
+    pub INTMSK7: u32,
+    pub TSIZ7: u32,
+    pub CHAR8: u32,
+    pub INT8: u32,
+    pub INTMSK8: u32,
+    pub TSIZ8: u32,
+    pub CHAR9: u32,
+    pub INT9: u32,
+    pub INTMSK9: u32,
+    pub TSIZ9: u32,
+    pub CHAR10: u32,
+    pub INT10: u32,
+    pub INTMSK10: u32,
+    pub TSIZ10: u32,
+    pub CHAR11: u32,
+    pub INT11: u32,
+    pub INTMSK11: u32,
+    pub TSIZ11: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

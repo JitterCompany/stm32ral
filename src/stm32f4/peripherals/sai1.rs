@@ -2,9 +2,9 @@
 #![allow(non_camel_case_types)]
 //! Serial audio interface
 //!
-//! Used by: stm32f405, stm32f407, stm32f413, stm32f427, stm32f429, stm32f469
+//! Used by: stm32f405, stm32f407
 
-use crate::{RORegister, RWRegister, WORegister};
+use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
 use core::marker::PhantomData;
 
@@ -1138,7 +1138,7 @@ pub struct RegisterBlock {
     pub SRA: RORegister<u32>,
 
     /// SAI AClear flag register
-    pub CLRFRA: WORegister<u32>,
+    pub CLRFRA: RWRegister<u32>,
 
     /// SAI AData register
     pub DRA: RWRegister<u32>,
@@ -1162,7 +1162,7 @@ pub struct RegisterBlock {
     pub SRB: RORegister<u32>,
 
     /// SAI AClear flag register
-    pub CLRFRB: WORegister<u32>,
+    pub CLRFRB: RWRegister<u32>,
 
     /// SAI AData register
     pub DRB: RWRegister<u32>,

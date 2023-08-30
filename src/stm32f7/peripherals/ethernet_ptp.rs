@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Ethernet: Precision time protocol
 //!
-//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x6, stm32f7x7, stm32f7x9
+//! Used by: stm32f745, stm32f750, stm32f765, stm32f7x7, stm32f7x9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -442,8 +442,69 @@ pub mod PTPTSSR {
 
 /// Ethernet PTP PPS control register
 pub mod PTPPPSCR {
-    pub use super::PTPTSSR::TSSO;
-    pub use super::PTPTSSR::TSTTR;
+
+    /// PPS frequency selection
+    pub mod PPSFREQ {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: 1 Hz with a pulse width of 125 ms for binary rollover and of 100 ms for digital rollover
+            pub const Hz_1: u32 = 0b0000;
+
+            /// 0b0001: 2 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_2: u32 = 0b0001;
+
+            /// 0b0010: 4 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_4: u32 = 0b0010;
+
+            /// 0b0011: 8 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_8: u32 = 0b0011;
+
+            /// 0b0100: 16 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_16: u32 = 0b0100;
+
+            /// 0b0101: 32 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_32: u32 = 0b0101;
+
+            /// 0b0110: 64 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_64: u32 = 0b0110;
+
+            /// 0b0111: 128 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_128: u32 = 0b0111;
+
+            /// 0b1000: 256 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_256: u32 = 0b1000;
+
+            /// 0b1001: 512 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_512: u32 = 0b1001;
+
+            /// 0b1010: 1024 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_1024: u32 = 0b1010;
+
+            /// 0b1011: 2048 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_2048: u32 = 0b1011;
+
+            /// 0b1100: 4096 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_4096: u32 = 0b1100;
+
+            /// 0b1101: 8192 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_8192: u32 = 0b1101;
+
+            /// 0b1110: 16384 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_16384: u32 = 0b1110;
+
+            /// 0b1111: 32768 Hz with 50% duty cycle for binary rollover (digital rollover not recommended)
+            pub const Hz_32768: u32 = 0b1111;
+        }
+    }
 }
 #[repr(C)]
 pub struct RegisterBlock {

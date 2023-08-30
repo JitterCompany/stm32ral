@@ -1091,10 +1091,10 @@ pub mod PLLCFGR {
             /// 0b00: No clock sent to PLL
             pub const None: u32 = 0b00;
 
-            /// 0b10: No clock sent to PLL
+            /// 0b10: HSI16 sent to PLL input
             pub const HSI16: u32 = 0b10;
 
-            /// 0b11: No clock sent to PLL
+            /// 0b11: HSE sent to PLL input
             pub const HSE: u32 = 0b11;
         }
     }

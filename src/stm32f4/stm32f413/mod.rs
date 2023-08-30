@@ -41,17 +41,17 @@ pub use super::instances::nvic_f401_f405_f407_f410_f411_f412_f413 as nvic;
 pub use super::instances::pwr_f401_f411_f412_f413 as pwr;
 pub use super::instances::quadspi;
 pub use super::instances::rng_f412_f413_f469 as rng;
-pub use super::instances::rtc_f401_f410_f411_f412_f413 as rtc;
+pub use super::instances::rtc;
 pub mod rcc;
 pub use super::instances::sai;
 pub use super::instances::sdio;
 pub mod spi;
 pub use super::instances::syscfg_f410_f412_f413 as syscfg;
 pub mod otg_fs_device;
-pub mod uart4;
+pub mod uart10;
 pub mod usart;
 pub use super::instances::otg_fs_global_f412_f413 as otg_fs_global;
-pub use super::instances::otg_fs_host_f412_f413_f446_f469 as otg_fs_host;
+pub use super::instances::otg_fs_host_f405_f407_f412_f413_f427_f429_f446_f469 as otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
 pub use super::instances::wwdg;
 pub mod fsmc;
@@ -123,17 +123,19 @@ pub struct Peripherals {
     pub SPI2: spi::Instance,
     pub SPI6: spi::Instance,
     pub SPI3: spi::Instance,
+    pub I2S2ext: spi::Instance,
+    pub I2S3ext: spi::Instance,
     pub SYSCFG: syscfg::Instance,
     pub USART3: usart::Instance,
     pub USART6: usart::Instance,
     pub USART2: usart::Instance,
-    pub UART5: usart::Instance,
-    pub UART7: usart::Instance,
-    pub UART8: usart::Instance,
-    pub UART10: usart::Instance,
     pub USART1: usart::Instance,
-    pub UART9: usart::Instance,
-    pub UART4: uart4::Instance,
+    pub UART10: uart10::Instance,
+    pub UART9: uart10::Instance,
+    pub UART4: uart10::Instance,
+    pub UART5: uart10::Instance,
+    pub UART7: uart10::Instance,
+    pub UART8: uart10::Instance,
     pub OTG_FS_DEVICE: otg_fs_device::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
     pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
@@ -214,17 +216,19 @@ impl Peripherals {
             SPI2: spi::SPI2::steal(),
             SPI6: spi::SPI6::steal(),
             SPI3: spi::SPI3::steal(),
+            I2S2ext: spi::I2S2ext::steal(),
+            I2S3ext: spi::I2S3ext::steal(),
             SYSCFG: syscfg::SYSCFG::steal(),
             USART3: usart::USART3::steal(),
             USART6: usart::USART6::steal(),
             USART2: usart::USART2::steal(),
-            UART5: usart::UART5::steal(),
-            UART7: usart::UART7::steal(),
-            UART8: usart::UART8::steal(),
-            UART10: usart::UART10::steal(),
             USART1: usart::USART1::steal(),
-            UART9: usart::UART9::steal(),
-            UART4: uart4::UART4::steal(),
+            UART10: uart10::UART10::steal(),
+            UART9: uart10::UART9::steal(),
+            UART4: uart10::UART4::steal(),
+            UART5: uart10::UART5::steal(),
+            UART7: uart10::UART7::steal(),
+            UART8: uart10::UART8::steal(),
             OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
             OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),

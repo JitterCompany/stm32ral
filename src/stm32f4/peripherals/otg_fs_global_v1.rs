@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f401, stm32f405, stm32f407, stm32f411, stm32f427, stm32f429
+//! Used by: stm32f401, stm32f411
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

@@ -24,7 +24,7 @@ pub use super::instances::exti_g030_g031_g041 as exti;
 pub use super::instances::fpu;
 pub use super::instances::fpu_cpacr;
 pub use super::instances::i2c_g030_g031_g041_g050_g051_g061_g070_g071_g081_g0b0 as i2c;
-pub use super::instances::lptim_g031_g041_g071_g07x_g081_g0b1_g0c1 as lptim;
+pub use super::instances::lptim_g031_g041_g071_g081_g0b1_g0c1 as lptim;
 pub use super::instances::lpuart_g031_g041 as lpuart;
 pub use super::instances::mpu;
 pub use super::instances::nvic_g030_g031_g041 as nvic;

@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister};
 use core::marker::PhantomData;
 
 /// OTG_FS control and status register (OTG_FS_GOTGCTL)
-pub mod OTG_FS_GOTGCTL {
+pub mod GOTGCTL {
 
     /// Session request success
     pub mod SRQSCS {
@@ -262,10 +262,24 @@ pub mod OTG_FS_GOTGCTL {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Current mode of operation
+    pub mod CURMOD {
+        /// Offset (21 bits)
+        pub const offset: u32 = 21;
+        /// Mask (1 bit: 1 << 21)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// OTG_FS interrupt register (OTG_FS_GOTGINT)
-pub mod OTG_FS_GOTGINT {
+pub mod GOTGINT {
 
     /// Session end detected
     pub mod SEDET {
@@ -367,7 +381,7 @@ pub mod OTG_FS_GOTGINT {
 }
 
 /// OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-pub mod OTG_FS_GAHBCFG {
+pub mod GAHBCFG {
 
     /// Global interrupt mask
     pub mod GINT {
@@ -413,7 +427,7 @@ pub mod OTG_FS_GAHBCFG {
 }
 
 /// OTG_FS USB configuration register (OTG_FS_GUSBCFG)
-pub mod OTG_FS_GUSBCFG {
+pub mod GUSBCFG {
 
     /// FS timeout calibration
     pub mod TOCAL {
@@ -515,7 +529,7 @@ pub mod OTG_FS_GUSBCFG {
 }
 
 /// OTG_FS reset register (OTG_FS_GRSTCTL)
-pub mod OTG_FS_GRSTCTL {
+pub mod GRSTCTL {
 
     /// Core soft reset
     pub mod CSRST {
@@ -617,7 +631,7 @@ pub mod OTG_FS_GRSTCTL {
 }
 
 /// OTG_FS core interrupt register (OTG_FS_GINTSTS)
-pub mod OTG_FS_GINTSTS {
+pub mod GINTSTS {
 
     /// Current mode of operation
     pub mod CMOD {
@@ -985,7 +999,7 @@ pub mod OTG_FS_GINTSTS {
 }
 
 /// OTG_FS interrupt mask register (OTG_FS_GINTMSK)
-pub mod OTG_FS_GINTMSK {
+pub mod GINTMSK {
 
     /// Mode mismatch interrupt mask
     pub mod MMISM {
@@ -1352,10 +1366,10 @@ pub mod OTG_FS_GINTMSK {
     }
 }
 
-/// OTG_FS_GRXSTSR_Device and OTG_FS_GRXSTSR_Host
-/// OTG_FS_GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
-/// OTG_FS_GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
-pub mod OTG_FS_GRXSTSR {
+/// GRXSTSR_Device and GRXSTSR_Host
+/// GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
+/// GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
+pub mod GRXSTSR {
 
     /// Endpoint number
     pub mod EPNUM {
@@ -1440,10 +1454,24 @@ pub mod OTG_FS_GRXSTSR {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Status phase start
+    pub mod STSPHST {
+        /// Offset (27 bits)
+        pub const offset: u32 = 27;
+        /// Mask (1 bit: 1 << 27)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
-pub mod OTG_FS_GRXFSIZ {
+pub mod GRXFSIZ {
 
     /// RxFIFO depth
     pub mod RXFD {
@@ -1460,10 +1488,10 @@ pub mod OTG_FS_GRXFSIZ {
     }
 }
 
-/// OTG_FS_DIEPTXF0_Device and OTG_FS_HNPTXFSIZ_Host
-/// OTG_FS_DIEPTXF0_Device: OTG_FS Endpoint 0 Transmit FIFO size
-/// OTG_FS_HNPTXFSIZ_Host: OTG_FS Host non-periodic transmit FIFO size register
-pub mod OTG_FS {
+/// DIEPTXF0 and HNPTXFSIZ_Host
+/// DIEPTXF0: OTG_FS Endpoint 0 Transmit FIFO size
+/// HNPTXFSIZ_Host: OTG_FS Host non-periodic transmit FIFO size register
+pub mod DIEPTXF0 {
 
     /// Endpoint 0 transmit RAM start address
     pub mod TX0FSA {
@@ -1523,7 +1551,7 @@ pub mod OTG_FS {
 }
 
 /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
-pub mod OTG_FS_HNPTXSTS {
+pub mod HNPTXSTS {
 
     /// Non-periodic TxFIFO space available
     pub mod NPTXFSAV {
@@ -1569,7 +1597,7 @@ pub mod OTG_FS_HNPTXSTS {
 }
 
 /// OTG_FS general core configuration register (OTG_FS_GCCFG)
-pub mod OTG_FS_GCCFG {
+pub mod GCCFG {
 
     /// Power down
     pub mod PWRDWN {
@@ -1713,7 +1741,7 @@ pub mod OTG_FS_GCCFG {
 }
 
 /// core ID register
-pub mod OTG_FS_CID {
+pub mod CID {
 
     /// Product ID field
     pub mod PRODUCT_ID {
@@ -1731,7 +1759,7 @@ pub mod OTG_FS_CID {
 }
 
 /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
-pub mod OTG_FS_HPTXFSIZ {
+pub mod HPTXFSIZ {
 
     /// Host periodic TxFIFO start address
     pub mod PTXSA {
@@ -1763,7 +1791,7 @@ pub mod OTG_FS_HPTXFSIZ {
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF1)
-pub mod OTG_FS_DIEPTXF1 {
+pub mod DIEPTXF1 {
 
     /// IN endpoint FIFO2 transmit RAM start address
     pub mod INEPTXSA {
@@ -1795,31 +1823,32 @@ pub mod OTG_FS_DIEPTXF1 {
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
-pub mod OTG_FS_DIEPTXF2 {
-    pub use super::OTG_FS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_FS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF2 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF3)
-pub mod OTG_FS_DIEPTXF3 {
-    pub use super::OTG_FS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_FS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF3 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
-/// OTG_FS_GRXSTSP_Device and OTG_FS_GRXSTSP_Host
-/// OTG_FS_GRXSTSP_Device: OTG status read and pop register (Device mode)
-/// OTG_FS_GRXSTSP_Host: OTG status read and pop register (Host mode)
-pub mod OTG_FS_GRXSTSP {
-    pub use super::OTG_FS_GRXSTSR::BCNT;
-    pub use super::OTG_FS_GRXSTSR::CHNUM;
-    pub use super::OTG_FS_GRXSTSR::DPID;
-    pub use super::OTG_FS_GRXSTSR::EPNUM;
-    pub use super::OTG_FS_GRXSTSR::FRMNUM;
-    pub use super::OTG_FS_GRXSTSR::PKTSTS;
+/// GRXSTSP_Device and GRXSTSP_Host
+/// GRXSTSP_Device: OTG status read and pop register (Device mode)
+/// GRXSTSP_Host: OTG status read and pop register (Host mode)
+pub mod GRXSTSP {
+    pub use super::GRXSTSR::BCNT;
+    pub use super::GRXSTSR::CHNUM;
+    pub use super::GRXSTSR::DPID;
+    pub use super::GRXSTSR::EPNUM;
+    pub use super::GRXSTSR::FRMNUM;
+    pub use super::GRXSTSR::PKTSTS;
+    pub use super::GRXSTSR::STSPHST;
 }
 
 /// OTG I2C access register
-pub mod OTG_FS_GI2CCTL {
+pub mod GI2CCTL {
 
     /// I2C Read/Write Data
     pub mod RWDATA {
@@ -1949,7 +1978,7 @@ pub mod OTG_FS_GI2CCTL {
 }
 
 /// OTG power down register
-pub mod OTG_FS_GPWRDN {
+pub mod GPWRDN {
 
     /// ADP module enable
     pub mod ADPMEN {
@@ -1981,7 +2010,7 @@ pub mod OTG_FS_GPWRDN {
 }
 
 /// OTG ADP timer, control and status register
-pub mod OTG_FS_GADPCTL {
+pub mod GADPCTL {
 
     /// Probe discharge
     pub mod PRBDSCHG {
@@ -2195,19 +2224,19 @@ pub mod OTG_FS_GADPCTL {
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF4)
-pub mod OTG_FS_DIEPTXF4 {
-    pub use super::OTG_FS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_FS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF4 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF5)
-pub mod OTG_FS_DIEPTXF5 {
-    pub use super::OTG_FS_DIEPTXF1::INEPTXFD;
-    pub use super::OTG_FS_DIEPTXF1::INEPTXSA;
+pub mod DIEPTXF5 {
+    pub use super::DIEPTXF1::INEPTXFD;
+    pub use super::DIEPTXF1::INEPTXSA;
 }
 
 /// OTG core LPM configuration register
-pub mod OTG_FS_GLPMCFG {
+pub mod GLPMCFG {
 
     /// LPM support enable
     pub mod LPMEN {
@@ -2422,116 +2451,116 @@ pub mod OTG_FS_GLPMCFG {
 #[repr(C)]
 pub struct RegisterBlock {
     /// OTG_FS control and status register (OTG_FS_GOTGCTL)
-    pub OTG_FS_GOTGCTL: RWRegister<u32>,
+    pub GOTGCTL: RWRegister<u32>,
 
     /// OTG_FS interrupt register (OTG_FS_GOTGINT)
-    pub OTG_FS_GOTGINT: RWRegister<u32>,
+    pub GOTGINT: RWRegister<u32>,
 
     /// OTG_FS AHB configuration register (OTG_FS_GAHBCFG)
-    pub OTG_FS_GAHBCFG: RWRegister<u32>,
+    pub GAHBCFG: RWRegister<u32>,
 
     /// OTG_FS USB configuration register (OTG_FS_GUSBCFG)
-    pub OTG_FS_GUSBCFG: RWRegister<u32>,
+    pub GUSBCFG: RWRegister<u32>,
 
     /// OTG_FS reset register (OTG_FS_GRSTCTL)
-    pub OTG_FS_GRSTCTL: RWRegister<u32>,
+    pub GRSTCTL: RWRegister<u32>,
 
     /// OTG_FS core interrupt register (OTG_FS_GINTSTS)
-    pub OTG_FS_GINTSTS: RWRegister<u32>,
+    pub GINTSTS: RWRegister<u32>,
 
     /// OTG_FS interrupt mask register (OTG_FS_GINTMSK)
-    pub OTG_FS_GINTMSK: RWRegister<u32>,
+    pub GINTMSK: RWRegister<u32>,
 
-    /// OTG_FS_GRXSTSR_Device and OTG_FS_GRXSTSR_Host
-    /// OTG_FS_GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
-    /// OTG_FS_GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
-    pub OTG_FS_GRXSTSR: RWRegister<u32>,
+    /// GRXSTSR_Device and GRXSTSR_Host
+    /// GRXSTSR_Device: OTG_FS Receive status debug read(Device mode)
+    /// GRXSTSR_Host: OTG_FS Receive status debug read(Host mode)
+    pub GRXSTSR: RWRegister<u32>,
 
-    /// OTG_FS_GRXSTSP_Device and OTG_FS_GRXSTSP_Host
-    /// OTG_FS_GRXSTSP_Device: OTG status read and pop register (Device mode)
-    /// OTG_FS_GRXSTSP_Host: OTG status read and pop register (Host mode)
-    pub OTG_FS_GRXSTSP: RWRegister<u32>,
+    /// GRXSTSP_Device and GRXSTSP_Host
+    /// GRXSTSP_Device: OTG status read and pop register (Device mode)
+    /// GRXSTSP_Host: OTG status read and pop register (Host mode)
+    pub GRXSTSP: RWRegister<u32>,
 
     /// OTG_FS Receive FIFO size register (OTG_FS_GRXFSIZ)
-    pub OTG_FS_GRXFSIZ: RWRegister<u32>,
+    pub GRXFSIZ: RWRegister<u32>,
 
-    /// OTG_FS_DIEPTXF0_Device and OTG_FS_HNPTXFSIZ_Host
-    /// OTG_FS_DIEPTXF0_Device: OTG_FS Endpoint 0 Transmit FIFO size
-    /// OTG_FS_HNPTXFSIZ_Host: OTG_FS Host non-periodic transmit FIFO size register
-    pub OTG_FS: RWRegister<u32>,
+    /// DIEPTXF0 and HNPTXFSIZ_Host
+    /// DIEPTXF0: OTG_FS Endpoint 0 Transmit FIFO size
+    /// HNPTXFSIZ_Host: OTG_FS Host non-periodic transmit FIFO size register
+    pub DIEPTXF0: RWRegister<u32>,
 
     /// OTG_FS non-periodic transmit FIFO/queue status register (OTG_FS_GNPTXSTS)
-    pub OTG_FS_HNPTXSTS: RORegister<u32>,
+    pub HNPTXSTS: RORegister<u32>,
 
     /// OTG I2C access register
-    pub OTG_FS_GI2CCTL: RWRegister<u32>,
+    pub GI2CCTL: RWRegister<u32>,
 
     _reserved1: [u8; 4],
 
     /// OTG_FS general core configuration register (OTG_FS_GCCFG)
-    pub OTG_FS_GCCFG: RWRegister<u32>,
+    pub GCCFG: RWRegister<u32>,
 
     /// core ID register
-    pub OTG_FS_CID: RWRegister<u32>,
+    pub CID: RWRegister<u32>,
 
     _reserved2: [u8; 20],
 
     /// OTG core LPM configuration register
-    pub OTG_FS_GLPMCFG: RWRegister<u32>,
+    pub GLPMCFG: RWRegister<u32>,
 
     /// OTG power down register
-    pub OTG_FS_GPWRDN: RWRegister<u32>,
+    pub GPWRDN: RWRegister<u32>,
 
     _reserved3: [u8; 4],
 
     /// OTG ADP timer, control and status register
-    pub OTG_FS_GADPCTL: RWRegister<u32>,
+    pub GADPCTL: RWRegister<u32>,
 
     _reserved4: [u8; 156],
 
     /// OTG_FS Host periodic transmit FIFO size register (OTG_FS_HPTXFSIZ)
-    pub OTG_FS_HPTXFSIZ: RWRegister<u32>,
+    pub HPTXFSIZ: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF1)
-    pub OTG_FS_DIEPTXF1: RWRegister<u32>,
+    pub DIEPTXF1: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF2)
-    pub OTG_FS_DIEPTXF2: RWRegister<u32>,
+    pub DIEPTXF2: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF3)
-    pub OTG_FS_DIEPTXF3: RWRegister<u32>,
+    pub DIEPTXF3: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF4)
-    pub OTG_FS_DIEPTXF4: RWRegister<u32>,
+    pub DIEPTXF4: RWRegister<u32>,
 
     /// OTG_FS device IN endpoint transmit FIFO size register (OTG_FS_DIEPTXF5)
-    pub OTG_FS_DIEPTXF5: RWRegister<u32>,
+    pub DIEPTXF5: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub OTG_FS_GOTGCTL: u32,
-    pub OTG_FS_GOTGINT: u32,
-    pub OTG_FS_GAHBCFG: u32,
-    pub OTG_FS_GUSBCFG: u32,
-    pub OTG_FS_GRSTCTL: u32,
-    pub OTG_FS_GINTSTS: u32,
-    pub OTG_FS_GINTMSK: u32,
-    pub OTG_FS_GRXSTSR: u32,
-    pub OTG_FS_GRXSTSP: u32,
-    pub OTG_FS_GRXFSIZ: u32,
-    pub OTG_FS: u32,
-    pub OTG_FS_HNPTXSTS: u32,
-    pub OTG_FS_GI2CCTL: u32,
-    pub OTG_FS_GCCFG: u32,
-    pub OTG_FS_CID: u32,
-    pub OTG_FS_GLPMCFG: u32,
-    pub OTG_FS_GPWRDN: u32,
-    pub OTG_FS_GADPCTL: u32,
-    pub OTG_FS_HPTXFSIZ: u32,
-    pub OTG_FS_DIEPTXF1: u32,
-    pub OTG_FS_DIEPTXF2: u32,
-    pub OTG_FS_DIEPTXF3: u32,
-    pub OTG_FS_DIEPTXF4: u32,
-    pub OTG_FS_DIEPTXF5: u32,
+    pub GOTGCTL: u32,
+    pub GOTGINT: u32,
+    pub GAHBCFG: u32,
+    pub GUSBCFG: u32,
+    pub GRSTCTL: u32,
+    pub GINTSTS: u32,
+    pub GINTMSK: u32,
+    pub GRXSTSR: u32,
+    pub GRXSTSP: u32,
+    pub GRXFSIZ: u32,
+    pub DIEPTXF0: u32,
+    pub HNPTXSTS: u32,
+    pub GI2CCTL: u32,
+    pub GCCFG: u32,
+    pub CID: u32,
+    pub GLPMCFG: u32,
+    pub GPWRDN: u32,
+    pub GADPCTL: u32,
+    pub HPTXFSIZ: u32,
+    pub DIEPTXF1: u32,
+    pub DIEPTXF2: u32,
+    pub DIEPTXF3: u32,
+    pub DIEPTXF4: u32,
+    pub DIEPTXF5: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

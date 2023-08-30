@@ -286,8 +286,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OCx=0 (after a dead-time if OCx(N) is implemented) when MOE=0
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: OCx=1 (after a dead-time if OCx(N) is implemented) when MOE=0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// Output Idle state 1 (OC1N output) Note: This bit can not be modified as long as LOCK level 1, 2 or 3 has been programmed (LOCK bits in TIMx_BDTR register).
@@ -300,8 +307,15 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: OCxN=0 after a dead-time when MOE=0
+            pub const Reset: u32 = 0b0;
+
+            /// 0b1: OCxN=1 after a dead-time when MOE=0
+            pub const Set: u32 = 0b1;
+        }
     }
 
     /// Output Idle state 2 (OC2 output) Refer to OIS1 bit
@@ -314,8 +328,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1::RW;
     }
 
     /// Output Idle state 2 (OC2N output) Refer to OIS1N bit
@@ -328,8 +341,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1N::RW;
     }
 
     /// Output Idle state 3 (OC3 output) Refer to OIS1 bit
@@ -342,8 +354,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1::RW;
     }
 
     /// Output Idle state 3 (OC3N output) Refer to OIS1N bit
@@ -356,8 +367,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1N::RW;
     }
 
     /// Output Idle state 4 (OC4 output) Refer to OIS1 bit
@@ -370,8 +380,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1::RW;
     }
 
     /// Output Idle state 5 (OC5 output) Refer to OIS1 bit
@@ -384,8 +393,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1::RW;
     }
 
     /// Output Idle state 6 (OC6 output) Refer to OIS1 bit
@@ -398,8 +406,7 @@ pub mod CR2 {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::OIS1::RW;
     }
 
     /// Master mode selection 2 These bits allow the information to be sent to ADC for synchronization (TRGO2) to be selected. The combination is as follows: Note: The clock of the slave timer or ADC must be enabled prior to receive events from the master timer, and must not be changed on-the-fly while triggers are received from the master timer.
@@ -791,19 +798,23 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No update occurred
-            pub const Clear: u32 = 0b0;
+            pub const NoUpdateOccurred: u32 = 0b0;
 
-            /// 0b1: Update interrupt pending.
+            /// 0b1: Update interrupt pending
             pub const UpdatePending: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Capture/Compare 1 interrupt flag This flag is set by hardware. It is cleared by software (input capture or output compare mode) or by reading the TIMx_CCR1 register (input capture mode only). If channel CC1 is configured as output: this flag is set when he content of the counter TIMx_CNT matches the content of the TIMx_CCR1 register. When the content of TIMx_CCR1 is greater than the content of TIMx_ARR, the CC1IF bit goes high on the counter overflow (in up-counting and up/down-counting modes) or underflow (in down-counting mode). There are 3 possible options for flag setting in center-aligned mode, refer to the CMS bits in the TIMx_CR1 register for the full description. If channel CC1 is configured as input: this bit is set when counter value has been captured in TIMx_CCR1 register (an edge has been detected on IC1, as per the edge sensitivity defined with the CC1P and CC1NP bits setting, in TIMx_CCER).
@@ -2127,8 +2138,21 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b00: No bit is write protected
+            pub const Off: u32 = 0b00;
+
+            /// 0b01: Any bits except MOE, OSSR, OSSI and LOCK in TIMx_BDTR register, OISx and OISxN bits in TIMx_CR2 register can no longer be written
+            pub const Level1: u32 = 0b01;
+
+            /// 0b10: LOCK Level 1 + CC Polarity bits (CCxP/CCxNP bits in TIMx_CCER register, as long as the related channel is configured in output through the CCxS bits) as well as OSSR and OSSI bits can no longer be written
+            pub const Level2: u32 = 0b10;
+
+            /// 0b11: LOCK Level 2 + CC Control bits (OCxM and OCxPE bits in TIMx_CCMRx registers, as long as the related channel is configured in output through the CCxS bits) can no longer be written
+            pub const Level3: u32 = 0b11;
+        }
     }
 
     /// Off-state selection for Idle mode This bit is used when MOE=0 due to a break event or by a software write, on channels configured as outputs. See OC/OCN enable description for more details (enable register (TIM1_CCERTIMx_CCER)N/A). Note: This bit can not be modified as soon as the LOCK level 2 has been programmed (LOCK bits in TIMx_BDTR register).
@@ -2183,8 +2207,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Break function x disabled
+            pub const Disabled: u32 = 0b0;
+
+            /// 0b1: Break function x disabled
+            pub const Enabled: u32 = 0b1;
+        }
     }
 
     /// Break polarity Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register). Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
@@ -2197,8 +2228,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: Break input BRKx is active low
+            pub const ActiveLow: u32 = 0b0;
+
+            /// 0b1: Break input BRKx is active high
+            pub const ActiveHigh: u32 = 0b1;
+        }
     }
 
     /// Automatic output enable Note: This bit can not be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register).
@@ -2211,8 +2249,15 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0: MOE can be set only by software
+            pub const Manual: u32 = 0b0;
+
+            /// 0b1: MOE can be set by software or automatically at the next update event (if none of the break inputs BRK and BRK2 is active)
+            pub const Automatic: u32 = 0b1;
+        }
     }
 
     /// Main output enable This bit is cleared asynchronously by hardware as soon as one of the break inputs is active (BRK or BRK2). It is set by software or automatically depending on the AOE bit. It is acting only on the channels which are configured in output. In response to a break event or if MOE is written to 0: OC and OCN outputs are disabled or forced to idle state depending on the OSSI bit. See OC/OCN enable description for more details (enable register (TIM1_CCERTIMx_CCER)N/A).
@@ -2274,8 +2319,7 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::BKE::RW;
     }
 
     /// Break 2 polarity Note: This bit cannot be modified as long as LOCK level 1 has been programmed (LOCK bits in TIMx_BDTR register). Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.
@@ -2288,8 +2332,7 @@ pub mod BDTR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        pub use super::BKP::RW;
     }
 
     /// Break Disarm This bit is cleared by hardware when no break source is active. The BKDSRM bit must be set by software to release the bidirectional output control (open-drain output in Hi-Z state) and then be polled it until it is reset by hardware, indicating that the fault condition has disappeared. Note: Any write operation to this bit takes a delay of 1 APB clock cycle to become effective.

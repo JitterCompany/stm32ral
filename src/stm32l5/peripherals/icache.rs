@@ -9,7 +9,7 @@ use crate::{RORegister, RWRegister, WORegister};
 use core::marker::PhantomData;
 
 /// ICACHE control register
-pub mod ICACHE_CR {
+pub mod CR {
 
     /// EN
     pub mod EN {
@@ -111,7 +111,7 @@ pub mod ICACHE_CR {
 }
 
 /// ICACHE status register
-pub mod ICACHE_SR {
+pub mod SR {
 
     /// BUSYF
     pub mod BUSYF {
@@ -157,7 +157,7 @@ pub mod ICACHE_SR {
 }
 
 /// ICACHE interrupt enable register
-pub mod ICACHE_IER {
+pub mod IER {
 
     /// BSYENDIE
     pub mod BSYENDIE {
@@ -189,7 +189,7 @@ pub mod ICACHE_IER {
 }
 
 /// ICACHE flag clear register
-pub mod ICACHE_FCR {
+pub mod FCR {
 
     /// CBSYENDF
     pub mod CBSYENDF {
@@ -221,7 +221,7 @@ pub mod ICACHE_FCR {
 }
 
 /// ICACHE hit monitor register
-pub mod ICACHE_HMONR {
+pub mod HMONR {
 
     /// HITMON
     pub mod HITMON {
@@ -239,7 +239,7 @@ pub mod ICACHE_HMONR {
 }
 
 /// ICACHE miss monitor register
-pub mod ICACHE_MMONR {
+pub mod MMONR {
 
     /// MISSMON
     pub mod MISSMON {
@@ -257,7 +257,7 @@ pub mod ICACHE_MMONR {
 }
 
 /// ICACHE region configuration register
-pub mod ICACHE_CRR0 {
+pub mod CRR0 {
 
     /// BASEADDR
     pub mod BASEADDR {
@@ -345,79 +345,79 @@ pub mod ICACHE_CRR0 {
 }
 
 /// ICACHE region configuration register
-pub mod ICACHE_CRR1 {
-    pub use super::ICACHE_CRR0::BASEADDR;
-    pub use super::ICACHE_CRR0::HBURST;
-    pub use super::ICACHE_CRR0::MSTSEL;
-    pub use super::ICACHE_CRR0::REMAPADDR;
-    pub use super::ICACHE_CRR0::REN;
-    pub use super::ICACHE_CRR0::RSIZE;
+pub mod CRR1 {
+    pub use super::CRR0::BASEADDR;
+    pub use super::CRR0::HBURST;
+    pub use super::CRR0::MSTSEL;
+    pub use super::CRR0::REMAPADDR;
+    pub use super::CRR0::REN;
+    pub use super::CRR0::RSIZE;
 }
 
 /// ICACHE region configuration register
-pub mod ICACHE_CRR2 {
-    pub use super::ICACHE_CRR0::BASEADDR;
-    pub use super::ICACHE_CRR0::HBURST;
-    pub use super::ICACHE_CRR0::MSTSEL;
-    pub use super::ICACHE_CRR0::REMAPADDR;
-    pub use super::ICACHE_CRR0::REN;
-    pub use super::ICACHE_CRR0::RSIZE;
+pub mod CRR2 {
+    pub use super::CRR0::BASEADDR;
+    pub use super::CRR0::HBURST;
+    pub use super::CRR0::MSTSEL;
+    pub use super::CRR0::REMAPADDR;
+    pub use super::CRR0::REN;
+    pub use super::CRR0::RSIZE;
 }
 
 /// ICACHE region configuration register
-pub mod ICACHE_CRR3 {
-    pub use super::ICACHE_CRR0::BASEADDR;
-    pub use super::ICACHE_CRR0::HBURST;
-    pub use super::ICACHE_CRR0::MSTSEL;
-    pub use super::ICACHE_CRR0::REMAPADDR;
-    pub use super::ICACHE_CRR0::REN;
-    pub use super::ICACHE_CRR0::RSIZE;
+pub mod CRR3 {
+    pub use super::CRR0::BASEADDR;
+    pub use super::CRR0::HBURST;
+    pub use super::CRR0::MSTSEL;
+    pub use super::CRR0::REMAPADDR;
+    pub use super::CRR0::REN;
+    pub use super::CRR0::RSIZE;
 }
 #[repr(C)]
 pub struct RegisterBlock {
     /// ICACHE control register
-    pub ICACHE_CR: RWRegister<u32>,
+    pub CR: RWRegister<u32>,
 
     /// ICACHE status register
-    pub ICACHE_SR: RORegister<u32>,
+    pub SR: RORegister<u32>,
 
     /// ICACHE interrupt enable register
-    pub ICACHE_IER: RWRegister<u32>,
+    pub IER: RWRegister<u32>,
 
     /// ICACHE flag clear register
-    pub ICACHE_FCR: WORegister<u32>,
+    pub FCR: WORegister<u32>,
 
     /// ICACHE hit monitor register
-    pub ICACHE_HMONR: RORegister<u32>,
+    pub HMONR: RORegister<u32>,
 
     /// ICACHE miss monitor register
-    pub ICACHE_MMONR: RORegister<u32>,
+    pub MMONR: RORegister<u32>,
 
     _reserved1: [u8; 8],
 
     /// ICACHE region configuration register
-    pub ICACHE_CRR0: RWRegister<u32>,
+    pub CRR0: RWRegister<u32>,
 
     /// ICACHE region configuration register
-    pub ICACHE_CRR1: RWRegister<u32>,
+    pub CRR1: RWRegister<u32>,
 
     /// ICACHE region configuration register
-    pub ICACHE_CRR2: RWRegister<u32>,
+    pub CRR2: RWRegister<u32>,
 
     /// ICACHE region configuration register
-    pub ICACHE_CRR3: RWRegister<u32>,
+    pub CRR3: RWRegister<u32>,
 }
 pub struct ResetValues {
-    pub ICACHE_CR: u32,
-    pub ICACHE_SR: u32,
-    pub ICACHE_IER: u32,
-    pub ICACHE_FCR: u32,
-    pub ICACHE_HMONR: u32,
-    pub ICACHE_MMONR: u32,
-    pub ICACHE_CRR0: u32,
-    pub ICACHE_CRR1: u32,
-    pub ICACHE_CRR2: u32,
-    pub ICACHE_CRR3: u32,
+    pub CR: u32,
+    pub SR: u32,
+    pub IER: u32,
+    pub FCR: u32,
+    pub HMONR: u32,
+    pub MMONR: u32,
+    pub CRR0: u32,
+    pub CRR1: u32,
+    pub CRR2: u32,
+    pub CRR3: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

@@ -18,10 +18,8 @@ pub use super::instances::adc_common;
 pub use super::instances::can;
 pub use super::instances::dac;
 pub use super::instances::dma;
-pub use super::instances::ethernet_dma;
 pub use super::instances::ethernet_mac;
 pub use super::instances::ethernet_mmc;
-pub use super::instances::ethernet_ptp;
 pub use super::instances::gpio;
 pub use super::instances::i2c;
 pub use super::instances::iwdg;
@@ -48,21 +46,22 @@ pub use super::instances::tim9;
 pub use super::instances::uart;
 pub use super::instances::usart;
 pub use super::instances::wwdg;
-pub mod otg_fs_device;
-pub mod otg_fs_global;
-pub mod otg_fs_host;
-pub mod otg_fs_pwrclk;
+pub mod ethernet_ptp;
 pub use super::instances::cryp;
+pub use super::instances::ethernet_dma;
 pub use super::instances::exti;
 pub use super::instances::flash;
 pub use super::instances::hash;
 pub use super::instances::mpu;
 pub use super::instances::nvic;
 pub use super::instances::nvic_stir;
+pub use super::instances::otg_fs_device;
+pub use super::instances::otg_fs_global;
+pub use super::instances::otg_fs_host;
 pub use super::instances::otg_hs_device;
 pub use super::instances::otg_hs_global;
 pub use super::instances::otg_hs_host;
-pub use super::instances::otg_hs_pwrclk;
+pub use super::instances::otg_s_pwrclk;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
@@ -133,7 +132,8 @@ pub struct Peripherals {
     pub OTG_FS_GLOBAL: otg_fs_global::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
     pub OTG_FS_DEVICE: otg_fs_device::Instance,
-    pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
+    pub OTG_FS_PWRCLK: otg_s_pwrclk::Instance,
+    pub OTG_HS_PWRCLK: otg_s_pwrclk::Instance,
     pub EXTI: exti::Instance,
     pub FLASH: flash::Instance,
     pub HASH: hash::Instance,
@@ -141,7 +141,6 @@ pub struct Peripherals {
     pub OTG_HS_GLOBAL: otg_hs_global::Instance,
     pub OTG_HS_HOST: otg_hs_host::Instance,
     pub OTG_HS_DEVICE: otg_hs_device::Instance,
-    pub OTG_HS_PWRCLK: otg_hs_pwrclk::Instance,
     pub NVIC: nvic::Instance,
     pub MPU: mpu::Instance,
     pub SCB_ACTRL: scb_actrl::Instance,
@@ -221,7 +220,8 @@ impl Peripherals {
             OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
             OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
-            OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),
+            OTG_FS_PWRCLK: otg_s_pwrclk::OTG_FS_PWRCLK::steal(),
+            OTG_HS_PWRCLK: otg_s_pwrclk::OTG_HS_PWRCLK::steal(),
             EXTI: exti::EXTI::steal(),
             FLASH: flash::FLASH::steal(),
             HASH: hash::HASH::steal(),
@@ -229,7 +229,6 @@ impl Peripherals {
             OTG_HS_GLOBAL: otg_hs_global::OTG_HS_GLOBAL::steal(),
             OTG_HS_HOST: otg_hs_host::OTG_HS_HOST::steal(),
             OTG_HS_DEVICE: otg_hs_device::OTG_HS_DEVICE::steal(),
-            OTG_HS_PWRCLK: otg_hs_pwrclk::OTG_HS_PWRCLK::steal(),
             NVIC: nvic::NVIC::steal(),
             MPU: mpu::MPU::steal(),
             SCB_ACTRL: scb_actrl::SCB_ACTRL::steal(),

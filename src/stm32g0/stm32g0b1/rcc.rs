@@ -3107,8 +3107,8 @@ pub mod CCIPR2 {
     pub mod USBSEL {
         /// Offset (12 bits)
         pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
+        /// Mask (2 bits: 0b11 << 12)
+        pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

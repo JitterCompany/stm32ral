@@ -991,187 +991,15 @@ pub mod SHIFTR {
 }
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod TSTR {
-
-    /// SU
-    pub mod SU {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ST
-    pub mod ST {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (3 bits: 0b111 << 4)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MNU
-    pub mod MNU {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (4 bits: 0b1111 << 8)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MNT
-    pub mod MNT {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (3 bits: 0b111 << 12)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// HU
-    pub mod HU {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (4 bits: 0b1111 << 16)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// HT
-    pub mod HT {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (2 bits: 0b11 << 20)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// PM
-    pub mod PM {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (1 bit: 1 << 22)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+pub mod TSTR {}
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod TSDR {
-
-    /// DU
-    pub mod DU {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// DT
-    pub mod DT {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MU
-    pub mod MU {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (4 bits: 0b1111 << 8)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MT
-    pub mod MT {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// WDU
-    pub mod WDU {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (3 bits: 0b111 << 13)
-        pub const mask: u32 = 0b111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
+pub mod TSDR {}
 
 /// The content of this register is valid only when TSF is set to 1 in RTC_SR. It is cleared when the TSF bit is reset. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
-pub mod TSSSR {
-    pub use super::SSR::SS;
-}
+pub mod TSSSR {}
 
-/// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+/// Alarm register
 pub mod ALRMAR {
 
     /// Second units in BCD format
@@ -1371,7 +1199,7 @@ pub mod ALRMAR {
     }
 }
 
-/// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+/// Alarm register
 pub mod ALRMBR {
     pub use super::ALRMAR::DT;
     pub use super::ALRMAR::DU;
@@ -1389,7 +1217,7 @@ pub mod ALRMBR {
     pub use super::ALRMAR::WDSEL;
 }
 
-/// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+/// Alarm sub-second register
 pub mod ALRMASSR {
 
     /// SS
@@ -1421,7 +1249,7 @@ pub mod ALRMASSR {
     }
 }
 
-/// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+/// Alarm sub-second register
 pub mod ALRMBSSR {
     pub use super::ALRMASSR::MASKSS;
     pub use super::ALRMASSR::SS;
@@ -1936,16 +1764,16 @@ pub struct RegisterBlock {
 
     _reserved2: [u8; 4],
 
-    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    /// Alarm register
     pub ALRMAR: RWRegister<u32>,
 
-    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    /// Alarm sub-second register
     pub ALRMASSR: RWRegister<u32>,
 
-    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    /// Alarm register
     pub ALRMBR: RWRegister<u32>,
 
-    /// This register can be written only when ALRAWF is set to 1 in RTC_ICSR, or in initialization mode. This register is write protected. The write access procedure is described in RTC register write protection on page1830. This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.
+    /// Alarm sub-second register
     pub ALRMBSSR: RWRegister<u32>,
 
     /// This register can be protected against non-secure access. Refer to Section50.3.4: RTC secure protection modes.

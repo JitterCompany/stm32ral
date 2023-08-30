@@ -67,8 +67,8 @@ pub mod CR1 {
         pub mod RW {}
     }
 
-    /// Data frame format
-    pub mod DFF {
+    /// CRC length
+    pub mod CRCL {
         /// Offset (11 bits)
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)

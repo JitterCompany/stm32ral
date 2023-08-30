@@ -20,7 +20,7 @@ pub use super::instances::tim1_g051_g061_g0b0 as tim1;
 pub mod tim2;
 pub mod tim3;
 pub use super::instances::tim14_g050_g051_g061_g0b0_g0b1_g0c1 as tim14;
-pub use super::instances::tim15_g051_g061 as tim15;
+pub use super::instances::tim15;
 pub use super::instances::tim16_g051_g061_g0b0_g0b1_g0c1 as tim16;
 pub use super::instances::tim17_g051_g061_g0b0_g0b1_g0c1 as tim17;
 pub use super::instances::tim6_g050_g051_g061_g0b0_g0b1_g0c1 as tim6;

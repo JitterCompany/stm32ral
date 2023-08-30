@@ -6,7 +6,7 @@
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f7::peripherals::otg_hs_pwrclk::Instance;
-pub use crate::stm32f7::peripherals::otg_hs_pwrclk::OTG_HS_PCGCR;
+pub use crate::stm32f7::peripherals::otg_hs_pwrclk::PCGCR;
 pub use crate::stm32f7::peripherals::otg_hs_pwrclk::{RegisterBlock, ResetValues};
 
 /// Access functions for the OTG_HS_PWRCLK peripheral instance
@@ -23,9 +23,7 @@ pub mod OTG_HS_PWRCLK {
     };
 
     /// Reset values for each field in OTG_HS_PWRCLK
-    pub const reset: ResetValues = ResetValues {
-        OTG_HS_PCGCR: 0x00000000,
-    };
+    pub const reset: ResetValues = ResetValues { PCGCR: 0x00000000 };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]

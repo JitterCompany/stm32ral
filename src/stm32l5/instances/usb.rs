@@ -8,10 +8,7 @@
 pub use crate::stm32l5::peripherals::usb::Instance;
 pub use crate::stm32l5::peripherals::usb::{RegisterBlock, ResetValues};
 pub use crate::stm32l5::peripherals::usb::{
-    ADDR0_RX, ADDR1_RX, ADDR2_RX, ADDR3_RX, ADDR4_RX, ADDR5_RX, ADDR6_RX, ADDR7_RX, BCDR, BTABLE,
-    CNTR, COUNT0_RX, COUNT0_TX, COUNT1_RX, COUNT1_TX, COUNT2_RX, COUNT2_TX, COUNT3_RX, COUNT3_TX,
-    COUNT4_RX, COUNT4_TX, COUNT5_RX, COUNT5_TX, COUNT6_RX, COUNT6_TX, COUNT7_RX, COUNT7_TX, DADDR,
-    EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR, LPMCSR,
+    BCDR, BTABLE, CNTR, DADDR, EP0R, EP1R, EP2R, EP3R, EP4R, EP5R, EP6R, EP7R, FNR, ISTR, LPMCSR,
 };
 
 /// Access functions for the SEC_USB peripheral instance
@@ -44,30 +41,6 @@ pub mod SEC_USB {
         BTABLE: 0x00000000,
         LPMCSR: 0x00000000,
         BCDR: 0x00000000,
-        COUNT0_TX: 0x00000000,
-        COUNT1_TX: 0x00000000,
-        COUNT2_TX: 0x00000000,
-        COUNT3_TX: 0x00000000,
-        COUNT4_TX: 0x00000000,
-        COUNT5_TX: 0x00000000,
-        COUNT6_TX: 0x00000000,
-        COUNT7_TX: 0x00000000,
-        ADDR0_RX: 0x00000000,
-        ADDR1_RX: 0x00000000,
-        ADDR2_RX: 0x00000000,
-        ADDR3_RX: 0x00000000,
-        ADDR4_RX: 0x00000000,
-        ADDR5_RX: 0x00000000,
-        ADDR6_RX: 0x00000000,
-        ADDR7_RX: 0x00000000,
-        COUNT0_RX: 0x00000000,
-        COUNT1_RX: 0x00000000,
-        COUNT2_RX: 0x00000000,
-        COUNT3_RX: 0x00000000,
-        COUNT4_RX: 0x00000000,
-        COUNT5_RX: 0x00000000,
-        COUNT6_RX: 0x00000000,
-        COUNT7_RX: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -173,30 +146,6 @@ pub mod USB {
         BTABLE: 0x00000000,
         LPMCSR: 0x00000000,
         BCDR: 0x00000000,
-        COUNT0_TX: 0x00000000,
-        COUNT1_TX: 0x00000000,
-        COUNT2_TX: 0x00000000,
-        COUNT3_TX: 0x00000000,
-        COUNT4_TX: 0x00000000,
-        COUNT5_TX: 0x00000000,
-        COUNT6_TX: 0x00000000,
-        COUNT7_TX: 0x00000000,
-        ADDR0_RX: 0x00000000,
-        ADDR1_RX: 0x00000000,
-        ADDR2_RX: 0x00000000,
-        ADDR3_RX: 0x00000000,
-        ADDR4_RX: 0x00000000,
-        ADDR5_RX: 0x00000000,
-        ADDR6_RX: 0x00000000,
-        ADDR7_RX: 0x00000000,
-        COUNT0_RX: 0x00000000,
-        COUNT1_RX: 0x00000000,
-        COUNT2_RX: 0x00000000,
-        COUNT3_RX: 0x00000000,
-        COUNT4_RX: 0x00000000,
-        COUNT5_RX: 0x00000000,
-        COUNT6_RX: 0x00000000,
-        COUNT7_RX: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

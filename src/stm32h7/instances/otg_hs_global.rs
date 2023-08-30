@@ -6,12 +6,12 @@
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32h7::peripherals::otg1_hs_global::Instance;
-pub use crate::stm32h7::peripherals::otg1_hs_global::{
-    HNPTXFSIZ_Host, CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, DIEPTXF4, DIEPTXF5, DIEPTXF6, DIEPTXF7,
-    GAHBCFG, GCCFG, GINTMSK, GINTSTS, GLPMCFG, GNPTXSTS, GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ,
-    GRXSTSP, GRXSTSR, GUSBCFG, HPTXFSIZ,
-};
 pub use crate::stm32h7::peripherals::otg1_hs_global::{RegisterBlock, ResetValues};
+pub use crate::stm32h7::peripherals::otg1_hs_global::{
+    CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, DIEPTXF4, DIEPTXF5, DIEPTXF6, DIEPTXF7, DIEPTXF8, GAHBCFG,
+    GCCFG, GINTMSK, GINTSTS, GLPMCFG, GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSP, GRXSTSR,
+    GUSBCFG, HNPTXFSIZ, HNPTXSTS, HPTXFSIZ,
+};
 
 /// Access functions for the OTG1_HS_GLOBAL peripheral instance
 pub mod OTG1_HS_GLOBAL {
@@ -38,19 +38,20 @@ pub mod OTG1_HS_GLOBAL {
         GRXSTSR: 0x00000000,
         GRXSTSP: 0x00000000,
         GRXFSIZ: 0x00000200,
-        HNPTXFSIZ_Host: 0x00000200,
-        GNPTXSTS: 0x00080200,
+        HNPTXFSIZ: 0x00000200,
+        HNPTXSTS: 0x00080200,
         GCCFG: 0x00000000,
         CID: 0x00001200,
         HPTXFSIZ: 0x02000600,
         DIEPTXF1: 0x02000400,
-        DIEPTXF2: 0x02000400,
-        DIEPTXF3: 0x02000400,
-        DIEPTXF4: 0x02000400,
-        DIEPTXF5: 0x02000400,
-        DIEPTXF6: 0x02000400,
-        DIEPTXF7: 0x02000400,
+        DIEPTXF2: 0x02000600,
+        DIEPTXF3: 0x02000800,
+        DIEPTXF4: 0x02000A00,
+        DIEPTXF5: 0x02000C00,
+        DIEPTXF6: 0x02000E00,
+        DIEPTXF7: 0x02001000,
         GLPMCFG: 0x00000000,
+        DIEPTXF8: 0x02001200,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -151,19 +152,20 @@ pub mod OTG2_HS_GLOBAL {
         GRXSTSR: 0x00000000,
         GRXSTSP: 0x00000000,
         GRXFSIZ: 0x00000200,
-        HNPTXFSIZ_Host: 0x00000200,
-        GNPTXSTS: 0x00080200,
+        HNPTXFSIZ: 0x00000200,
+        HNPTXSTS: 0x00080200,
         GCCFG: 0x00000000,
         CID: 0x00001200,
         HPTXFSIZ: 0x02000600,
         DIEPTXF1: 0x02000400,
-        DIEPTXF2: 0x02000400,
-        DIEPTXF3: 0x02000400,
-        DIEPTXF4: 0x02000400,
-        DIEPTXF5: 0x02000400,
-        DIEPTXF6: 0x02000400,
-        DIEPTXF7: 0x02000400,
+        DIEPTXF2: 0x02000600,
+        DIEPTXF3: 0x02000800,
+        DIEPTXF4: 0x02000A00,
+        DIEPTXF5: 0x02000C00,
+        DIEPTXF6: 0x02000E00,
+        DIEPTXF7: 0x02001000,
         GLPMCFG: 0x00000000,
+        DIEPTXF8: 0x02001200,
     };
 
     #[cfg(not(feature = "nosync"))]

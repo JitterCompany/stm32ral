@@ -319,7 +319,7 @@ pub mod hash;
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h7b3"))]
 pub mod cryp_v1;
 
-#[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm4", feature="stm32h747cm7", feature="stm32h747cm7"))]
+#[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm4"))]
 pub mod tim1_v3;
 
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
@@ -337,6 +337,9 @@ pub mod dsihost;
 #[cfg(any(feature="doc", feature="stm32h747cm4", feature="stm32h747cm7"))]
 pub mod flash_v2;
 
+#[cfg(any(feature="doc", feature="stm32h747cm7", feature="stm32h747cm7"))]
+pub mod tim1_v4;
+
 #[cfg(any(feature="doc", feature="stm32h753", feature="stm32h753v"))]
 pub mod cryp_v2;
 
@@ -344,5 +347,5 @@ pub mod cryp_v2;
 pub mod dbgmcu_v3;
 
 #[cfg(any(feature="doc", feature="stm32h7b3", feature="stm32h7b3"))]
-pub mod tim1_v4;
+pub mod tim1_v5;
 

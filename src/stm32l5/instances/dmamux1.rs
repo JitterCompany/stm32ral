@@ -41,6 +41,8 @@ pub mod DMAMUX1 {
         C11CR: 0x00000000,
         C12CR: 0x00000000,
         C13CR: 0x00000000,
+        C14CR: 0x00000000,
+        C15CR: 0x00000000,
         CSR: 0x00000000,
         CCFR: 0x00000000,
         RG0CR: 0x00000000,
@@ -49,8 +51,6 @@ pub mod DMAMUX1 {
         RG3CR: 0x00000000,
         RGSR: 0x00000000,
         RGCFR: 0x00000000,
-        C14CR: 0x00000000,
-        C15CR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]
@@ -155,6 +155,8 @@ pub mod SEC_DMAMUX1 {
         C11CR: 0x00000000,
         C12CR: 0x00000000,
         C13CR: 0x00000000,
+        C14CR: 0x00000000,
+        C15CR: 0x00000000,
         CSR: 0x00000000,
         CCFR: 0x00000000,
         RG0CR: 0x00000000,
@@ -163,8 +165,6 @@ pub mod SEC_DMAMUX1 {
         RG3CR: 0x00000000,
         RGSR: 0x00000000,
         RGCFR: 0x00000000,
-        C14CR: 0x00000000,
-        C15CR: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

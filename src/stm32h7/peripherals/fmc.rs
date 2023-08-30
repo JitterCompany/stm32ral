@@ -908,6 +908,262 @@ pub mod BWTR4 {
     pub use super::BWTR1::DATAST;
 }
 
+/// This register contains the control parameters for each SDRAM memory bank
+pub mod SDCR1 {
+
+    /// Number of column address bits These bits define the number of bits of a column address.
+    pub mod NC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (2 bits: 0b11 << 0)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Number of row address bits These bits define the number of bits of a row address.
+    pub mod NR {
+        /// Offset (2 bits)
+        pub const offset: u32 = 2;
+        /// Mask (2 bits: 0b11 << 2)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Memory data bus width. These bits define the memory device width.
+    pub mod MWID {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (2 bits: 0b11 << 4)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Number of internal banks This bit sets the number of internal banks.
+    pub mod NB {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// CAS Latency This bits sets the SDRAM CAS latency in number of memory clock cycles
+    pub mod CAS {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (2 bits: 0b11 << 7)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Write protection This bit enables write mode access to the SDRAM bank.
+    pub mod WP {
+        /// Offset (9 bits)
+        pub const offset: u32 = 9;
+        /// Mask (1 bit: 1 << 9)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// SDRAM clock configuration These bits define the SDRAM clock period for both SDRAM banks and allow disabling the clock before changing the frequency. In this case the SDRAM must be re-initialized. Note: The corresponding bits in the FMC_SDCR2 register is read only.
+    pub mod SDCLK {
+        /// Offset (10 bits)
+        pub const offset: u32 = 10;
+        /// Mask (2 bits: 0b11 << 10)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Burst read This bit enables burst read mode. The SDRAM controller anticipates the next read commands during the CAS latency and stores data in the Read FIFO. Note: The corresponding bit in the FMC_SDCR2 register is read only.
+    pub mod RBURST {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (1 bit: 1 << 12)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Read pipe These bits define the delay, in KCK_FMC clock cycles, for reading data after CAS latency. Note: The corresponding bits in the FMC_SDCR2 register is read only.
+    pub mod RPIPE {
+        /// Offset (13 bits)
+        pub const offset: u32 = 13;
+        /// Mask (2 bits: 0b11 << 13)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// This register contains the control parameters for each SDRAM memory bank
+pub mod SDCR2 {
+    pub use super::SDCR1::CAS;
+    pub use super::SDCR1::MWID;
+    pub use super::SDCR1::NB;
+    pub use super::SDCR1::NC;
+    pub use super::SDCR1::NR;
+    pub use super::SDCR1::RBURST;
+    pub use super::SDCR1::RPIPE;
+    pub use super::SDCR1::SDCLK;
+    pub use super::SDCR1::WP;
+}
+
+/// This register contains the timing parameters of each SDRAM bank
+pub mod SDTR1 {
+
+    /// Load Mode Register to Active These bits define the delay between a Load Mode Register command and an Active or Refresh command in number of memory clock cycles. ....
+    pub mod TMRD {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (4 bits: 0b1111 << 0)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Exit Self-refresh delay These bits define the delay from releasing the Self-refresh command to issuing the Activate command in number of memory clock cycles. .... Note: If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed with the same TXSR timing corresponding to the slowest SDRAM device.
+    pub mod TXSR {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (4 bits: 0b1111 << 4)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Self refresh time These bits define the minimum Self-refresh period in number of memory clock cycles. ....
+    pub mod TRAS {
+        /// Offset (8 bits)
+        pub const offset: u32 = 8;
+        /// Mask (4 bits: 0b1111 << 8)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Row cycle delay These bits define the delay between the Refresh command and the Activate command, as well as the delay between two consecutive Refresh commands. It is expressed in number of memory clock cycles. The TRC timing is only configured in the FMC_SDTR1 register. If two SDRAM devices are used, the TRC must be programmed with the timings of the slowest device. .... Note: TRC must match the TRC and TRFC (Auto Refresh period) timings defined in the SDRAM device datasheet. Note: The corresponding bits in the FMC_SDTR2 register are dont care.
+    pub mod TRC {
+        /// Offset (12 bits)
+        pub const offset: u32 = 12;
+        /// Mask (4 bits: 0b1111 << 12)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Recovery delay These bits define the delay between a Write and a Precharge command in number of memory clock cycles. .... Note: TWR must be programmed to match the write recovery time (tWR) defined in the SDRAM datasheet, and to guarantee that: TWR &#8805; TRAS - TRCD and TWR &#8805;TRC - TRCD - TRP Example: TRAS= 4 cycles, TRCD= 2 cycles. So, TWR &gt;= 2 cycles. TWR must be programmed to 0x1. If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed with the same TWR timing corresponding to the slowest SDRAM device.
+    pub mod TWR {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (4 bits: 0b1111 << 16)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Row precharge delay These bits define the delay between a Precharge command and another command in number of memory clock cycles. The TRP timing is only configured in the FMC_SDTR1 register. If two SDRAM devices are used, the TRP must be programmed with the timing of the slowest device. .... Note: The corresponding bits in the FMC_SDTR2 register are dont care.
+    pub mod TRP {
+        /// Offset (20 bits)
+        pub const offset: u32 = 20;
+        /// Mask (4 bits: 0b1111 << 20)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Row to column delay These bits define the delay between the Activate command and a Read/Write command in number of memory clock cycles. ....
+    pub mod TRCD {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (4 bits: 0b1111 << 24)
+        pub const mask: u32 = 0b1111 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// This register contains the timing parameters of each SDRAM bank
+pub mod SDTR2 {
+    pub use super::SDTR1::TMRD;
+    pub use super::SDTR1::TRAS;
+    pub use super::SDTR1::TRC;
+    pub use super::SDTR1::TRCD;
+    pub use super::SDTR1::TRP;
+    pub use super::SDTR1::TWR;
+    pub use super::SDTR1::TXSR;
+}
+
 /// This register contains the command issued when the SDRAM device is accessed. This register is used to initialize the SDRAM device, and to activate the Self-refresh and the Power-down modes. As soon as the MODE field is written, the command will be issued only to one or to both SDRAM banks according to CTB1 and CTB2 command bits. This register is the same for both SDRAM banks.
 pub mod SDCMR {
 
@@ -1072,262 +1328,6 @@ pub mod SDSR {
         /// Read-write values (empty)
         pub mod RW {}
     }
-}
-
-/// This register contains the timing parameters of each SDRAM bank
-pub mod SDTR1 {
-
-    /// Load Mode Register to Active These bits define the delay between a Load Mode Register command and an Active or Refresh command in number of memory clock cycles. ....
-    pub mod TMRD {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (4 bits: 0b1111 << 0)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Exit Self-refresh delay These bits define the delay from releasing the Self-refresh command to issuing the Activate command in number of memory clock cycles. .... Note: If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed with the same TXSR timing corresponding to the slowest SDRAM device.
-    pub mod TXSR {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (4 bits: 0b1111 << 4)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Self refresh time These bits define the minimum Self-refresh period in number of memory clock cycles. ....
-    pub mod TRAS {
-        /// Offset (8 bits)
-        pub const offset: u32 = 8;
-        /// Mask (4 bits: 0b1111 << 8)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Row cycle delay These bits define the delay between the Refresh command and the Activate command, as well as the delay between two consecutive Refresh commands. It is expressed in number of memory clock cycles. The TRC timing is only configured in the FMC_SDTR1 register. If two SDRAM devices are used, the TRC must be programmed with the timings of the slowest device. .... Note: TRC must match the TRC and TRFC (Auto Refresh period) timings defined in the SDRAM device datasheet. Note: The corresponding bits in the FMC_SDTR2 register are dont care.
-    pub mod TRC {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (4 bits: 0b1111 << 12)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Recovery delay These bits define the delay between a Write and a Precharge command in number of memory clock cycles. .... Note: TWR must be programmed to match the write recovery time (tWR) defined in the SDRAM datasheet, and to guarantee that: TWR &#8805; TRAS - TRCD and TWR &#8805;TRC - TRCD - TRP Example: TRAS= 4 cycles, TRCD= 2 cycles. So, TWR &gt;= 2 cycles. TWR must be programmed to 0x1. If two SDRAM devices are used, the FMC_SDTR1 and FMC_SDTR2 must be programmed with the same TWR timing corresponding to the slowest SDRAM device.
-    pub mod TWR {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (4 bits: 0b1111 << 16)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Row precharge delay These bits define the delay between a Precharge command and another command in number of memory clock cycles. The TRP timing is only configured in the FMC_SDTR1 register. If two SDRAM devices are used, the TRP must be programmed with the timing of the slowest device. .... Note: The corresponding bits in the FMC_SDTR2 register are dont care.
-    pub mod TRP {
-        /// Offset (20 bits)
-        pub const offset: u32 = 20;
-        /// Mask (4 bits: 0b1111 << 20)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Row to column delay These bits define the delay between the Activate command and a Read/Write command in number of memory clock cycles. ....
-    pub mod TRCD {
-        /// Offset (24 bits)
-        pub const offset: u32 = 24;
-        /// Mask (4 bits: 0b1111 << 24)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// This register contains the control parameters for each SDRAM memory bank
-pub mod SDCR1 {
-
-    /// Number of column address bits These bits define the number of bits of a column address.
-    pub mod NC {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (2 bits: 0b11 << 0)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Number of row address bits These bits define the number of bits of a row address.
-    pub mod NR {
-        /// Offset (2 bits)
-        pub const offset: u32 = 2;
-        /// Mask (2 bits: 0b11 << 2)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Memory data bus width. These bits define the memory device width.
-    pub mod MWID {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (2 bits: 0b11 << 4)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Number of internal banks This bit sets the number of internal banks.
-    pub mod NB {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CAS Latency This bits sets the SDRAM CAS latency in number of memory clock cycles
-    pub mod CAS {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (2 bits: 0b11 << 7)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Write protection This bit enables write mode access to the SDRAM bank.
-    pub mod WP {
-        /// Offset (9 bits)
-        pub const offset: u32 = 9;
-        /// Mask (1 bit: 1 << 9)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SDRAM clock configuration These bits define the SDRAM clock period for both SDRAM banks and allow disabling the clock before changing the frequency. In this case the SDRAM must be re-initialized. Note: The corresponding bits in the FMC_SDCR2 register is read only.
-    pub mod SDCLK {
-        /// Offset (10 bits)
-        pub const offset: u32 = 10;
-        /// Mask (2 bits: 0b11 << 10)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Burst read This bit enables burst read mode. The SDRAM controller anticipates the next read commands during the CAS latency and stores data in the Read FIFO. Note: The corresponding bit in the FMC_SDCR2 register is read only.
-    pub mod RBURST {
-        /// Offset (12 bits)
-        pub const offset: u32 = 12;
-        /// Mask (1 bit: 1 << 12)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Read pipe These bits define the delay, in KCK_FMC clock cycles, for reading data after CAS latency. Note: The corresponding bits in the FMC_SDCR2 register is read only.
-    pub mod RPIPE {
-        /// Offset (13 bits)
-        pub const offset: u32 = 13;
-        /// Mask (2 bits: 0b11 << 13)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// This register contains the timing parameters of each SDRAM bank
-pub mod SDTR2 {
-    pub use super::SDTR1::TMRD;
-    pub use super::SDTR1::TRAS;
-    pub use super::SDTR1::TRC;
-    pub use super::SDTR1::TRCD;
-    pub use super::SDTR1::TRP;
-    pub use super::SDTR1::TWR;
-    pub use super::SDTR1::TXSR;
-}
-
-/// This register contains the control parameters for each SDRAM memory bank
-pub mod SDCR2 {
-    pub use super::SDCR1::CAS;
-    pub use super::SDCR1::MWID;
-    pub use super::SDCR1::NB;
-    pub use super::SDCR1::NC;
-    pub use super::SDCR1::NR;
-    pub use super::SDCR1::RBURST;
-    pub use super::SDCR1::RPIPE;
-    pub use super::SDCR1::SDCLK;
-    pub use super::SDCR1::WP;
 }
 #[repr(C)]
 pub struct RegisterBlock {

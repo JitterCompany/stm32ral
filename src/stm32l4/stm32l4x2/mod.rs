@@ -34,7 +34,7 @@ pub use super::instances::gpio_l4x1_l4x2_l4x3 as gpio;
 pub use super::instances::lptim;
 pub use super::instances::lpuart1_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as lpuart1;
 pub use super::instances::mpu_l412_l4x1_l4x2_l4x3_l4x5_l4x6 as mpu;
-pub use super::instances::nvic;
+pub use super::instances::nvic_l412_l4r9_l4x1_l4x2_l4x3_l4x5_l4x6 as nvic;
 pub use super::instances::nvic_stir;
 pub use super::instances::opamp_l4x1_l4x2_l4x3_l4x5_l4x6 as opamp;
 pub use super::instances::pwr;

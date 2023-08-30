@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flexible memory controller
 //!
-//! Used by: stm32f302, stm32f303, stm32f3x8
+//! Used by: stm32f302, stm32f303
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

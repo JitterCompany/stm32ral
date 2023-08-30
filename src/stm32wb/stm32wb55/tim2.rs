@@ -1397,12 +1397,12 @@ pub mod CCER {
 /// counter
 pub mod CNT {
 
-    /// Counter value
-    pub mod CNT {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (32 bits: 0xffffffff << 0)
-        pub const mask: u32 = 0xffffffff << offset;
+    /// Copy of ISR.UIF when CR1.UIFREMAP=1
+    pub mod UIFCPY {
+        /// Offset (31 bits)
+        pub const offset: u32 = 31;
+        /// Mask (1 bit: 1 << 31)
+        pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1411,12 +1411,26 @@ pub mod CNT {
         pub mod RW {}
     }
 
-    /// Value depends on IUFREMAP in TIM2_CR1.
-    pub mod UIFCPY {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
+    /// Counter value when CR1.UIFREMAP=1
+    pub mod UIFREMAP_CNT {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (31 bits: 0x7fffffff << 0)
+        pub const mask: u32 = 0x7fffffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Counter value
+    pub mod CNT {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1447,26 +1461,12 @@ pub mod PSC {
 /// auto-reload register
 pub mod ARR {
 
-    /// High Auto-reload value (TIM2 only)
-    pub mod ARR_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Low Auto-reload value
-    pub mod ARR_L {
+    /// Auto-reload value
+    pub mod ARR {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1479,26 +1479,12 @@ pub mod ARR {
 /// capture/compare register 1
 pub mod CCR1 {
 
-    /// High Capture/Compare 1 value (TIM2 only)
-    pub mod CCR1_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Low Capture/Compare 1 value
-    pub mod CCR1_L {
+    /// Capture/Compare 1 value
+    pub mod CCR1 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1511,26 +1497,12 @@ pub mod CCR1 {
 /// capture/compare register 2
 pub mod CCR2 {
 
-    /// High Capture/Compare 2 value (TIM2 only)
-    pub mod CCR2_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Low Capture/Compare 2 value
-    pub mod CCR2_L {
+    /// Capture/Compare 2 value
+    pub mod CCR2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1543,26 +1515,12 @@ pub mod CCR2 {
 /// capture/compare register 3
 pub mod CCR3 {
 
-    /// High Capture/Compare value (TIM2 only)
-    pub mod CCR3_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Low Capture/Compare value
-    pub mod CCR3_L {
+    /// Capture/Compare 3 value
+    pub mod CCR3 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1575,26 +1533,12 @@ pub mod CCR3 {
 /// capture/compare register 4
 pub mod CCR4 {
 
-    /// High Capture/Compare value (TIM2 only)
-    pub mod CCR4_H {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (16 bits: 0xffff << 16)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Low Capture/Compare value
-    pub mod CCR4_L {
+    /// Capture/Compare 4 value
+    pub mod CCR4 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
+        /// Mask (32 bits: 0xffffffff << 0)
+        pub const mask: u32 = 0xffffffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)

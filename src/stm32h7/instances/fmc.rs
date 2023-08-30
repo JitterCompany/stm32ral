@@ -44,13 +44,13 @@ pub mod FMC {
         BWTR2: 0x0FFFFFFF,
         BWTR3: 0x0FFFFFFF,
         BWTR4: 0x0FFFFFFF,
+        SDCR1: 0x000002D0,
+        SDCR2: 0x000002D0,
+        SDTR1: 0x0FFFFFFF,
+        SDTR2: 0x0FFFFFFF,
         SDCMR: 0x00000000,
         SDRTR: 0x00000000,
         SDSR: 0x00000000,
-        SDTR1: 0x0FFFFFFF,
-        SDCR1: 0x000002D0,
-        SDTR2: 0x0FFFFFFF,
-        SDCR2: 0x000002D0,
     };
 
     #[cfg(not(feature = "nosync"))]

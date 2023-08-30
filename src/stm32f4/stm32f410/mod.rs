@@ -17,7 +17,7 @@ pub mod flash;
 pub use super::instances::iwdg;
 pub mod pwr;
 pub mod rcc;
-pub use super::instances::rtc_f401_f410_f411_f412_f413 as rtc;
+pub use super::instances::rtc;
 pub use super::instances::syscfg_f410_f412_f413 as syscfg;
 pub use super::instances::tim1;
 pub use super::instances::tim11_f410_f412_f413_f446_f469 as tim11;

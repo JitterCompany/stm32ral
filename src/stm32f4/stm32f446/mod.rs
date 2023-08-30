@@ -18,11 +18,17 @@ pub mod spi;
 pub mod syscfg;
 pub use super::instances::adc;
 pub use super::instances::adc_common_f405_f407_f427_f429_f446_f469 as adc_common;
+pub use super::instances::can;
 pub use super::instances::crc;
 pub use super::instances::dac;
 pub use super::instances::i2c_f401_f411_f412_f427_f429_f446_f469 as i2c;
 pub use super::instances::iwdg;
-pub use super::instances::rtc_f405_f407_f427_f429_f446_f469 as rtc;
+pub use super::instances::nvic_f427_f429_f446_f469 as nvic;
+pub use super::instances::otg_fs_device_f405_f407_f412_f427_f429_f446_f469 as otg_fs_device;
+pub use super::instances::otg_fs_global_f446_f469 as otg_fs_global;
+pub use super::instances::otg_fs_host_f405_f407_f412_f413_f427_f429_f446_f469 as otg_fs_host;
+pub use super::instances::otg_fs_pwrclk;
+pub use super::instances::rtc;
 pub use super::instances::tim1;
 pub use super::instances::tim10_f412_f413_f446_f469 as tim10;
 pub use super::instances::tim11_f410_f412_f413_f446_f469 as tim11;
@@ -37,20 +43,15 @@ pub use super::instances::tim6;
 pub use super::instances::tim7;
 pub use super::instances::tim8;
 pub use super::instances::tim9_f401_f405_f407_f410_f411_f427_f429_f446 as tim9;
-pub use super::instances::uart_f427_f429_f446_f469 as uart;
-pub use super::instances::usart_f405_f407_f446 as usart;
+pub use super::instances::uart_f405_f446 as uart;
+pub use super::instances::usart_f405_f407_f427_f429_f446_f469 as usart;
 pub use super::instances::wwdg;
-pub mod otg_fs_global;
-pub use super::instances::otg_fs_host_f412_f413_f446_f469 as otg_fs_host;
-pub mod otg_fs_device;
-pub use super::instances::can;
-pub use super::instances::nvic_f427_f429_f446_f469 as nvic;
-pub use super::instances::otg_s_pwrclk;
 pub mod flash;
 pub use super::instances::exti;
-pub use super::instances::otg_hs_device;
-pub use super::instances::otg_hs_global;
-pub use super::instances::otg_hs_host;
+pub use super::instances::otg_hs_device_f446_f469 as otg_hs_device;
+pub use super::instances::otg_hs_global_f446_f469 as otg_hs_global;
+pub use super::instances::otg_hs_host_f446_f469 as otg_hs_host;
+pub use super::instances::otg_hs_pwrclk;
 pub mod pwr;
 pub mod sai;
 pub use super::instances::quadspi;
@@ -123,8 +124,7 @@ pub struct Peripherals {
     pub OTG_FS_GLOBAL: otg_fs_global::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
     pub OTG_FS_DEVICE: otg_fs_device::Instance,
-    pub OTG_FS_PWRCLK: otg_s_pwrclk::Instance,
-    pub OTG_HS_PWRCLK: otg_s_pwrclk::Instance,
+    pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
     pub CAN1: can::Instance,
     pub CAN2: can::Instance,
     pub NVIC: nvic::Instance,
@@ -133,6 +133,7 @@ pub struct Peripherals {
     pub OTG_HS_GLOBAL: otg_hs_global::Instance,
     pub OTG_HS_HOST: otg_hs_host::Instance,
     pub OTG_HS_DEVICE: otg_hs_device::Instance,
+    pub OTG_HS_PWRCLK: otg_hs_pwrclk::Instance,
     pub SAI1: sai::Instance,
     pub SAI2: sai::Instance,
     pub PWR: pwr::Instance,
@@ -212,8 +213,7 @@ impl Peripherals {
             OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
             OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
-            OTG_FS_PWRCLK: otg_s_pwrclk::OTG_FS_PWRCLK::steal(),
-            OTG_HS_PWRCLK: otg_s_pwrclk::OTG_HS_PWRCLK::steal(),
+            OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),
             CAN1: can::CAN1::steal(),
             CAN2: can::CAN2::steal(),
             NVIC: nvic::NVIC::steal(),
@@ -222,6 +222,7 @@ impl Peripherals {
             OTG_HS_GLOBAL: otg_hs_global::OTG_HS_GLOBAL::steal(),
             OTG_HS_HOST: otg_hs_host::OTG_HS_HOST::steal(),
             OTG_HS_DEVICE: otg_hs_device::OTG_HS_DEVICE::steal(),
+            OTG_HS_PWRCLK: otg_hs_pwrclk::OTG_HS_PWRCLK::steal(),
             SAI1: sai::SAI1::steal(),
             SAI2: sai::SAI2::steal(),
             PWR: pwr::PWR::steal(),

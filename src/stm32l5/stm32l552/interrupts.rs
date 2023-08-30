@@ -8,6 +8,7 @@ extern "C" {
     fn TAMP_S();
     fn FLASH();
     fn FLASH_S();
+    fn GTZC();
     fn RCC();
     fn RCC_S();
     fn EXTI0();
@@ -37,6 +38,7 @@ extern "C" {
     fn DMA1_CH7();
     fn DMA1_Channel8();
     fn ADC1_2();
+    fn DAC();
     fn FDCAN1_IT0();
     fn FDCAN1_IT1();
     fn TIM1_BRK();
@@ -72,6 +74,7 @@ extern "C" {
     fn TIM17();
     fn COMP();
     fn USB_FS();
+    fn CRS();
     fn FMC();
     fn OCTOSPI1();
     fn SDMMC1();
@@ -89,6 +92,7 @@ extern "C" {
     fn SAI2();
     fn TSC();
     fn RNG();
+    fn HASH();
     fn LPTIM3();
     fn SPI3();
     fn I2C4_ER();
@@ -120,7 +124,7 @@ pub static __INTERRUPTS: [Vector; 108] = [
     Vector { _handler: TAMP_S },
     Vector { _handler: FLASH },
     Vector { _handler: FLASH_S },
-    Vector { _reserved: 0 },
+    Vector { _handler: GTZC },
     Vector { _handler: RCC },
     Vector { _handler: RCC_S },
     Vector { _handler: EXTI0 },
@@ -156,7 +160,7 @@ pub static __INTERRUPTS: [Vector; 108] = [
         _handler: DMA1_Channel8,
     },
     Vector { _handler: ADC1_2 },
-    Vector { _reserved: 0 },
+    Vector { _handler: DAC },
     Vector {
         _handler: FDCAN1_IT0,
     },
@@ -200,7 +204,7 @@ pub static __INTERRUPTS: [Vector; 108] = [
     Vector { _handler: TIM17 },
     Vector { _handler: COMP },
     Vector { _handler: USB_FS },
-    Vector { _reserved: 0 },
+    Vector { _handler: CRS },
     Vector { _handler: FMC },
     Vector { _handler: OCTOSPI1 },
     Vector { _reserved: 0 },
@@ -222,7 +226,7 @@ pub static __INTERRUPTS: [Vector; 108] = [
     Vector { _reserved: 0 },
     Vector { _handler: RNG },
     Vector { _reserved: 0 },
-    Vector { _reserved: 0 },
+    Vector { _handler: HASH },
     Vector { _reserved: 0 },
     Vector { _handler: LPTIM3 },
     Vector { _handler: SPI3 },
@@ -265,6 +269,8 @@ pub enum Interrupt {
     FLASH = 6,
     /// 7: Flash memory secure global interrupt
     FLASH_S = 7,
+    /// 8: TZIC secure global interrupt
+    GTZC = 8,
     /// 9: RCC global interrupt
     RCC = 9,
     /// 10: RCC SECURE GLOBAL INTERRUPT
@@ -323,6 +329,8 @@ pub enum Interrupt {
     DMA1_Channel8 = 36,
     /// 37: ADC1_2 global interrupt
     ADC1_2 = 37,
+    /// 38: DAC global interrupt
+    DAC = 38,
     /// 39: FDCAN1 Interrupt 0
     FDCAN1_IT0 = 39,
     /// 40: FDCAN1 Interrupt 1
@@ -393,6 +401,8 @@ pub enum Interrupt {
     COMP = 72,
     /// 73: USB FS global interrupt
     USB_FS = 73,
+    /// 74: Clock recovery system global interrupt
+    CRS = 74,
     /// 75: FMC global interrupt
     FMC = 75,
     /// 76: OCTOSPI1 global interrupt
@@ -427,6 +437,8 @@ pub enum Interrupt {
     TSC = 92,
     /// 94: RNG global interrupt
     RNG = 94,
+    /// 96: HASH interrupt
+    HASH = 96,
     /// 98: LPTIM3
     LPTIM3 = 98,
     /// 99: SPI3

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f412, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f412, stm32f427, stm32f429, stm32f446, stm32f469
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -469,8 +469,8 @@ pub mod DAINTMSK {
         pub mod RW {}
     }
 
-    /// OUT endpoint interrupt bits
-    pub mod OEPINT {
+    /// OUT EP interrupt mask bits
+    pub mod OEPM {
         /// Offset (16 bits)
         pub const offset: u32 = 16;
         /// Mask (16 bits: 0xffff << 16)
@@ -539,7 +539,7 @@ pub mod DIEPEMPMSK {
 }
 
 /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
-pub mod DIEPCTL0 {
+pub mod CTL {
 
     /// Maximum packet size
     pub mod MPSIZ {
@@ -682,8 +682,146 @@ pub mod DIEPCTL0 {
     }
 }
 
+/// device endpoint-x interrupt register
+pub mod INT {
+
+    /// TXFE
+    pub mod TXFE {
+        /// Offset (7 bits)
+        pub const offset: u32 = 7;
+        /// Mask (1 bit: 1 << 7)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// INEPNE
+    pub mod INEPNE {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// ITTXFE
+    pub mod ITTXFE {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// TOC
+    pub mod TOC {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// EPDISD
+    pub mod EPDISD {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// XFRC
+    pub mod XFRC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// device endpoint-0 transfer size register
+pub mod TSIZ {
+
+    /// Packet count
+    pub mod PKTCNT {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (2 bits: 0b11 << 19)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Transfer size
+    pub mod XFRSIZ {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (7 bits: 0x7f << 0)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// OTG_FS device IN endpoint transmit FIFO status register
+pub mod TXFSTS {
+
+    /// IN endpoint TxFIFO space available
+    pub mod INEPTFSAV {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// OTG device endpoint-1 control register
-pub mod DIEPCTL1 {
+pub mod CTL1 {
 
     /// EPENA
     pub mod EPENA {
@@ -783,8 +921,8 @@ pub mod DIEPCTL1 {
         pub mod RW {}
     }
 
-    /// Stall
-    pub mod Stall {
+    /// STALL handshake
+    pub mod STALL {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -868,126 +1006,24 @@ pub mod DIEPCTL1 {
     }
 }
 
-/// OTG device endpoint-2 control register
-pub mod DIEPCTL2 {
+/// device endpoint-1 interrupt register
+pub mod INT1 {
+    pub use super::INT::EPDISD;
+    pub use super::INT::INEPNE;
+    pub use super::INT::ITTXFE;
+    pub use super::INT::TOC;
+    pub use super::INT::TXFE;
+    pub use super::INT::XFRC;
+}
 
-    /// EPENA
-    pub mod EPENA {
-        /// Offset (31 bits)
-        pub const offset: u32 = 31;
-        /// Mask (1 bit: 1 << 31)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
+/// device endpoint-1 transfer size register
+pub mod TSIZ1 {
 
-    /// EPDIS
-    pub mod EPDIS {
-        /// Offset (30 bits)
-        pub const offset: u32 = 30;
-        /// Mask (1 bit: 1 << 30)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SODDFRM
-    pub mod SODDFRM {
+    /// Multi count
+    pub mod MCNT {
         /// Offset (29 bits)
         pub const offset: u32 = 29;
-        /// Mask (1 bit: 1 << 29)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SD0PID/SEVNFRM
-    pub mod SD0PID_SEVNFRM {
-        /// Offset (28 bits)
-        pub const offset: u32 = 28;
-        /// Mask (1 bit: 1 << 28)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// SNAK
-    pub mod SNAK {
-        /// Offset (27 bits)
-        pub const offset: u32 = 27;
-        /// Mask (1 bit: 1 << 27)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// CNAK
-    pub mod CNAK {
-        /// Offset (26 bits)
-        pub const offset: u32 = 26;
-        /// Mask (1 bit: 1 << 26)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TXFNUM
-    pub mod TXFNUM {
-        /// Offset (22 bits)
-        pub const offset: u32 = 22;
-        /// Mask (4 bits: 0b1111 << 22)
-        pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Stall
-    pub mod Stall {
-        /// Offset (21 bits)
-        pub const offset: u32 = 21;
-        /// Mask (1 bit: 1 << 21)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EPTYP
-    pub mod EPTYP {
-        /// Offset (18 bits)
-        pub const offset: u32 = 18;
-        /// Mask (2 bits: 0b11 << 18)
+        /// Mask (2 bits: 0b11 << 29)
         pub const mask: u32 = 0b11 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -997,12 +1033,12 @@ pub mod DIEPCTL2 {
         pub mod RW {}
     }
 
-    /// NAKSTS
-    pub mod NAKSTS {
-        /// Offset (17 bits)
-        pub const offset: u32 = 17;
-        /// Mask (1 bit: 1 << 17)
-        pub const mask: u32 = 1 << offset;
+    /// Packet count
+    pub mod PKTCNT {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (10 bits: 0x3ff << 19)
+        pub const mask: u32 = 0x3ff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1011,40 +1047,12 @@ pub mod DIEPCTL2 {
         pub mod RW {}
     }
 
-    /// EONUM/DPID
-    pub mod EONUM_DPID {
-        /// Offset (16 bits)
-        pub const offset: u32 = 16;
-        /// Mask (1 bit: 1 << 16)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// USBAEP
-    pub mod USBAEP {
-        /// Offset (15 bits)
-        pub const offset: u32 = 15;
-        /// Mask (1 bit: 1 << 15)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// MPSIZ
-    pub mod MPSIZ {
+    /// Transfer size
+    pub mod XFRSIZ {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
-        /// Mask (11 bits: 0x7ff << 0)
-        pub const mask: u32 = 0x7ff << offset;
+        /// Mask (19 bits: 0x7ffff << 0)
+        pub const mask: u32 = 0x7ffff << offset;
         /// Read-only values (empty)
         pub mod R {}
         /// Write-only values (empty)
@@ -1054,25 +1062,169 @@ pub mod DIEPCTL2 {
     }
 }
 
-/// OTG device endpoint-3 control register
-pub mod DIEPCTL3 {
-    pub use super::DIEPCTL2::Stall;
-    pub use super::DIEPCTL2::CNAK;
-    pub use super::DIEPCTL2::EONUM_DPID;
-    pub use super::DIEPCTL2::EPDIS;
-    pub use super::DIEPCTL2::EPENA;
-    pub use super::DIEPCTL2::EPTYP;
-    pub use super::DIEPCTL2::MPSIZ;
-    pub use super::DIEPCTL2::NAKSTS;
-    pub use super::DIEPCTL2::SD0PID_SEVNFRM;
-    pub use super::DIEPCTL2::SNAK;
-    pub use super::DIEPCTL2::SODDFRM;
-    pub use super::DIEPCTL2::TXFNUM;
-    pub use super::DIEPCTL2::USBAEP;
+/// OTG_FS device IN endpoint transmit FIFO status register
+pub mod TXFSTS1 {
+    pub use super::TXFSTS::INEPTFSAV;
+}
+
+/// OTG device endpoint-1 control register
+pub mod CTL2 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SODDFRM_SD1PID;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::TXFNUM;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT2 {
+    pub use super::INT::EPDISD;
+    pub use super::INT::INEPNE;
+    pub use super::INT::ITTXFE;
+    pub use super::INT::TOC;
+    pub use super::INT::TXFE;
+    pub use super::INT::XFRC;
+}
+
+/// device endpoint-1 transfer size register
+pub mod TSIZ2 {
+    pub use super::TSIZ1::MCNT;
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// OTG_FS device IN endpoint transmit FIFO status register
+pub mod TXFSTS2 {
+    pub use super::TXFSTS::INEPTFSAV;
+}
+
+/// OTG device endpoint-1 control register
+pub mod CTL3 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SODDFRM_SD1PID;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::TXFNUM;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT3 {
+    pub use super::INT::EPDISD;
+    pub use super::INT::INEPNE;
+    pub use super::INT::ITTXFE;
+    pub use super::INT::TOC;
+    pub use super::INT::TXFE;
+    pub use super::INT::XFRC;
+}
+
+/// device endpoint-1 transfer size register
+pub mod TSIZ3 {
+    pub use super::TSIZ1::MCNT;
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// OTG_FS device IN endpoint transmit FIFO status register
+pub mod TXFSTS3 {
+    pub use super::TXFSTS::INEPTFSAV;
+}
+
+/// OTG device endpoint-1 control register
+pub mod CTL4 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SODDFRM_SD1PID;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::TXFNUM;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT4 {
+    pub use super::INT::EPDISD;
+    pub use super::INT::INEPNE;
+    pub use super::INT::ITTXFE;
+    pub use super::INT::TOC;
+    pub use super::INT::TXFE;
+    pub use super::INT::XFRC;
+}
+
+/// device endpoint-1 transfer size register
+pub mod TSIZ4 {
+    pub use super::TSIZ1::MCNT;
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// OTG_FS device IN endpoint transmit FIFO status register
+pub mod TXFSTS4 {
+    pub use super::TXFSTS::INEPTFSAV;
+}
+
+/// OTG device endpoint-1 control register
+pub mod CTL5 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SODDFRM_SD1PID;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::TXFNUM;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT5 {
+    pub use super::INT::EPDISD;
+    pub use super::INT::INEPNE;
+    pub use super::INT::ITTXFE;
+    pub use super::INT::TOC;
+    pub use super::INT::TXFE;
+    pub use super::INT::XFRC;
+}
+
+/// device endpoint-1 transfer size register
+pub mod TSIZ5 {
+    pub use super::TSIZ1::MCNT;
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// OTG_FS device IN endpoint transmit FIFO status register
+pub mod TXFSTS5 {
+    pub use super::TXFSTS::INEPTFSAV;
 }
 
 /// device endpoint-0 control register
-pub mod DOEPCTL0 {
+pub mod CTL {
 
     /// EPENA
     pub mod EPENA {
@@ -1130,8 +1282,8 @@ pub mod DOEPCTL0 {
         pub mod RW {}
     }
 
-    /// Stall
-    pub mod Stall {
+    /// STALL handshake
+    pub mod STALL {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1215,8 +1367,128 @@ pub mod DOEPCTL0 {
     }
 }
 
+/// device endpoint-0 interrupt register
+pub mod INT {
+
+    /// B2BSTUP
+    pub mod B2BSTUP {
+        /// Offset (6 bits)
+        pub const offset: u32 = 6;
+        /// Mask (1 bit: 1 << 6)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// OTEPDIS
+    pub mod OTEPDIS {
+        /// Offset (4 bits)
+        pub const offset: u32 = 4;
+        /// Mask (1 bit: 1 << 4)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// STUP
+    pub mod STUP {
+        /// Offset (3 bits)
+        pub const offset: u32 = 3;
+        /// Mask (1 bit: 1 << 3)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// EPDISD
+    pub mod EPDISD {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// XFRC
+    pub mod XFRC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
+/// device OUT endpoint-0 transfer size register
+pub mod TSIZ {
+
+    /// SETUP packet count
+    pub mod STUPCNT {
+        /// Offset (29 bits)
+        pub const offset: u32 = 29;
+        /// Mask (2 bits: 0b11 << 29)
+        pub const mask: u32 = 0b11 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Packet count
+    pub mod PKTCNT {
+        /// Offset (19 bits)
+        pub const offset: u32 = 19;
+        /// Mask (1 bit: 1 << 19)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Transfer size
+    pub mod XFRSIZ {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (7 bits: 0x7f << 0)
+        pub const mask: u32 = 0x7f << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
+
 /// device endpoint-1 control register
-pub mod DOEPCTL1 {
+pub mod CTL1 {
 
     /// EPENA
     pub mod EPENA {
@@ -1302,8 +1574,8 @@ pub mod DOEPCTL1 {
         pub mod RW {}
     }
 
-    /// Stall
-    pub mod Stall {
+    /// STALL handshake
+    pub mod STALL {
         /// Offset (21 bits)
         pub const offset: u32 = 21;
         /// Mask (1 bit: 1 << 21)
@@ -1401,432 +1673,17 @@ pub mod DOEPCTL1 {
     }
 }
 
-/// device endpoint-2 control register
-pub mod DOEPCTL2 {
-    pub use super::DOEPCTL1::Stall;
-    pub use super::DOEPCTL1::CNAK;
-    pub use super::DOEPCTL1::EONUM_DPID;
-    pub use super::DOEPCTL1::EPDIS;
-    pub use super::DOEPCTL1::EPENA;
-    pub use super::DOEPCTL1::EPTYP;
-    pub use super::DOEPCTL1::MPSIZ;
-    pub use super::DOEPCTL1::NAKSTS;
-    pub use super::DOEPCTL1::SD0PID_SEVNFRM;
-    pub use super::DOEPCTL1::SNAK;
-    pub use super::DOEPCTL1::SNPM;
-    pub use super::DOEPCTL1::SODDFRM;
-    pub use super::DOEPCTL1::USBAEP;
-}
-
-/// device endpoint-3 control register
-pub mod DOEPCTL3 {
-    pub use super::DOEPCTL1::Stall;
-    pub use super::DOEPCTL1::CNAK;
-    pub use super::DOEPCTL1::EONUM_DPID;
-    pub use super::DOEPCTL1::EPDIS;
-    pub use super::DOEPCTL1::EPENA;
-    pub use super::DOEPCTL1::EPTYP;
-    pub use super::DOEPCTL1::MPSIZ;
-    pub use super::DOEPCTL1::NAKSTS;
-    pub use super::DOEPCTL1::SD0PID_SEVNFRM;
-    pub use super::DOEPCTL1::SNAK;
-    pub use super::DOEPCTL1::SNPM;
-    pub use super::DOEPCTL1::SODDFRM;
-    pub use super::DOEPCTL1::USBAEP;
-}
-
-/// device endpoint-x interrupt register
-pub mod DIEPINT0 {
-
-    /// TXFE
-    pub mod TXFE {
-        /// Offset (7 bits)
-        pub const offset: u32 = 7;
-        /// Mask (1 bit: 1 << 7)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// INEPNE
-    pub mod INEPNE {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// ITTXFE
-    pub mod ITTXFE {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// TOC
-    pub mod TOC {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EPDISD
-    pub mod EPDISD {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// XFRC
-    pub mod XFRC {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
 /// device endpoint-1 interrupt register
-pub mod DIEPINT1 {
-    pub use super::DIEPINT0::EPDISD;
-    pub use super::DIEPINT0::INEPNE;
-    pub use super::DIEPINT0::ITTXFE;
-    pub use super::DIEPINT0::TOC;
-    pub use super::DIEPINT0::TXFE;
-    pub use super::DIEPINT0::XFRC;
-}
-
-/// device endpoint-2 interrupt register
-pub mod DIEPINT2 {
-    pub use super::DIEPINT0::EPDISD;
-    pub use super::DIEPINT0::INEPNE;
-    pub use super::DIEPINT0::ITTXFE;
-    pub use super::DIEPINT0::TOC;
-    pub use super::DIEPINT0::TXFE;
-    pub use super::DIEPINT0::XFRC;
-}
-
-/// device endpoint-3 interrupt register
-pub mod DIEPINT3 {
-    pub use super::DIEPINT0::EPDISD;
-    pub use super::DIEPINT0::INEPNE;
-    pub use super::DIEPINT0::ITTXFE;
-    pub use super::DIEPINT0::TOC;
-    pub use super::DIEPINT0::TXFE;
-    pub use super::DIEPINT0::XFRC;
-}
-
-/// device endpoint-0 interrupt register
-pub mod DOEPINT0 {
-
-    /// B2BSTUP
-    pub mod B2BSTUP {
-        /// Offset (6 bits)
-        pub const offset: u32 = 6;
-        /// Mask (1 bit: 1 << 6)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// OTEPDIS
-    pub mod OTEPDIS {
-        /// Offset (4 bits)
-        pub const offset: u32 = 4;
-        /// Mask (1 bit: 1 << 4)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// STUP
-    pub mod STUP {
-        /// Offset (3 bits)
-        pub const offset: u32 = 3;
-        /// Mask (1 bit: 1 << 3)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// EPDISD
-    pub mod EPDISD {
-        /// Offset (1 bits)
-        pub const offset: u32 = 1;
-        /// Mask (1 bit: 1 << 1)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// XFRC
-    pub mod XFRC {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (1 bit: 1 << 0)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// device endpoint-1 interrupt register
-pub mod DOEPINT1 {
-    pub use super::DOEPINT0::B2BSTUP;
-    pub use super::DOEPINT0::EPDISD;
-    pub use super::DOEPINT0::OTEPDIS;
-    pub use super::DOEPINT0::STUP;
-    pub use super::DOEPINT0::XFRC;
-}
-
-/// device endpoint-2 interrupt register
-pub mod DOEPINT2 {
-    pub use super::DOEPINT0::B2BSTUP;
-    pub use super::DOEPINT0::EPDISD;
-    pub use super::DOEPINT0::OTEPDIS;
-    pub use super::DOEPINT0::STUP;
-    pub use super::DOEPINT0::XFRC;
-}
-
-/// device endpoint-3 interrupt register
-pub mod DOEPINT3 {
-    pub use super::DOEPINT0::B2BSTUP;
-    pub use super::DOEPINT0::EPDISD;
-    pub use super::DOEPINT0::OTEPDIS;
-    pub use super::DOEPINT0::STUP;
-    pub use super::DOEPINT0::XFRC;
-}
-
-/// device endpoint-0 transfer size register
-pub mod DIEPTSIZ0 {
-
-    /// Packet count
-    pub mod PKTCNT {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (2 bits: 0b11 << 19)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Transfer size
-    pub mod XFRSIZ {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (7 bits: 0x7f << 0)
-        pub const mask: u32 = 0x7f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// device OUT endpoint-0 transfer size register
-pub mod DOEPTSIZ0 {
-
-    /// SETUP packet count
-    pub mod STUPCNT {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (2 bits: 0b11 << 29)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Packet count
-    pub mod PKTCNT {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (1 bit: 1 << 19)
-        pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Transfer size
-    pub mod XFRSIZ {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (7 bits: 0x7f << 0)
-        pub const mask: u32 = 0x7f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// device endpoint-1 transfer size register
-pub mod DIEPTSIZ1 {
-
-    /// Multi count
-    pub mod MCNT {
-        /// Offset (29 bits)
-        pub const offset: u32 = 29;
-        /// Mask (2 bits: 0b11 << 29)
-        pub const mask: u32 = 0b11 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Packet count
-    pub mod PKTCNT {
-        /// Offset (19 bits)
-        pub const offset: u32 = 19;
-        /// Mask (10 bits: 0x3ff << 19)
-        pub const mask: u32 = 0x3ff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-
-    /// Transfer size
-    pub mod XFRSIZ {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (19 bits: 0x7ffff << 0)
-        pub const mask: u32 = 0x7ffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// device endpoint-2 transfer size register
-pub mod DIEPTSIZ2 {
-    pub use super::DIEPTSIZ1::MCNT;
-    pub use super::DIEPTSIZ1::PKTCNT;
-    pub use super::DIEPTSIZ1::XFRSIZ;
-}
-
-/// device endpoint-3 transfer size register
-pub mod DIEPTSIZ3 {
-    pub use super::DIEPTSIZ1::MCNT;
-    pub use super::DIEPTSIZ1::PKTCNT;
-    pub use super::DIEPTSIZ1::XFRSIZ;
-}
-
-/// OTG_FS device IN endpoint transmit FIFO status register
-pub mod DTXFSTS0 {
-
-    /// IN endpoint TxFIFO space available
-    pub mod INEPTFSAV {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
-
-/// OTG_FS device IN endpoint transmit FIFO status register
-pub mod DTXFSTS1 {
-    pub use super::DTXFSTS0::INEPTFSAV;
-}
-
-/// OTG_FS device IN endpoint transmit FIFO status register
-pub mod DTXFSTS2 {
-    pub use super::DTXFSTS0::INEPTFSAV;
-}
-
-/// OTG_FS device IN endpoint transmit FIFO status register
-pub mod DTXFSTS3 {
-    pub use super::DTXFSTS0::INEPTFSAV;
+pub mod INT1 {
+    pub use super::INT::B2BSTUP;
+    pub use super::INT::EPDISD;
+    pub use super::INT::OTEPDIS;
+    pub use super::INT::STUP;
+    pub use super::INT::XFRC;
 }
 
 /// device OUT endpoint-1 transfer size register
-pub mod DOEPTSIZ1 {
+pub mod TSIZ1 {
 
     /// Received data PID/SETUP packet count
     pub mod RXDPID_STUPCNT {
@@ -1871,18 +1728,136 @@ pub mod DOEPTSIZ1 {
     }
 }
 
-/// device OUT endpoint-2 transfer size register
-pub mod DOEPTSIZ2 {
-    pub use super::DOEPTSIZ1::PKTCNT;
-    pub use super::DOEPTSIZ1::RXDPID_STUPCNT;
-    pub use super::DOEPTSIZ1::XFRSIZ;
+/// device endpoint-1 control register
+pub mod CTL2 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SNPM;
+    pub use super::CTL1::SODDFRM;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::USBAEP;
 }
 
-/// device OUT endpoint-3 transfer size register
-pub mod DOEPTSIZ3 {
-    pub use super::DOEPTSIZ1::PKTCNT;
-    pub use super::DOEPTSIZ1::RXDPID_STUPCNT;
-    pub use super::DOEPTSIZ1::XFRSIZ;
+/// device endpoint-1 interrupt register
+pub mod INT2 {
+    pub use super::INT::B2BSTUP;
+    pub use super::INT::EPDISD;
+    pub use super::INT::OTEPDIS;
+    pub use super::INT::STUP;
+    pub use super::INT::XFRC;
+}
+
+/// device OUT endpoint-1 transfer size register
+pub mod TSIZ2 {
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::RXDPID_STUPCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// device endpoint-1 control register
+pub mod CTL3 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SNPM;
+    pub use super::CTL1::SODDFRM;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT3 {
+    pub use super::INT::B2BSTUP;
+    pub use super::INT::EPDISD;
+    pub use super::INT::OTEPDIS;
+    pub use super::INT::STUP;
+    pub use super::INT::XFRC;
+}
+
+/// device OUT endpoint-1 transfer size register
+pub mod TSIZ3 {
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::RXDPID_STUPCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// device endpoint-1 control register
+pub mod CTL4 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SNPM;
+    pub use super::CTL1::SODDFRM;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT4 {
+    pub use super::INT::B2BSTUP;
+    pub use super::INT::EPDISD;
+    pub use super::INT::OTEPDIS;
+    pub use super::INT::STUP;
+    pub use super::INT::XFRC;
+}
+
+/// device OUT endpoint-1 transfer size register
+pub mod TSIZ4 {
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::RXDPID_STUPCNT;
+    pub use super::TSIZ1::XFRSIZ;
+}
+
+/// device endpoint-1 control register
+pub mod CTL5 {
+    pub use super::CTL1::CNAK;
+    pub use super::CTL1::EONUM_DPID;
+    pub use super::CTL1::EPDIS;
+    pub use super::CTL1::EPENA;
+    pub use super::CTL1::EPTYP;
+    pub use super::CTL1::MPSIZ;
+    pub use super::CTL1::NAKSTS;
+    pub use super::CTL1::SD0PID_SEVNFRM;
+    pub use super::CTL1::SNAK;
+    pub use super::CTL1::SNPM;
+    pub use super::CTL1::SODDFRM;
+    pub use super::CTL1::STALL;
+    pub use super::CTL1::USBAEP;
+}
+
+/// device endpoint-1 interrupt register
+pub mod INT5 {
+    pub use super::INT::B2BSTUP;
+    pub use super::INT::EPDISD;
+    pub use super::INT::OTEPDIS;
+    pub use super::INT::STUP;
+    pub use super::INT::XFRC;
+}
+
+/// device OUT endpoint-1 transfer size register
+pub mod TSIZ5 {
+    pub use super::TSIZ1::PKTCNT;
+    pub use super::TSIZ1::RXDPID_STUPCNT;
+    pub use super::TSIZ1::XFRSIZ;
 }
 #[repr(C)]
 pub struct RegisterBlock {
@@ -1925,142 +1900,212 @@ pub struct RegisterBlock {
     _reserved4: [u8; 200],
 
     /// OTG_FS device control IN endpoint 0 control register (OTG_FS_DIEPCTL0)
-    pub DIEPCTL0: RWRegister<u32>,
+    pub CTL: RWRegister<u32>,
 
     _reserved5: [u8; 4],
 
     /// device endpoint-x interrupt register
-    pub DIEPINT0: RWRegister<u32>,
+    pub INT: RWRegister<u32>,
 
     _reserved6: [u8; 4],
 
     /// device endpoint-0 transfer size register
-    pub DIEPTSIZ0: RWRegister<u32>,
+    pub TSIZ: RWRegister<u32>,
 
     _reserved7: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
-    pub DTXFSTS0: RORegister<u32>,
+    pub TXFSTS: RORegister<u32>,
 
     _reserved8: [u8; 4],
 
     /// OTG device endpoint-1 control register
-    pub DIEPCTL1: RWRegister<u32>,
+    pub CTL1: RWRegister<u32>,
 
     _reserved9: [u8; 4],
 
     /// device endpoint-1 interrupt register
-    pub DIEPINT1: RWRegister<u32>,
+    pub INT1: RWRegister<u32>,
 
     _reserved10: [u8; 4],
 
     /// device endpoint-1 transfer size register
-    pub DIEPTSIZ1: RWRegister<u32>,
+    pub TSIZ1: RWRegister<u32>,
 
     _reserved11: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
-    pub DTXFSTS1: RORegister<u32>,
+    pub TXFSTS1: RORegister<u32>,
 
     _reserved12: [u8; 4],
 
-    /// OTG device endpoint-2 control register
-    pub DIEPCTL2: RWRegister<u32>,
+    /// OTG device endpoint-1 control register
+    pub CTL2: RWRegister<u32>,
 
     _reserved13: [u8; 4],
 
-    /// device endpoint-2 interrupt register
-    pub DIEPINT2: RWRegister<u32>,
+    /// device endpoint-1 interrupt register
+    pub INT2: RWRegister<u32>,
 
     _reserved14: [u8; 4],
 
-    /// device endpoint-2 transfer size register
-    pub DIEPTSIZ2: RWRegister<u32>,
+    /// device endpoint-1 transfer size register
+    pub TSIZ2: RWRegister<u32>,
 
     _reserved15: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
-    pub DTXFSTS2: RORegister<u32>,
+    pub TXFSTS2: RORegister<u32>,
 
     _reserved16: [u8; 4],
 
-    /// OTG device endpoint-3 control register
-    pub DIEPCTL3: RWRegister<u32>,
+    /// OTG device endpoint-1 control register
+    pub CTL3: RWRegister<u32>,
 
     _reserved17: [u8; 4],
 
-    /// device endpoint-3 interrupt register
-    pub DIEPINT3: RWRegister<u32>,
+    /// device endpoint-1 interrupt register
+    pub INT3: RWRegister<u32>,
 
     _reserved18: [u8; 4],
 
-    /// device endpoint-3 transfer size register
-    pub DIEPTSIZ3: RWRegister<u32>,
+    /// device endpoint-1 transfer size register
+    pub TSIZ3: RWRegister<u32>,
 
     _reserved19: [u8; 4],
 
     /// OTG_FS device IN endpoint transmit FIFO status register
-    pub DTXFSTS3: RORegister<u32>,
+    pub TXFSTS3: RORegister<u32>,
 
-    _reserved20: [u8; 388],
+    _reserved20: [u8; 4],
 
-    /// device endpoint-0 control register
-    pub DOEPCTL0: RWRegister<u32>,
+    /// OTG device endpoint-1 control register
+    pub CTL4: RWRegister<u32>,
 
     _reserved21: [u8; 4],
 
-    /// device endpoint-0 interrupt register
-    pub DOEPINT0: RWRegister<u32>,
+    /// device endpoint-1 interrupt register
+    pub INT4: RWRegister<u32>,
 
     _reserved22: [u8; 4],
 
-    /// device OUT endpoint-0 transfer size register
-    pub DOEPTSIZ0: RWRegister<u32>,
+    /// device endpoint-1 transfer size register
+    pub TSIZ4: RWRegister<u32>,
 
-    _reserved23: [u8; 12],
+    _reserved23: [u8; 4],
 
-    /// device endpoint-1 control register
-    pub DOEPCTL1: RWRegister<u32>,
+    /// OTG_FS device IN endpoint transmit FIFO status register
+    pub TXFSTS4: RORegister<u32>,
 
     _reserved24: [u8; 4],
 
-    /// device endpoint-1 interrupt register
-    pub DOEPINT1: RWRegister<u32>,
+    /// OTG device endpoint-1 control register
+    pub CTL5: RWRegister<u32>,
 
     _reserved25: [u8; 4],
 
-    /// device OUT endpoint-1 transfer size register
-    pub DOEPTSIZ1: RWRegister<u32>,
+    /// device endpoint-1 interrupt register
+    pub INT5: RWRegister<u32>,
 
-    _reserved26: [u8; 12],
+    _reserved26: [u8; 4],
 
-    /// device endpoint-2 control register
-    pub DOEPCTL2: RWRegister<u32>,
+    /// device endpoint-1 transfer size register
+    pub TSIZ5: RWRegister<u32>,
 
     _reserved27: [u8; 4],
 
-    /// device endpoint-2 interrupt register
-    pub DOEPINT2: RWRegister<u32>,
+    /// OTG_FS device IN endpoint transmit FIFO status register
+    pub TXFSTS5: RORegister<u32>,
 
-    _reserved28: [u8; 4],
+    _reserved28: [u8; 324],
 
-    /// device OUT endpoint-2 transfer size register
-    pub DOEPTSIZ2: RWRegister<u32>,
+    /// device endpoint-0 control register
+    pub CTL: RWRegister<u32>,
 
-    _reserved29: [u8; 12],
+    _reserved29: [u8; 4],
 
-    /// device endpoint-3 control register
-    pub DOEPCTL3: RWRegister<u32>,
+    /// device endpoint-0 interrupt register
+    pub INT: RWRegister<u32>,
 
     _reserved30: [u8; 4],
 
-    /// device endpoint-3 interrupt register
-    pub DOEPINT3: RWRegister<u32>,
+    /// device OUT endpoint-0 transfer size register
+    pub TSIZ: RWRegister<u32>,
 
-    _reserved31: [u8; 4],
+    _reserved31: [u8; 12],
 
-    /// device OUT endpoint-3 transfer size register
-    pub DOEPTSIZ3: RWRegister<u32>,
+    /// device endpoint-1 control register
+    pub CTL1: RWRegister<u32>,
+
+    _reserved32: [u8; 4],
+
+    /// device endpoint-1 interrupt register
+    pub INT1: RWRegister<u32>,
+
+    _reserved33: [u8; 4],
+
+    /// device OUT endpoint-1 transfer size register
+    pub TSIZ1: RWRegister<u32>,
+
+    _reserved34: [u8; 12],
+
+    /// device endpoint-1 control register
+    pub CTL2: RWRegister<u32>,
+
+    _reserved35: [u8; 4],
+
+    /// device endpoint-1 interrupt register
+    pub INT2: RWRegister<u32>,
+
+    _reserved36: [u8; 4],
+
+    /// device OUT endpoint-1 transfer size register
+    pub TSIZ2: RWRegister<u32>,
+
+    _reserved37: [u8; 12],
+
+    /// device endpoint-1 control register
+    pub CTL3: RWRegister<u32>,
+
+    _reserved38: [u8; 4],
+
+    /// device endpoint-1 interrupt register
+    pub INT3: RWRegister<u32>,
+
+    _reserved39: [u8; 4],
+
+    /// device OUT endpoint-1 transfer size register
+    pub TSIZ3: RWRegister<u32>,
+
+    _reserved40: [u8; 12],
+
+    /// device endpoint-1 control register
+    pub CTL4: RWRegister<u32>,
+
+    _reserved41: [u8; 4],
+
+    /// device endpoint-1 interrupt register
+    pub INT4: RWRegister<u32>,
+
+    _reserved42: [u8; 4],
+
+    /// device OUT endpoint-1 transfer size register
+    pub TSIZ4: RWRegister<u32>,
+
+    _reserved43: [u8; 12],
+
+    /// device endpoint-1 control register
+    pub CTL5: RWRegister<u32>,
+
+    _reserved44: [u8; 4],
+
+    /// device endpoint-1 interrupt register
+    pub INT5: RWRegister<u32>,
+
+    _reserved45: [u8; 4],
+
+    /// device OUT endpoint-1 transfer size register
+    pub TSIZ5: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub DCFG: u32,
@@ -2073,34 +2118,48 @@ pub struct ResetValues {
     pub DVBUSDIS: u32,
     pub DVBUSPULSE: u32,
     pub DIEPEMPMSK: u32,
-    pub DIEPCTL0: u32,
-    pub DIEPINT0: u32,
-    pub DIEPTSIZ0: u32,
-    pub DTXFSTS0: u32,
-    pub DIEPCTL1: u32,
-    pub DIEPINT1: u32,
-    pub DIEPTSIZ1: u32,
-    pub DTXFSTS1: u32,
-    pub DIEPCTL2: u32,
-    pub DIEPINT2: u32,
-    pub DIEPTSIZ2: u32,
-    pub DTXFSTS2: u32,
-    pub DIEPCTL3: u32,
-    pub DIEPINT3: u32,
-    pub DIEPTSIZ3: u32,
-    pub DTXFSTS3: u32,
-    pub DOEPCTL0: u32,
-    pub DOEPINT0: u32,
-    pub DOEPTSIZ0: u32,
-    pub DOEPCTL1: u32,
-    pub DOEPINT1: u32,
-    pub DOEPTSIZ1: u32,
-    pub DOEPCTL2: u32,
-    pub DOEPINT2: u32,
-    pub DOEPTSIZ2: u32,
-    pub DOEPCTL3: u32,
-    pub DOEPINT3: u32,
-    pub DOEPTSIZ3: u32,
+    pub CTL: u32,
+    pub INT: u32,
+    pub TSIZ: u32,
+    pub TXFSTS: u32,
+    pub CTL1: u32,
+    pub INT1: u32,
+    pub TSIZ1: u32,
+    pub TXFSTS1: u32,
+    pub CTL2: u32,
+    pub INT2: u32,
+    pub TSIZ2: u32,
+    pub TXFSTS2: u32,
+    pub CTL3: u32,
+    pub INT3: u32,
+    pub TSIZ3: u32,
+    pub TXFSTS3: u32,
+    pub CTL4: u32,
+    pub INT4: u32,
+    pub TSIZ4: u32,
+    pub TXFSTS4: u32,
+    pub CTL5: u32,
+    pub INT5: u32,
+    pub TSIZ5: u32,
+    pub TXFSTS5: u32,
+    pub CTL: u32,
+    pub INT: u32,
+    pub TSIZ: u32,
+    pub CTL1: u32,
+    pub INT1: u32,
+    pub TSIZ1: u32,
+    pub CTL2: u32,
+    pub INT2: u32,
+    pub TSIZ2: u32,
+    pub CTL3: u32,
+    pub INT3: u32,
+    pub TSIZ3: u32,
+    pub CTL4: u32,
+    pub INT4: u32,
+    pub TSIZ4: u32,
+    pub CTL5: u32,
+    pub INT5: u32,
+    pub TSIZ5: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

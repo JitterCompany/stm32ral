@@ -36,10 +36,10 @@ pub mod ethernet_mac;
 pub mod ethernet_mmc;
 pub use super::instances::ethernet_ptp;
 pub mod ethernet_dma;
-pub mod otg_fs_global;
-pub mod usb_otg_host;
 pub use super::instances::dac_f101_f103_f107 as dac;
 pub use super::instances::otg_fs_device;
+pub use super::instances::otg_fs_global;
+pub use super::instances::otg_fs_host;
 pub use super::instances::otg_fs_pwrclk;
 pub mod dbgmcu;
 pub use super::instances::crc;
@@ -107,7 +107,7 @@ pub struct Peripherals {
     pub Ethernet_PTP: ethernet_ptp::Instance,
     pub Ethernet_DMA: ethernet_dma::Instance,
     pub OTG_FS_GLOBAL: otg_fs_global::Instance,
-    pub USB_OTG_HOST: usb_otg_host::Instance,
+    pub OTG_FS_HOST: otg_fs_host::Instance,
     pub OTG_FS_DEVICE: otg_fs_device::Instance,
     pub OTG_FS_PWRCLK: otg_fs_pwrclk::Instance,
     pub DAC: dac::Instance,
@@ -184,7 +184,7 @@ impl Peripherals {
             Ethernet_PTP: ethernet_ptp::Ethernet_PTP::steal(),
             Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
             OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
-            USB_OTG_HOST: usb_otg_host::USB_OTG_HOST::steal(),
+            OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),
             OTG_FS_DEVICE: otg_fs_device::OTG_FS_DEVICE::steal(),
             OTG_FS_PWRCLK: otg_fs_pwrclk::OTG_FS_PWRCLK::steal(),
             DAC: dac::DAC::steal(),

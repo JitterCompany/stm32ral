@@ -2,17 +2,16 @@
 #![allow(non_camel_case_types)]
 //! USB on the go full speed
 //!
-//! Used by: stm32f101, stm32f102, stm32f103
+//! Used by: stm32f101, stm32f102, stm32f103, stm32f107
 
 #[cfg(not(feature = "nosync"))]
 pub use crate::stm32f1::peripherals::otg_fs_host::Instance;
 pub use crate::stm32f1::peripherals::otg_fs_host::{RegisterBlock, ResetValues};
 pub use crate::stm32f1::peripherals::otg_fs_host::{
-    FS_HCCHAR0, FS_HCCHAR1, FS_HCCHAR2, FS_HCCHAR3, FS_HCCHAR4, FS_HCCHAR5, FS_HCCHAR6, FS_HCCHAR7,
-    FS_HCFG, FS_HCINT0, FS_HCINT1, FS_HCINT2, FS_HCINT3, FS_HCINT4, FS_HCINT5, FS_HCINT6,
-    FS_HCINT7, FS_HCINTMSK0, FS_HCINTMSK1, FS_HCINTMSK2, FS_HCINTMSK3, FS_HCINTMSK4, FS_HCINTMSK5,
-    FS_HCINTMSK6, FS_HCINTMSK7, FS_HCTSIZ0, FS_HCTSIZ1, FS_HCTSIZ2, FS_HCTSIZ3, FS_HCTSIZ4,
-    FS_HCTSIZ5, FS_HCTSIZ6, FS_HCTSIZ7, FS_HFNUM, FS_HPRT, FS_HPTXSTS, HAINT, HAINTMSK, HFIR,
+    CHAR0, CHAR1, CHAR2, CHAR3, CHAR4, CHAR5, CHAR6, CHAR7, HAINT, HAINTMSK, HCFG, HFIR, HFNUM,
+    HPRT, HPTXSTS, INT0, INT1, INT2, INT3, INT4, INT5, INT6, INT7, INTMSK0, INTMSK1, INTMSK2,
+    INTMSK3, INTMSK4, INTMSK5, INTMSK6, INTMSK7, TSIZ0, TSIZ1, TSIZ2, TSIZ3, TSIZ4, TSIZ5, TSIZ6,
+    TSIZ7,
 };
 
 /// Access functions for the OTG_FS_HOST peripheral instance
@@ -30,45 +29,45 @@ pub mod OTG_FS_HOST {
 
     /// Reset values for each field in OTG_FS_HOST
     pub const reset: ResetValues = ResetValues {
-        FS_HCFG: 0x00000000,
+        HCFG: 0x00000000,
         HFIR: 0x0000EA60,
-        FS_HFNUM: 0x00003FFF,
-        FS_HPTXSTS: 0x00080100,
+        HFNUM: 0x00003FFF,
+        HPTXSTS: 0x00080100,
         HAINT: 0x00000000,
         HAINTMSK: 0x00000000,
-        FS_HPRT: 0x00000000,
-        FS_HCCHAR0: 0x00000000,
-        FS_HCCHAR1: 0x00000000,
-        FS_HCCHAR2: 0x00000000,
-        FS_HCCHAR3: 0x00000000,
-        FS_HCCHAR4: 0x00000000,
-        FS_HCCHAR5: 0x00000000,
-        FS_HCCHAR6: 0x00000000,
-        FS_HCCHAR7: 0x00000000,
-        FS_HCINT0: 0x00000000,
-        FS_HCINT1: 0x00000000,
-        FS_HCINT2: 0x00000000,
-        FS_HCINT3: 0x00000000,
-        FS_HCINT4: 0x00000000,
-        FS_HCINT5: 0x00000000,
-        FS_HCINT6: 0x00000000,
-        FS_HCINT7: 0x00000000,
-        FS_HCINTMSK0: 0x00000000,
-        FS_HCINTMSK1: 0x00000000,
-        FS_HCINTMSK2: 0x00000000,
-        FS_HCINTMSK3: 0x00000000,
-        FS_HCINTMSK4: 0x00000000,
-        FS_HCINTMSK5: 0x00000000,
-        FS_HCINTMSK6: 0x00000000,
-        FS_HCINTMSK7: 0x00000000,
-        FS_HCTSIZ0: 0x00000000,
-        FS_HCTSIZ1: 0x00000000,
-        FS_HCTSIZ2: 0x00000000,
-        FS_HCTSIZ3: 0x00000000,
-        FS_HCTSIZ4: 0x00000000,
-        FS_HCTSIZ5: 0x00000000,
-        FS_HCTSIZ6: 0x00000000,
-        FS_HCTSIZ7: 0x00000000,
+        HPRT: 0x00000000,
+        CHAR0: 0x00000000,
+        INT0: 0x00000000,
+        INTMSK0: 0x00000000,
+        TSIZ0: 0x00000000,
+        CHAR1: 0x00000000,
+        INT1: 0x00000000,
+        INTMSK1: 0x00000000,
+        TSIZ1: 0x00000000,
+        CHAR2: 0x00000000,
+        INT2: 0x00000000,
+        INTMSK2: 0x00000000,
+        TSIZ2: 0x00000000,
+        CHAR3: 0x00000000,
+        INT3: 0x00000000,
+        INTMSK3: 0x00000000,
+        TSIZ3: 0x00000000,
+        CHAR4: 0x00000000,
+        INT4: 0x00000000,
+        INTMSK4: 0x00000000,
+        TSIZ4: 0x00000000,
+        CHAR5: 0x00000000,
+        INT5: 0x00000000,
+        INTMSK5: 0x00000000,
+        TSIZ5: 0x00000000,
+        CHAR6: 0x00000000,
+        INT6: 0x00000000,
+        INTMSK6: 0x00000000,
+        TSIZ6: 0x00000000,
+        CHAR7: 0x00000000,
+        INT7: 0x00000000,
+        INTMSK7: 0x00000000,
+        TSIZ7: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

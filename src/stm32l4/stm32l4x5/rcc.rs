@@ -2672,6 +2672,20 @@ pub mod APB1ENR1 {
         /// Read-write values (empty)
         pub mod RW {}
     }
+
+    /// Clock Recovery System clock enable (this bit is reserved for STM32L47x/L48x devices)
+    pub mod CRSEN {
+        /// Offset (24 bits)
+        pub const offset: u32 = 24;
+        /// Mask (1 bit: 1 << 24)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
 }
 
 /// APB1 peripheral clock enable register 2

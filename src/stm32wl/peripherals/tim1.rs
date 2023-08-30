@@ -290,10 +290,10 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b0: OCx=0 (after a dead-time if OCx(N) is implemented) when MOE=0
-            pub const Disabled: u32 = 0b0;
+            pub const Reset: u32 = 0b0;
 
             /// 0b1: OCx=1 (after a dead-time if OCx(N) is implemented) when MOE=0
-            pub const Enabled: u32 = 0b1;
+            pub const Set: u32 = 0b1;
         }
     }
 
@@ -337,10 +337,10 @@ pub mod CR2 {
         pub mod RW {
 
             /// 0b0: OCxN=0 after a dead-time when MOE=0
-            pub const Disabled: u32 = 0b0;
+            pub const Reset: u32 = 0b0;
 
             /// 0b1: OCxN=1 after a dead-time when MOE=0
-            pub const Enabled: u32 = 0b1;
+            pub const Set: u32 = 0b1;
         }
     }
 
@@ -1353,19 +1353,18 @@ pub mod SR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No update occurred
-            pub const Clear: u32 = 0b0;
+            pub const NoUpdateOccurred: u32 = 0b0;
 
-            /// 0b1: Update interrupt pending.
+            /// 0b1: Update interrupt pending
             pub const UpdatePending: u32 = 0b1;
         }
+        pub use super::CC6IF::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 }
 

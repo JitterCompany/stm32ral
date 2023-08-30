@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Sigma-delta analog-to-digital converter
 //!
-//! Used by: stm32f301, stm32f373, stm32f3x8
+//! Used by: stm32f301, stm32f373
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

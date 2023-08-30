@@ -5,11 +5,13 @@
 //! Used by: stm32l4r5, stm32l4r9
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32l4::peripherals::sdmmc::Instance;
-pub use crate::stm32l4::peripherals::sdmmc::{RegisterBlock, ResetValues};
-pub use crate::stm32l4::peripherals::sdmmc::{
-    ARG, CLKCR, CMD, DCOUNT, DCTRL, DLEN, DTIMER, FIFO, FIFOCNT, ICR, MASK, POWER, RESP1, RESP2,
-    RESP3, RESP4, RESPCMD, STA,
+pub use crate::stm32l4::peripherals::sdmmc1::Instance;
+pub use crate::stm32l4::peripherals::sdmmc1::{RegisterBlock, ResetValues};
+pub use crate::stm32l4::peripherals::sdmmc1::{
+    ACKTIMER, ARG, CLKCR, CMD, DCOUNT, DCTRL, DLEN, DTIMER, FIFOR0, FIFOR1, FIFOR10, FIFOR11,
+    FIFOR12, FIFOR13, FIFOR14, FIFOR15, FIFOR2, FIFOR3, FIFOR4, FIFOR5, FIFOR6, FIFOR7, FIFOR8,
+    FIFOR9, ICR, IDMABASE0R, IDMABASE1R, IDMABSIZER, IDMACTRLR, MASK, POWER, RESP1, RESP2, RESP3,
+    RESP4, RESPCMD, STA,
 };
 
 /// Access functions for the SDMMC1 peripheral instance
@@ -43,8 +45,27 @@ pub mod SDMMC1 {
         STA: 0x00000000,
         ICR: 0x00000000,
         MASK: 0x00000000,
-        FIFOCNT: 0x00000000,
-        FIFO: 0x00000000,
+        ACKTIMER: 0x00000000,
+        IDMACTRLR: 0x00000000,
+        IDMABSIZER: 0x00000000,
+        IDMABASE0R: 0x00000000,
+        IDMABASE1R: 0x00000000,
+        FIFOR0: 0x00000000,
+        FIFOR1: 0x00000000,
+        FIFOR2: 0x00000000,
+        FIFOR3: 0x00000000,
+        FIFOR4: 0x00000000,
+        FIFOR5: 0x00000000,
+        FIFOR6: 0x00000000,
+        FIFOR7: 0x00000000,
+        FIFOR8: 0x00000000,
+        FIFOR9: 0x00000000,
+        FIFOR10: 0x00000000,
+        FIFOR11: 0x00000000,
+        FIFOR12: 0x00000000,
+        FIFOR13: 0x00000000,
+        FIFOR14: 0x00000000,
+        FIFOR15: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

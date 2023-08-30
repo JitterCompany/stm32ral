@@ -523,12 +523,8 @@ pub mod CR2 {
         pub const offset: u32 = 13;
         /// Mask (1 bit: 1 << 13)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Start generation
             pub const NoStart: u32 = 0b0;
@@ -536,6 +532,14 @@ pub mod CR2 {
             /// 0b1: Restart/Start generation
             pub const Start: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Restart/Start generation
+            pub const Start: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Stop generation
@@ -544,12 +548,8 @@ pub mod CR2 {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Stop generation
             pub const NoStop: u32 = 0b0;
@@ -557,6 +557,14 @@ pub mod CR2 {
             /// 0b1: Stop generation after current byte transfer
             pub const Stop: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Stop generation after current byte transfer
+            pub const Stop: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// NACK generation
@@ -565,12 +573,8 @@ pub mod CR2 {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: an ACK is sent after current received byte
             pub const Ack: u32 = 0b0;
@@ -578,6 +582,14 @@ pub mod CR2 {
             /// 0b1: a NACK is sent after current received byte
             pub const Nack: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: a NACK is sent after current received byte
+            pub const Nack: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Number of bytes
@@ -642,12 +654,8 @@ pub mod CR2 {
         pub const offset: u32 = 26;
         /// Mask (1 bit: 1 << 26)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No PEC transfer
             pub const NoPec: u32 = 0b0;
@@ -655,6 +663,14 @@ pub mod CR2 {
             /// 0b1: PEC transmission/reception is requested
             pub const Pec: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: PEC transmission/reception is requested
+            pub const Pec: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Slave address bit 0
@@ -1016,12 +1032,8 @@ pub mod ISR {
         pub const offset: u32 = 0;
         /// Mask (1 bit: 1 << 0)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: TXDR register not empty
             pub const NotEmpty: u32 = 0b0;
@@ -1029,6 +1041,14 @@ pub mod ISR {
             /// 0b1: TXDR register empty
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Flush the transmit data register
+            pub const Flush: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// TXIS
@@ -1037,12 +1057,8 @@ pub mod ISR {
         pub const offset: u32 = 1;
         /// Mask (1 bit: 1 << 1)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: The TXDR register is not empty
             pub const NotEmpty: u32 = 0b0;
@@ -1050,6 +1066,14 @@ pub mod ISR {
             /// 0b1: The TXDR register is empty and the data to be transmitted must be written in the TXDR register
             pub const Empty: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b1: Generate a TXIS event
+            pub const Trigger: u32 = 0b1;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// RXNE

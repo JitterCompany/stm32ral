@@ -10,7 +10,7 @@ pub mod wwdg;
 #[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]
 pub mod i2c;
 
-#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]
+#[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491"))]
 pub mod flash;
 
 #[cfg(any(feature="doc", feature="stm32g431", feature="stm32g441", feature="stm32g471", feature="stm32g473", feature="stm32g474", feature="stm32g483", feature="stm32g484", feature="stm32g491", feature="stm32g4a1"))]

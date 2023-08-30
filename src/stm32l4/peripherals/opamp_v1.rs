@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Operational amplifiers
 //!
-//! Used by: stm32l412, stm32l4r5, stm32l4r9
+//! Used by: stm32l412, stm32l4p5, stm32l4r5, stm32l4r9
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]

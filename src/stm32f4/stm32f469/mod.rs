@@ -22,7 +22,7 @@ pub use super::instances::dac;
 pub use super::instances::gpio_f429_f469 as gpio;
 pub use super::instances::iwdg;
 pub use super::instances::pwr_f429_f469 as pwr;
-pub use super::instances::rtc_f405_f407_f427_f429_f446_f469 as rtc;
+pub use super::instances::rtc;
 pub use super::instances::sdio;
 pub use super::instances::spi_f405_f407_f427_f429_f469 as spi;
 pub use super::instances::syscfg_f429_f469 as syscfg;
@@ -32,35 +32,35 @@ pub use super::instances::tim3;
 pub use super::instances::tim4;
 pub use super::instances::tim5;
 pub use super::instances::tim8;
-pub use super::instances::uart_f427_f429_f446_f469 as uart;
-pub use super::instances::usart_f427_f429_f469 as usart;
+pub use super::instances::uart_f427_f429_f469 as uart;
+pub use super::instances::usart_f405_f407_f427_f429_f446_f469 as usart;
 pub use super::instances::wwdg;
 pub mod tim12;
 pub mod tim9;
+pub use super::instances::can;
 pub use super::instances::crc;
 pub use super::instances::ethernet_dma;
 pub use super::instances::ethernet_mac;
 pub use super::instances::ethernet_mmc;
 pub use super::instances::ethernet_ptp;
+pub use super::instances::nvic_f427_f429_f446_f469 as nvic;
+pub use super::instances::otg_fs_device_f405_f407_f412_f427_f429_f446_f469 as otg_fs_device;
+pub use super::instances::otg_fs_global_f446_f469 as otg_fs_global;
+pub use super::instances::otg_fs_host_f405_f407_f412_f413_f427_f429_f446_f469 as otg_fs_host;
+pub use super::instances::otg_fs_pwrclk;
 pub use super::instances::tim10_f412_f413_f446_f469 as tim10;
 pub use super::instances::tim11_f410_f412_f413_f446_f469 as tim11;
 pub use super::instances::tim13_f412_f413_f446_f469 as tim13;
 pub use super::instances::tim14_f412_f413_f446_f469 as tim14;
 pub use super::instances::tim6;
 pub use super::instances::tim7;
-pub mod otg_fs_global;
-pub use super::instances::can;
-pub use super::instances::nvic_f427_f429_f446_f469 as nvic;
-pub use super::instances::otg_fs_device_f412_f469 as otg_fs_device;
-pub use super::instances::otg_fs_host_f412_f413_f446_f469 as otg_fs_host;
-pub use super::instances::otg_fs_pwrclk;
 pub mod flash;
 pub use super::instances::exti;
-pub mod otg_hs_global;
-pub use super::instances::otg_hs_host;
-pub mod otg_hs_device;
-pub mod otg_hs_pwrclk;
 pub use super::instances::ltdc;
+pub use super::instances::otg_hs_device_f446_f469 as otg_hs_device;
+pub use super::instances::otg_hs_global_f446_f469 as otg_hs_global;
+pub use super::instances::otg_hs_host_f446_f469 as otg_hs_host;
+pub use super::instances::otg_hs_pwrclk;
 pub use super::instances::sai;
 pub mod dma2d;
 pub use super::instances::i2c_f401_f411_f412_f427_f429_f446_f469 as i2c;
@@ -114,15 +114,15 @@ pub struct Peripherals {
     pub USART1: usart::Instance,
     pub USART2: usart::Instance,
     pub USART3: usart::Instance,
-    pub UART7: usart::Instance,
-    pub UART8: usart::Instance,
+    pub UART7: uart::Instance,
+    pub UART8: uart::Instance,
+    pub UART4: uart::Instance,
+    pub UART5: uart::Instance,
     pub DAC: dac::Instance,
     pub PWR: pwr::Instance,
     pub IWDG: iwdg::Instance,
     pub WWDG: wwdg::Instance,
     pub RTC: rtc::Instance,
-    pub UART4: uart::Instance,
-    pub UART5: uart::Instance,
     pub ADC_Common: adc_common::Instance,
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
@@ -218,15 +218,15 @@ impl Peripherals {
             USART1: usart::USART1::steal(),
             USART2: usart::USART2::steal(),
             USART3: usart::USART3::steal(),
-            UART7: usart::UART7::steal(),
-            UART8: usart::UART8::steal(),
+            UART7: uart::UART7::steal(),
+            UART8: uart::UART8::steal(),
+            UART4: uart::UART4::steal(),
+            UART5: uart::UART5::steal(),
             DAC: dac::DAC::steal(),
             PWR: pwr::PWR::steal(),
             IWDG: iwdg::IWDG::steal(),
             WWDG: wwdg::WWDG::steal(),
             RTC: rtc::RTC::steal(),
-            UART4: uart::UART4::steal(),
-            UART5: uart::UART5::steal(),
             ADC_Common: adc_common::ADC_Common::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),

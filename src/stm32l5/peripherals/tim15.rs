@@ -967,11 +967,27 @@ pub mod CNT {
     }
 }
 
-/// prescaler
+/// PSC and CCR2
+/// PSC: prescaler
+/// CCR2: TIM15 capture/compare register 2
 pub mod PSC {
 
     /// Prescaler value
     pub mod PSC {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (16 bits: 0xffff << 0)
+        pub const mask: u32 = 0xffff << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// Capture/Compare 2 value
+    pub mod CCR2 {
         /// Offset (0 bits)
         pub const offset: u32 = 0;
         /// Mask (16 bits: 0xffff << 0)
@@ -1426,24 +1442,6 @@ pub mod OR2 {
         pub mod RW {}
     }
 }
-
-/// TIM15 capture/compare register 2
-pub mod CCR2 {
-
-    /// Capture/Compare 2 value
-    pub mod CCR2 {
-        /// Offset (0 bits)
-        pub const offset: u32 = 0;
-        /// Mask (16 bits: 0xffff << 0)
-        pub const mask: u32 = 0xffff << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
-    }
-}
 #[repr(C)]
 pub struct RegisterBlock {
     /// control register 1
@@ -1477,7 +1475,9 @@ pub struct RegisterBlock {
     /// counter
     pub CNT: RWRegister<u32>,
 
-    /// prescaler
+    /// PSC and CCR2
+    /// PSC: prescaler
+    /// CCR2: TIM15 capture/compare register 2
     pub PSC: RWRegister<u32>,
 
     /// auto-reload register
@@ -1489,10 +1489,7 @@ pub struct RegisterBlock {
     /// capture/compare register 1
     pub CCR1: RWRegister<u32>,
 
-    /// TIM15 capture/compare register 2
-    pub CCR2: RWRegister<u32>,
-
-    _reserved2: [u8; 8],
+    _reserved2: [u8; 12],
 
     /// break and dead-time register
     pub BDTR: RWRegister<u32>,
@@ -1525,7 +1522,6 @@ pub struct ResetValues {
     pub ARR: u32,
     pub RCR: u32,
     pub CCR1: u32,
-    pub CCR2: u32,
     pub BDTR: u32,
     pub DCR: u32,
     pub DMAR: u32,

@@ -49,8 +49,7 @@ extern "C" {
     fn FSMC();
     fn SDIO();
     fn TIM5();
-    fn SPI3();
-    fn USART4();
+    fn UART4();
     fn UART5();
     fn TIM6_GLB_IT_DAC1_DAC2();
     fn TIM7();
@@ -79,8 +78,8 @@ extern "C" {
     fn CRYPTO();
     fn RNG();
     fn FPU();
-    fn USART7();
-    fn USART8();
+    fn UART7();
+    fn UART8();
     fn SPI4();
     fn SPI5();
     fn SAI1();
@@ -192,8 +191,8 @@ pub static __INTERRUPTS: [Vector; 102] = [
     Vector { _handler: FSMC },
     Vector { _handler: SDIO },
     Vector { _handler: TIM5 },
-    Vector { _handler: SPI3 },
-    Vector { _handler: USART4 },
+    Vector { _reserved: 0 },
+    Vector { _handler: UART4 },
     Vector { _handler: UART5 },
     Vector {
         _handler: TIM6_GLB_IT_DAC1_DAC2,
@@ -245,8 +244,8 @@ pub static __INTERRUPTS: [Vector; 102] = [
     Vector { _handler: CRYPTO },
     Vector { _handler: RNG },
     Vector { _handler: FPU },
-    Vector { _handler: USART7 },
-    Vector { _handler: USART8 },
+    Vector { _handler: UART7 },
+    Vector { _handler: UART8 },
     Vector { _handler: SPI4 },
     Vector { _handler: SPI5 },
     Vector { _reserved: 0 },
@@ -358,11 +357,11 @@ pub enum Interrupt {
     SPI1 = 35,
     /// 36: SPI2 global interrupt
     SPI2 = 36,
-    /// 37: USART1 global interrupt
+    /// 37: USART 1 global interrupt
     USART1 = 37,
-    /// 38: USART2 global interrupt
+    /// 38: USART 2 global interrupt
     USART2 = 38,
-    /// 39: USART3 global interrupt
+    /// 39: USART 3 global interrupt
     USART3 = 39,
     /// 40: EXTI Line\[15:10\] interrupts
     EXTI15_10 = 40,
@@ -384,11 +383,9 @@ pub enum Interrupt {
     SDIO = 49,
     /// 50: TIM5 global interrupt
     TIM5 = 50,
-    /// 51: SPI3 global interrupt
-    SPI3 = 51,
-    /// 52: UART 4 global interrupt
-    USART4 = 52,
-    /// 53: UART 5global interrupt
+    /// 52: UART4 global interrupt
+    UART4 = 52,
+    /// 53: UART5 global interrupt
     UART5 = 53,
     /// 54: TIM6 global and DAC12 underrun interrupts
     TIM6_GLB_IT_DAC1_DAC2 = 54,
@@ -424,7 +421,7 @@ pub enum Interrupt {
     DMA2_Stream6 = 69,
     /// 70: DMA2 Stream7 global interrupt
     DMA2_Stream7 = 70,
-    /// 71: USART6 global interrupt
+    /// 71: USART 6 global interrupt
     USART6 = 71,
     /// 72: I2C3 event interrupt
     I2C3_EV = 72,
@@ -444,19 +441,19 @@ pub enum Interrupt {
     RNG = 80,
     /// 81: FPU global interrupt
     FPU = 81,
-    /// 82: USART7 global interrupt
-    USART7 = 82,
-    /// 83: USART8 global interrupt
-    USART8 = 83,
+    /// 82: UART 7 global interrupt
+    UART7 = 82,
+    /// 83: UART 8 global interrupt
+    UART8 = 83,
     /// 84: SPI4 global interrupt
     SPI4 = 84,
     /// 85: SPI5 global interrupt
     SPI5 = 85,
     /// 87: SAI1 global interrupt
     SAI1 = 87,
-    /// 88: UART9 global interrupt
+    /// 88: UART 9 global interrupt
     UART9 = 88,
-    /// 89: UART10 global interrupt
+    /// 89: UART 10 global interrupt
     UART10 = 89,
     /// 92: Quad-SPI global interrupt
     QuadSPI = 92,

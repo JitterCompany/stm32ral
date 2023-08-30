@@ -22,7 +22,7 @@ pub use super::instances::tim17_f302_f303_f3x4 as tim17;
 pub use super::instances::tim2;
 pub use super::instances::tim3;
 pub use super::instances::tim4;
-pub use super::instances::usart_f302_f303_f3x8 as usart;
+pub use super::instances::usart_f302_f303 as usart;
 pub mod pwr;
 pub use super::instances::can;
 pub use super::instances::i2c;

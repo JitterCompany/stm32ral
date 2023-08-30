@@ -1,7 +1,4 @@
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
-pub mod dcb;
-
-#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
 pub mod dfsdm1;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
@@ -42,6 +39,9 @@ pub mod rtc;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
 pub mod s;
+
+#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
+pub mod dma;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
 pub mod sec_gtzc_mpcbb1;
@@ -192,4 +192,10 @@ pub mod rng;
 
 #[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
 pub mod sdmmc1;
+
+#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
+pub mod dcb;
+
+#[cfg(any(feature="doc", feature="stm32l552", feature="stm32l562"))]
+pub mod hash;
 

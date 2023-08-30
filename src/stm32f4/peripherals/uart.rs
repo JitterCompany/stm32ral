@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Universal synchronous asynchronous receiver transmitter
 //!
-//! Used by: stm32f405, stm32f407, stm32f427, stm32f429, stm32f446, stm32f469
+//! Used by: stm32f405, stm32f407, stm32f413, stm32f427, stm32f429, stm32f446, stm32f469
 
 use crate::RWRegister;
 #[cfg(not(feature = "nosync"))]

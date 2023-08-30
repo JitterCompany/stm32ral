@@ -5,11 +5,11 @@
 //! Used by: stm32f412, stm32f413
 
 #[cfg(not(feature = "nosync"))]
-pub use crate::stm32f4::peripherals::otg_fs_global_v2::Instance;
-pub use crate::stm32f4::peripherals::otg_fs_global_v2::{RegisterBlock, ResetValues};
-pub use crate::stm32f4::peripherals::otg_fs_global_v2::{
-    CID, DIEPTXF1, DIEPTXF2, DIEPTXF3, GAHBCFG, GCCFG, GINTMSK, GINTSTS, GNPTXFSIZ, GNPTXSTS,
-    GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSR, GUSBCFG, HPTXFSIZ,
+pub use crate::stm32f4::peripherals::otg_fs_global_v3::Instance;
+pub use crate::stm32f4::peripherals::otg_fs_global_v3::{RegisterBlock, ResetValues};
+pub use crate::stm32f4::peripherals::otg_fs_global_v3::{
+    CID, DIEPTXF0, DIEPTXF1, DIEPTXF2, DIEPTXF3, DIEPTXF4, DIEPTXF5, GAHBCFG, GCCFG, GINTMSK,
+    GINTSTS, GNPTXSTS, GOTGCTL, GOTGINT, GRSTCTL, GRXFSIZ, GRXSTSP, GRXSTSR, GUSBCFG, HPTXFSIZ,
 };
 
 /// Access functions for the OTG_FS_GLOBAL peripheral instance
@@ -36,7 +36,7 @@ pub mod OTG_FS_GLOBAL {
         GINTMSK: 0x00000000,
         GRXSTSR: 0x00000000,
         GRXFSIZ: 0x00000200,
-        GNPTXFSIZ: 0x00000200,
+        DIEPTXF0: 0x00000200,
         GNPTXSTS: 0x00080200,
         GCCFG: 0x00000000,
         CID: 0x00001000,
@@ -44,6 +44,9 @@ pub mod OTG_FS_GLOBAL {
         DIEPTXF1: 0x02000400,
         DIEPTXF2: 0x02000400,
         DIEPTXF3: 0x02000400,
+        DIEPTXF4: 0x02000400,
+        DIEPTXF5: 0x02000400,
+        GRXSTSP: 0x00000000,
     };
 
     #[cfg(not(feature = "nosync"))]

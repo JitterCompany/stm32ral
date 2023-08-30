@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! Flash
 //!
-//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491, stm32g4a1
+//! Used by: stm32g431, stm32g441, stm32g471, stm32g473, stm32g474, stm32g483, stm32g484, stm32g491
 
 use crate::{RWRegister, WORegister};
 #[cfg(not(feature = "nosync"))]
@@ -21,8 +21,24 @@ pub mod ACR {
         pub mod R {}
         /// Write-only values (empty)
         pub mod W {}
-        /// Read-write values (empty)
-        pub mod RW {}
+        /// Read-write values
+        pub mod RW {
+
+            /// 0b0000: Zero Wait States (Vcore Boost 1 (<= 34MHz), Vcore Normal 1 (<= 30MHz), Vcore 2 (<= 12MHz)
+            pub const Wait0: u32 = 0b0000;
+
+            /// 0b0001: One Wait State (Vcore Boost 1 (<= 68MHz), Vcore Normal 1 (<= 60MHz), Vcore 2 (<= 24MHz)
+            pub const Wait1: u32 = 0b0001;
+
+            /// 0b0010: Two Wait States (Vcore Boost 1 (<= 102MHz), Vcore Normal 1 (<= 90MHz), Vcore 2 (<= 26MHz)
+            pub const Wait2: u32 = 0b0010;
+
+            /// 0b0011: Three Wait States (Vcore Boost 1 (<= 136MHz), Vcore Normal 1 (<= 120MHz)
+            pub const Wait3: u32 = 0b0011;
+
+            /// 0b0100: Four Wait States (Vcore Boost 1 (<= 170MHz), Vcore Normal 1 (<= 150MHz)
+            pub const Wait4: u32 = 0b0100;
+        }
     }
 
     /// Prefetch enable

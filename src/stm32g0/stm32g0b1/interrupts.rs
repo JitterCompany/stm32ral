@@ -14,7 +14,7 @@ extern "C" {
     fn TIM1_CC();
     fn TIM2();
     fn TIM3_TIM4();
-    fn TIM6_DAC();
+    fn TIM6_DAC_LPTIM1();
     fn TIM7();
     fn TIM14();
     fn TIM15();
@@ -64,7 +64,9 @@ pub static __INTERRUPTS: [Vector; 31] = [
     Vector {
         _handler: TIM3_TIM4,
     },
-    Vector { _handler: TIM6_DAC },
+    Vector {
+        _handler: TIM6_DAC_LPTIM1,
+    },
     Vector { _handler: TIM7 },
     Vector { _handler: TIM14 },
     Vector { _handler: TIM15 },
@@ -121,8 +123,8 @@ pub enum Interrupt {
     TIM2 = 15,
     /// 16: TIM3 global interrupt
     TIM3_TIM4 = 16,
-    /// 17: TIM6 + LPTIM1 and DAC global interrupt
-    TIM6_DAC = 17,
+    /// 17: TIM6, LPTIM1 and DAC global interrupt
+    TIM6_DAC_LPTIM1 = 17,
     /// 18: TIM7 + LPTIM2 global interrupt
     TIM7 = 18,
     /// 19: TIM14 global interrupt

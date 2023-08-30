@@ -8,44 +8,29 @@ pub mod interrupts;
 pub use self::interrupts::Interrupt;
 pub use self::interrupts::Interrupt as interrupt;
 
-pub use super::instances::adc;
-pub use super::instances::adc_common_f405_f407_f427_f429_f446_f469 as adc_common;
-pub use super::instances::dac;
 pub use super::instances::dbgmcu_f405_f407 as dbgmcu;
 pub use super::instances::dcmi;
 pub use super::instances::dma_f405_f407_f427_f429_f446_f469 as dma;
 pub use super::instances::fsmc;
+pub use super::instances::rng_f405_f407_f427_f429 as rng;
+pub mod rcc;
 pub use super::instances::gpio_f405_f407_f427 as gpio;
+pub mod syscfg;
+pub use super::instances::adc;
+pub use super::instances::adc_common_f405_f407_f427_f429_f446_f469 as adc_common;
+pub use super::instances::dac;
 pub use super::instances::i2c_f405_f407 as i2c;
 pub use super::instances::iwdg;
 pub use super::instances::pwr_f405_f407 as pwr;
-pub use super::instances::rcc;
-pub use super::instances::rng_f405_f407_f427_f429 as rng;
-pub use super::instances::rtc_f405_f407_f427_f429_f446_f469 as rtc;
+pub use super::instances::rtc;
 pub use super::instances::sdio;
 pub use super::instances::spi_f405_f407_f427_f429_f469 as spi;
-pub use super::instances::syscfg_f405_f407 as syscfg;
 pub use super::instances::tim1;
-pub use super::instances::tim10_f401_f405_f407_f411_f427_f429 as tim10;
-pub use super::instances::tim11_f401_f405_f407_f411_f427_f429 as tim11;
-pub use super::instances::tim12_f405_f407_f427_f429_f446 as tim12;
-pub use super::instances::tim13_f405_f407_f427_f429 as tim13;
-pub use super::instances::tim14_f405_f407_f427_f429 as tim14;
-pub use super::instances::tim2_f405_f407_f427_f429 as tim2;
-pub use super::instances::tim3;
-pub use super::instances::tim4;
-pub use super::instances::tim5;
-pub use super::instances::tim6;
-pub use super::instances::tim7;
 pub use super::instances::tim8;
-pub use super::instances::tim9_f401_f405_f407_f410_f411_f427_f429_f446 as tim9;
-pub use super::instances::uart_f405_f407 as uart;
-pub use super::instances::usart_f405_f407_f446 as usart;
+pub use super::instances::uart_f405_f446 as uart;
+pub use super::instances::usart_f405_f407_f427_f429_f446_f469 as usart;
 pub use super::instances::wwdg;
-pub mod ethernet_mac;
-pub mod ethernet_mmc;
-pub use super::instances::ethernet_ptp;
-pub mod ethernet_dma;
+pub mod tim2;
 pub use super::instances::can;
 pub use super::instances::crc;
 pub use super::instances::cryp;
@@ -58,17 +43,28 @@ pub use super::instances::ltdc;
 pub use super::instances::mpu;
 pub use super::instances::nvic_f401_f405_f407_f410_f411_f412_f413 as nvic;
 pub use super::instances::nvic_stir;
-pub use super::instances::otg_fs_device_f401_f405_f407_f411_f427_f429 as otg_fs_device;
-pub use super::instances::otg_fs_global_f401_f405_f407_f411_f427_f429 as otg_fs_global;
-pub use super::instances::otg_fs_host_f401_f405_f407_f411_f427_f429 as otg_fs_host;
-pub use super::instances::otg_hs_device;
-pub use super::instances::otg_hs_global;
-pub use super::instances::otg_hs_host;
+pub use super::instances::otg_fs_device_f405_f407_f412_f427_f429_f446_f469 as otg_fs_device;
+pub use super::instances::otg_fs_global_f405_f407_f427_f429 as otg_fs_global;
+pub use super::instances::otg_fs_host_f405_f407_f412_f413_f427_f429_f446_f469 as otg_fs_host;
+pub use super::instances::otg_hs_device_f405_f407_f427_f429 as otg_hs_device;
+pub use super::instances::otg_hs_global_f405_f407_f427_f429 as otg_hs_global;
+pub use super::instances::otg_hs_host_f405_f407_f427_f429 as otg_hs_host;
 pub use super::instances::otg_s_pwrclk;
 pub use super::instances::sai1;
 pub use super::instances::scb;
 pub use super::instances::scb_actrl;
 pub use super::instances::stk;
+pub use super::instances::tim10_f401_f405_f407_f411_f427_f429 as tim10;
+pub use super::instances::tim11_f401_f405_f407_f411_f427_f429 as tim11;
+pub use super::instances::tim12_f405_f407_f427_f429_f446 as tim12;
+pub use super::instances::tim13_f405_f407_f427_f429 as tim13;
+pub use super::instances::tim14_f405_f407_f427_f429 as tim14;
+pub use super::instances::tim3;
+pub use super::instances::tim4;
+pub use super::instances::tim5;
+pub use super::instances::tim6;
+pub use super::instances::tim7;
+pub use super::instances::tim9_f401_f405_f407_f410_f411_f427_f429_f446 as tim9;
 
 #[cfg(all(feature = "rtic", not(feature = "nosync")))]
 #[allow(non_snake_case)]
@@ -118,8 +114,6 @@ pub struct Peripherals {
     pub RTC: rtc::Instance,
     pub UART4: uart::Instance,
     pub UART5: uart::Instance,
-    pub UART7: uart::Instance,
-    pub UART8: uart::Instance,
     pub ADC_Common: adc_common::Instance,
     pub TIM1: tim1::Instance,
     pub TIM8: tim8::Instance,
@@ -135,10 +129,6 @@ pub struct Peripherals {
     pub TIM11: tim11::Instance,
     pub TIM6: tim6::Instance,
     pub TIM7: tim7::Instance,
-    pub Ethernet_MAC: ethernet_mac::Instance,
-    pub Ethernet_MMC: ethernet_mmc::Instance,
-    pub Ethernet_PTP: ethernet_ptp::Instance,
-    pub Ethernet_DMA: ethernet_dma::Instance,
     pub CRC: crc::Instance,
     pub OTG_FS_GLOBAL: otg_fs_global::Instance,
     pub OTG_FS_HOST: otg_fs_host::Instance,
@@ -219,8 +209,6 @@ impl Peripherals {
             RTC: rtc::RTC::steal(),
             UART4: uart::UART4::steal(),
             UART5: uart::UART5::steal(),
-            UART7: uart::UART7::steal(),
-            UART8: uart::UART8::steal(),
             ADC_Common: adc_common::ADC_Common::steal(),
             TIM1: tim1::TIM1::steal(),
             TIM8: tim8::TIM8::steal(),
@@ -236,10 +224,6 @@ impl Peripherals {
             TIM11: tim11::TIM11::steal(),
             TIM6: tim6::TIM6::steal(),
             TIM7: tim7::TIM7::steal(),
-            Ethernet_MAC: ethernet_mac::Ethernet_MAC::steal(),
-            Ethernet_MMC: ethernet_mmc::Ethernet_MMC::steal(),
-            Ethernet_PTP: ethernet_ptp::Ethernet_PTP::steal(),
-            Ethernet_DMA: ethernet_dma::Ethernet_DMA::steal(),
             CRC: crc::CRC::steal(),
             OTG_FS_GLOBAL: otg_fs_global::OTG_FS_GLOBAL::steal(),
             OTG_FS_HOST: otg_fs_host::OTG_FS_HOST::steal(),

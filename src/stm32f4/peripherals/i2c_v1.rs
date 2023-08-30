@@ -534,12 +534,8 @@ pub mod SR1 {
         pub const offset: u32 = 15;
         /// Mask (1 bit: 1 << 15)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No SMBALERT occured
             pub const NoAlert: u32 = 0b0;
@@ -547,6 +543,14 @@ pub mod SR1 {
             /// 0b1: SMBALERT occurred
             pub const Alert: u32 = 0b1;
         }
+        /// Write-only values
+        pub mod W {
+
+            /// 0b0: Clear flag
+            pub const Clear: u32 = 0b0;
+        }
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Timeout or Tlow error
@@ -555,12 +559,8 @@ pub mod SR1 {
         pub const offset: u32 = 14;
         /// Mask (1 bit: 1 << 14)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Timeout error
             pub const NoTimeout: u32 = 0b0;
@@ -568,6 +568,9 @@ pub mod SR1 {
             /// 0b1: SCL remained LOW for 25 ms
             pub const Timeout: u32 = 0b1;
         }
+        pub use super::SMBALERT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// PEC Error in reception
@@ -576,12 +579,8 @@ pub mod SR1 {
         pub const offset: u32 = 12;
         /// Mask (1 bit: 1 << 12)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: no PEC error: receiver returns ACK after PEC reception (if ACK=1)
             pub const NoError: u32 = 0b0;
@@ -589,6 +588,9 @@ pub mod SR1 {
             /// 0b1: PEC error: receiver returns NACK after PEC reception (whatever ACK)
             pub const Error: u32 = 0b1;
         }
+        pub use super::SMBALERT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Overrun/Underrun
@@ -597,12 +599,8 @@ pub mod SR1 {
         pub const offset: u32 = 11;
         /// Mask (1 bit: 1 << 11)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No overrun/underrun occured
             pub const NoOverrun: u32 = 0b0;
@@ -610,6 +608,9 @@ pub mod SR1 {
             /// 0b1: Overrun/underrun occured
             pub const Overrun: u32 = 0b1;
         }
+        pub use super::SMBALERT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Acknowledge failure
@@ -618,12 +619,8 @@ pub mod SR1 {
         pub const offset: u32 = 10;
         /// Mask (1 bit: 1 << 10)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No acknowledge failure
             pub const NoFailure: u32 = 0b0;
@@ -631,6 +628,9 @@ pub mod SR1 {
             /// 0b1: Acknowledge failure
             pub const Failure: u32 = 0b1;
         }
+        pub use super::SMBALERT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Arbitration lost (master mode)
@@ -639,12 +639,8 @@ pub mod SR1 {
         pub const offset: u32 = 9;
         /// Mask (1 bit: 1 << 9)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No Arbitration Lost detected
             pub const NoLost: u32 = 0b0;
@@ -652,6 +648,9 @@ pub mod SR1 {
             /// 0b1: Arbitration Lost detected
             pub const Lost: u32 = 0b1;
         }
+        pub use super::SMBALERT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Bus error
@@ -660,12 +659,8 @@ pub mod SR1 {
         pub const offset: u32 = 8;
         /// Mask (1 bit: 1 << 8)
         pub const mask: u32 = 1 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b0: No misplaced Start or Stop condition
             pub const NoError: u32 = 0b0;
@@ -673,6 +668,9 @@ pub mod SR1 {
             /// 0b1: Misplaced Start or Stop condition
             pub const Error: u32 = 0b1;
         }
+        pub use super::SMBALERT::W;
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Data register empty (transmitters)

@@ -8,12 +8,11 @@
 pub use crate::stm32l5::peripherals::icache::Instance;
 pub use crate::stm32l5::peripherals::icache::{RegisterBlock, ResetValues};
 pub use crate::stm32l5::peripherals::icache::{
-    ICACHE_CR, ICACHE_CRR0, ICACHE_CRR1, ICACHE_CRR2, ICACHE_CRR3, ICACHE_FCR, ICACHE_HMONR,
-    ICACHE_IER, ICACHE_MMONR, ICACHE_SR,
+    CR, CRR0, CRR1, CRR2, CRR3, FCR, HMONR, IER, MMONR, SR,
 };
 
-/// Access functions for the ICache peripheral instance
-pub mod ICache {
+/// Access functions for the ICACHE peripheral instance
+pub mod ICACHE {
     use super::ResetValues;
 
     #[cfg(not(feature = "nosync"))]
@@ -25,27 +24,27 @@ pub mod ICache {
         _marker: ::core::marker::PhantomData,
     };
 
-    /// Reset values for each field in ICache
+    /// Reset values for each field in ICACHE
     pub const reset: ResetValues = ResetValues {
-        ICACHE_CR: 0x00000004,
-        ICACHE_SR: 0x00000001,
-        ICACHE_IER: 0x00000000,
-        ICACHE_FCR: 0x00000000,
-        ICACHE_HMONR: 0x00000000,
-        ICACHE_MMONR: 0x00000000,
-        ICACHE_CRR0: 0x00000200,
-        ICACHE_CRR1: 0x00000200,
-        ICACHE_CRR2: 0x00000200,
-        ICACHE_CRR3: 0x00000200,
+        CR: 0x00000004,
+        SR: 0x00000001,
+        IER: 0x00000000,
+        FCR: 0x00000000,
+        HMONR: 0x00000000,
+        MMONR: 0x00000000,
+        CRR0: 0x00000200,
+        CRR1: 0x00000200,
+        CRR2: 0x00000200,
+        CRR3: 0x00000200,
     };
 
     #[cfg(not(feature = "nosync"))]
     #[allow(renamed_and_removed_lints)]
     #[allow(private_no_mangle_statics)]
     #[no_mangle]
-    static mut ICache_TAKEN: bool = false;
+    static mut ICACHE_TAKEN: bool = false;
 
-    /// Safe access to ICache
+    /// Safe access to ICACHE
     ///
     /// This function returns `Some(Instance)` if this instance is not
     /// currently taken, and `None` if it is. This ensures that if you
@@ -61,16 +60,16 @@ pub mod ICache {
     #[inline]
     pub fn take() -> Option<Instance> {
         external_cortex_m::interrupt::free(|_| unsafe {
-            if ICache_TAKEN {
+            if ICACHE_TAKEN {
                 None
             } else {
-                ICache_TAKEN = true;
+                ICACHE_TAKEN = true;
                 Some(INSTANCE)
             }
         })
     }
 
-    /// Release exclusive access to ICache
+    /// Release exclusive access to ICACHE
     ///
     /// This function allows you to return an `Instance` so that it
     /// is available to `take()` again. This function will panic if
@@ -80,15 +79,15 @@ pub mod ICache {
     #[inline]
     pub fn release(inst: Instance) {
         external_cortex_m::interrupt::free(|_| unsafe {
-            if ICache_TAKEN && inst.addr == INSTANCE.addr {
-                ICache_TAKEN = false;
+            if ICACHE_TAKEN && inst.addr == INSTANCE.addr {
+                ICACHE_TAKEN = false;
             } else {
                 panic!("Released a peripheral which was not taken");
             }
         });
     }
 
-    /// Unsafely steal ICache
+    /// Unsafely steal ICACHE
     ///
     /// This function is similar to take() but forcibly takes the
     /// Instance, marking it as taken irregardless of its previous
@@ -96,12 +95,12 @@ pub mod ICache {
     #[cfg(not(feature = "nosync"))]
     #[inline]
     pub unsafe fn steal() -> Instance {
-        ICache_TAKEN = true;
+        ICACHE_TAKEN = true;
         INSTANCE
     }
 }
 
-/// Raw pointer to ICache
+/// Raw pointer to ICACHE
 ///
 /// Dereferencing this is unsafe because you are not ensured unique
 /// access to the peripheral, so you may encounter data races with
@@ -110,7 +109,7 @@ pub mod ICache {
 ///
 /// This constant is provided for ease of use in unsafe code: you can
 /// simply call for example `write_reg!(gpio, GPIOA, ODR, 1);`.
-pub const ICache: *const RegisterBlock = 0x40030400 as *const _;
+pub const ICACHE: *const RegisterBlock = 0x40030400 as *const _;
 
 /// Access functions for the SEC_ICache peripheral instance
 pub mod SEC_ICache {
@@ -127,16 +126,16 @@ pub mod SEC_ICache {
 
     /// Reset values for each field in SEC_ICache
     pub const reset: ResetValues = ResetValues {
-        ICACHE_CR: 0x00000004,
-        ICACHE_SR: 0x00000001,
-        ICACHE_IER: 0x00000000,
-        ICACHE_FCR: 0x00000000,
-        ICACHE_HMONR: 0x00000000,
-        ICACHE_MMONR: 0x00000000,
-        ICACHE_CRR0: 0x00000200,
-        ICACHE_CRR1: 0x00000200,
-        ICACHE_CRR2: 0x00000200,
-        ICACHE_CRR3: 0x00000200,
+        CR: 0x00000004,
+        SR: 0x00000001,
+        IER: 0x00000000,
+        FCR: 0x00000000,
+        HMONR: 0x00000000,
+        MMONR: 0x00000000,
+        CRR0: 0x00000200,
+        CRR1: 0x00000200,
+        CRR2: 0x00000200,
+        CRR3: 0x00000200,
     };
 
     #[cfg(not(feature = "nosync"))]

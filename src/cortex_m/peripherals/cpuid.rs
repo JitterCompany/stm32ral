@@ -17,16 +17,16 @@ pub mod Base {
         pub const offset: u32 = 24;
         /// Mask (7 bits: 0x7f << 24)
         pub const mask: u32 = 0x7f << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1000001: ARM Limited
             pub const ARM: u32 = 0b1000001;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Implementation defined
@@ -49,16 +49,16 @@ pub mod Base {
         pub const offset: u32 = 16;
         /// Mask (4 bits: 0b1111 << 16)
         pub const mask: u32 = 0b1111 << offset;
-        /// Read-only values (empty)
-        pub mod R {}
-        /// Write-only values (empty)
-        pub mod W {}
-        /// Read-write values
-        pub mod RW {
+        /// Read-only values
+        pub mod R {
 
             /// 0b1100: ARMv6-M
             pub const ARMv6M: u32 = 0b1100;
         }
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
     }
 
     /// Implementation defined.

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! System control block
 //!
-//! Used by: stm32l4r5, stm32l4r9
+//! Used by: stm32l4p5, stm32l4r5, stm32l4r9
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]

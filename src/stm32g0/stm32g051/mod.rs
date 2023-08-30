@@ -17,7 +17,7 @@ pub use super::instances::i2c_g030_g031_g041_g050_g051_g061_g070_g071_g081_g0b0 
 pub use super::instances::iwdg_g030_g031_g041_g050_g051_g061_g0b0_g0b1_g0c1 as iwdg;
 pub use super::instances::lptim_g051_g061 as lptim;
 pub use super::instances::tim14_g050_g051_g061_g0b0_g0b1_g0c1 as tim14;
-pub use super::instances::tim15_g051_g061 as tim15;
+pub use super::instances::tim15;
 pub use super::instances::tim16_g051_g061_g0b0_g0b1_g0c1 as tim16;
 pub use super::instances::tim17_g051_g061_g0b0_g0b1_g0c1 as tim17;
 pub use super::instances::tim1_g051_g061_g0b0 as tim1;

@@ -2,7 +2,7 @@
 #![allow(non_camel_case_types)]
 //! System configuration controller
 //!
-//! Used by: stm32f405, stm32f407
+//! Used by: stm32f410, stm32f412, stm32f413
 
 use crate::{RORegister, RWRegister};
 #[cfg(not(feature = "nosync"))]
@@ -29,11 +29,11 @@ pub mod MEMRM {
 /// peripheral mode configuration register
 pub mod PMC {
 
-    /// Ethernet PHY interface selection
-    pub mod MII_RMII_SEL {
-        /// Offset (23 bits)
-        pub const offset: u32 = 23;
-        /// Mask (1 bit: 1 << 23)
+    /// ADC1DC2
+    pub mod ADC1DC2 {
+        /// Offset (16 bits)
+        pub const offset: u32 = 16;
+        /// Mask (1 bit: 1 << 16)
         pub const mask: u32 = 1 << offset;
         /// Read-only values (empty)
         pub mod R {}
@@ -315,6 +315,38 @@ pub mod CMPCR {
         pub mod RW {}
     }
 }
+
+/// Configuration register
+pub mod CFGR {
+
+    /// FMPI2C1_SCL
+    pub mod FMPI2C1_SCL {
+        /// Offset (0 bits)
+        pub const offset: u32 = 0;
+        /// Mask (1 bit: 1 << 0)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+
+    /// FMPI2C1_SDA
+    pub mod FMPI2C1_SDA {
+        /// Offset (1 bits)
+        pub const offset: u32 = 1;
+        /// Mask (1 bit: 1 << 1)
+        pub const mask: u32 = 1 << offset;
+        /// Read-only values (empty)
+        pub mod R {}
+        /// Write-only values (empty)
+        pub mod W {}
+        /// Read-write values (empty)
+        pub mod RW {}
+    }
+}
 #[repr(C)]
 pub struct RegisterBlock {
     /// memory remap register
@@ -339,6 +371,11 @@ pub struct RegisterBlock {
 
     /// Compensation cell control register
     pub CMPCR: RORegister<u32>,
+
+    _reserved2: [u8; 8],
+
+    /// Configuration register
+    pub CFGR: RWRegister<u32>,
 }
 pub struct ResetValues {
     pub MEMRM: u32,
@@ -348,6 +385,7 @@ pub struct ResetValues {
     pub EXTICR3: u32,
     pub EXTICR4: u32,
     pub CMPCR: u32,
+    pub CFGR: u32,
 }
 #[cfg(not(feature = "nosync"))]
 pub struct Instance {

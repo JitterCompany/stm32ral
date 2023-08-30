@@ -1695,14 +1695,22 @@ def expand_dim(node):
 
 
 def expand_cluster(node):
+
     if node.attrib.get('dim_index') is None:
-        raise ValueError("Can't process a cluster without dim_index set")
-    cluster_idx = node.attrib['dim_index']
+    #    raise ValueError("Can't process a cluster without dim_index set")
+        cluster_name = get_string(node, 'name')
+        dim = node.attrib.get('dim')
+        print("Warning: assuming cluster {} is of length 1 (dim_index not set, dim={})".format(cluster_name, dim))
+        cluster_idx = ''
+    else:
+        cluster_idx = str(node.attrib['dim_index'])
+
+
     cluster_addr = get_int(node, 'addressOffset')
     nodes = []
     for register in node.findall('register'):
         addr = cluster_addr + get_int(register, 'addressOffset')
-        name = get_string(register, 'name') + str(cluster_idx)
+        name = get_string(register, 'name') + cluster_idx
         clusr = copy.deepcopy(register)
         clusr.find('addressOffset').text = "0x{:08x}".format(addr)
         clusr.find('name').text = name

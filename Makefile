@@ -1,7 +1,7 @@
 all: crate
 
 crate: stm32-rs
-	python3 stm32ral.py . stm32-rs/svd/stm32*.svd.patched stm32-rs/cortex_m/armv*.svd.patched
+	python3 stm32ral.py . stm32-rs/svd/stm32w*.svd.patched stm32-rs/svd/stm32m*.svd.patched stm32-rs/svd/stm32f*.svd.patched stm32-rs/svd/stm32g*.svd.patched stm32-rs/svd/stm32h*.svd.patched stm32-rs/svd/stm32l*.svd.patched stm32-rs/cortex_m/armv*.svd.patched
 	python3 make_supported_devices.py stm32-rs/stm32_part_table.yaml supported_devices.md
 
 stm32-rs:
